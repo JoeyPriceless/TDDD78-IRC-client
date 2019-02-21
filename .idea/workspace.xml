@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ea5da4-b8c5-4748-96cb-103f08006017" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IRC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IRC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="34">
+              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
               <folding>
                 <element signature="e#1173#1174#0" expanded="true" />
                 <element signature="e#1252#1253#0" expanded="true" />
@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -50,17 +50,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="-374">
+              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="-306">
+              <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
               <folding>
                 <element signature="e#168#169#0" expanded="true" />
                 <element signature="e#190#191#0" expanded="true" />
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="255">
+              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -91,6 +91,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -103,10 +104,11 @@
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/interface/cli.kt" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/cli.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/tests/ServerConnectionTest.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java" />
       </list>
     </option>
   </component>
@@ -155,6 +157,13 @@
               <item name="tddd78" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TDDD78-projekt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tddd78-projekt-2019-u1-g24-14" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tddd78" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -163,8 +172,23 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="se.liu.ida.joshu135.tddd78.tests" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -216,7 +240,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -225,24 +249,6 @@
       <window_info anchor="right" id="Maven" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java</url>
-          <line>40</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/cli.java" />
@@ -253,13 +259,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -267,10 +266,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+          <folding>
+            <element signature="e#168#169#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/tests/ServerConnectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="34">
+          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
           <folding>
             <element signature="e#1173#1174#0" expanded="true" />
             <element signature="e#1252#1253#0" expanded="true" />
@@ -286,32 +316,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="-374">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-          <folding>
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#222#223#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#370#371#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
         </state>
       </provider>
     </entry>

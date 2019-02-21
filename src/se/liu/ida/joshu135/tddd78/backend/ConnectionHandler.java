@@ -9,10 +9,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 /**
- *
+ * Handles the TCP connection to the server and sends it the messages.
  */
 public class ConnectionHandler {
 	private Socket socket;
@@ -32,15 +31,30 @@ public class ConnectionHandler {
 	}
 
 	/**
-	 * Register a connection with an IRC server. Send NICK & USER message as recommended by RFC 2812
+	 * Takes a variable number of messages and sends them all at once and in order.
+	 * @param msgs A list of messages
+	 *
+	 * @throws IOException
+	 */
+	public void writeMessage(String... msgs) throws IOException {
+		for (String msg : msgs) {
+			writer.write(msg);
+		}
+		writer.flush();
+	}
+
+	/**
+	 * Register a connection with an IRC server. Send NICK & USER message.
 	 * https://tools.ietf.org/html/rfc2812#section-3.1
 	 */
 	public void registerConnection() {
 		try {
-			writer.write(MessageComposer.compose("NICK", user.getNickname()));
-			writer.write(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*", ":", user.getRealname()));
-			writer.flush();
+			writeMessage();
+			String nickMsg = MessageComposer.compose("NICK", user.getNickname());
+			String userMsg = MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*", ":", user.getRealname());
+			writeMessage(nickMsg, userMsg);
 
+			// TODO handle failed login
 			String line;
 			while(true) {
 				line = reader.readLine();
@@ -50,10 +64,15 @@ public class ConnectionHandler {
 				}
 			}
 		} catch(MessageComposer.MessageLengthException ex) {
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		} catch(IOException ex) {
 			System.out.println("Could not read or write message to server");
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}
+	}
+
+	public void joinChannel() throws MessageComposer.MessageLengthException, IOException {
+		String join = MessageComposer.compose("JOIN", channel);
+		writeMessage(join);
 	}
 }

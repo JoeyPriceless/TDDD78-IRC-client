@@ -1,31 +1,38 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
+import java.io.IOException;
+
+/**
+ * Static class that composes messages that are ready to be sent to an IRC server. Also includes shortcuts to frequent commands
+ */
 public class MessageComposer {
 	private static final String NEWLINE = "\r\n";
 	private static final int MAX_LENGTH = 512;
 
 
 	/**
-	 * @param command
-	 * @param params
+	 * Composes a message without prefix according to the RFC 2812 specification.
+	 * @param command An IRC command. Listed here https://tools.ietf.org/html/rfc2812#section-3
+	 * @param params A variable amount of command parameters. From 0 up to a maximum of 15.
 	 *
-	 * @return
-	 * @throws IllegalArgumentException
-	 * @throws MessageLengthException
+	 * @return The message, consisting of a command and its params, followed by newline characters \r\n.
+	 * @throws IllegalArgumentException If params exceed maximum length 15.
+	 * @throws MessageLengthException If the total message is too long (total of 512 chars).
 	 */
 	public static String compose(String command, String... params) throws IllegalArgumentException, MessageLengthException {
+		// Could not do this as a regular overload due to argvar's parameter ambiguity
 		return composeWithPrefix("", command, params);
 	}
 
 	/**
-	 * Composes a message to be sent to the IRC server.
+	 * Composes a message to be sent according to the RFC 2812 specification.
 	 * @param prefix prefix String according to RFC 2812
-	 * @param command A valid IRC command
-	 * @param params List of parameters for the command
+	 * @param command An IRC command. Listed here https://tools.ietf.org/html/rfc2812#section-3
+	 * @param params A variable amount of command parameters. From 0 up to a maximum of 15.
 	 *
-	 * @return
-	 * @throws IllegalArgumentException Thrown when params exceed maximum length 15.
-	 * @throws MessageLengthException Thrown when total message length exceeds 512 chars.
+	 * @return The message, consisting of an optional prefix, a command and its params, followed by newline characters \r\n.
+	 * @throws IllegalArgumentException If params exceed maximum length 15.
+	 * @throws MessageLengthException If the total message is too long (total of 512 chars).
 	 */
 	// TODO add logging
 	public static String composeWithPrefix(String prefix, String command, String... params) throws IllegalArgumentException,
@@ -49,6 +56,9 @@ public class MessageComposer {
 		return messageBuilder.toString();
 	}
 
+	/**
+	 * Thrown when there is a problem with the length of a composed message. Usually when it exceeds the protocols max length.
+	 */
 	public static class MessageLengthException extends Exception {
 		public MessageLengthException() {
 			super();

@@ -3,7 +3,6 @@ package se.liu.ida.joshu135.tddd78.backend;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
 
-import java.io.IOException;
 import java.util.concurrent.LinkedTransferQueue;
 
 /**

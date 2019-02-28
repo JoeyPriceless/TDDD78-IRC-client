@@ -13,19 +13,20 @@ public class Cli {
 	public static void main(String[] args) {
 		String server = "irc.freenode.net";
 		int port = 6667;
-		String channel = "#bot-test";
+//		String channel = "#bot-test";
+		String channel = "#freenode";
 
 		User user = new User("tddd78", "tddd78", "tddd78");
 		LinkedTransferQueue<Message> messageQueue = new LinkedTransferQueue<>();
 		try {
 			ConnectionHandler conHandler = new ConnectionHandler(server, port, messageQueue);
 			MessageSender messageSender = new MessageSender(messageQueue, conHandler);
-			MessageReceiver messageReceiver = new MessageReceiver(conHandler);
+			MessageComposer composer = new MessageComposer(messageQueue);
+			MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer);
 			Thread sendThread = new Thread(messageSender, "SendT");
 			Thread responseThread = new Thread(messageReceiver, "ResponseT");
 			sendThread.start();
 			responseThread.start();
-			MessageComposer composer = new MessageComposer(messageQueue);
 			composer.registerConnection(user);
 			composer.joinChannel(channel);
 		} catch (Exception ex) {

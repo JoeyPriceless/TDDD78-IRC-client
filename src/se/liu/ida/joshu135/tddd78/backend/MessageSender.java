@@ -5,11 +5,12 @@ import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import java.io.IOException;
 import java.util.concurrent.LinkedTransferQueue;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MessageSender implements Runnable {
 	private static final Logger LOGGER = LogConfig.getLogger(MessageSender.class.getSimpleName());
-	private LinkedTransferQueue<Message> messageQueue; // K: Message, V: Terminator Numeric
+	private LinkedTransferQueue<Message> messageQueue;
 	private ConnectionHandler conHandler;
 
 	public MessageSender(final LinkedTransferQueue<Message> messageQueue, final ConnectionHandler conHandler) {
@@ -27,10 +28,10 @@ public class MessageSender implements Runnable {
 				msg = messageQueue.take();
 				conHandler.writeMessage(msg.getMessage());
 			} catch (InterruptedException ex) {
-				ex.printStackTrace();
+				LOGGER.log(Level.WARNING, ex.getMessage(), ex);
 				continue;
 			} catch (IOException ex) {
-				ex.printStackTrace();
+				LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 			}
 		}
 	}

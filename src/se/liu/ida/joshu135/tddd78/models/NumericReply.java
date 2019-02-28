@@ -1,8 +1,16 @@
 package se.liu.ida.joshu135.tddd78.models;
 
-public enum Reply {
-//	// reply ids
-//	    enum Reply
+public enum NumericReply {
+//	PingResponse(action);
+//
+//	public final ResponseAction action;
+//
+//	NumericReply(final ResponseAction action, final MessageComposer composer) {
+//		this.action = action;
+//	}
+}
+	// Stack Overflow C# example
+//	    enum NumericReply
 //	    {
 //	        RplNone             = 0,
 //	        // Initial
@@ -209,5 +217,4 @@ public enum Reply {
 //	        ErrUsersDontMatch   = 502,                  // :Cant change mode for other users
 //	        ErrSilenceListFull  = 511                   // <mask> :Your silence list is full                                                UNDERNET/DALNET
 //
-//	    };  // eo enum Reply
-}
+//	    };  // eo enum NumericReply

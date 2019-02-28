@@ -46,27 +46,10 @@ public class ConnectionHandler {
 		writer.flush();
 	}
 
-	/**
-	 * If a terminateNumeric is given, the server's response is read until it reaches a message with that numeric.
-	 * If termianteNumeric is null, no messages are read and the program moves onto the next message.
-	 *
-	 * @throws IOException
-	 */
-	// TODO handle failed commands
-	// TODO Respond to PING
-	// TODO Think about how terminate without numeric
 	public String readLine() throws IOException {
-		String line;
-		line = reader.readLine();
+		String line = reader.readLine();
 		LOGGER.info(line);
 		return line;
-			// TODO add getNumeric to MessageParser
-//			if (terminateNumeric == null || line.contains(terminateNumeric)) {
-//				return;
-//			}
-//			if (line.isEmpty()) {
-//				return;
-//			}
 //		}
 	}
 

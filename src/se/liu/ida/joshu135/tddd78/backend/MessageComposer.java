@@ -64,6 +64,10 @@ public class MessageComposer {
 		return messageBuilder.toString();
 	}
 
+	public void queueMessage(Message msg) {
+		messageQueue.add(msg);
+	}
+
 	/**
 	 * Register a connection with an IRC server. Send NICK & USER message.
 	 * https://tools.ietf.org/html/rfc2812#section-3.1
@@ -72,9 +76,9 @@ public class MessageComposer {
 		try {
 			Message nickMsg = new Message(MessageComposer.compose("NICK", user.getNickname()));
 			Message userMsg = new Message(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*", ":",
-																  user.getRealname()), "376");
-			messageQueue.add(nickMsg);
-			messageQueue.add((userMsg));
+																  user.getRealname()));
+			queueMessage(nickMsg);
+			queueMessage((userMsg));
 		} catch (MessageComposer.MessageLengthException ex) {
 			ex.printStackTrace();
 		}
@@ -86,8 +90,7 @@ public class MessageComposer {
 	 *
 	 * @throws MessageComposer.MessageLengthException
 	 */
-	public void joinChannel(String channel)
-			throws MessageComposer.MessageLengthException {
+	public void joinChannel(String channel) throws MessageComposer.MessageLengthException {
 		joinChannel(channel, null);
 	}
 
@@ -106,8 +109,8 @@ public class MessageComposer {
 		} else {
 			s = MessageComposer.compose("JOIN", channel);
 		}
-		Message joinMsg = new Message(s, "366");
-		messageQueue.add(joinMsg);
+		Message joinMsg = new Message(s);
+		queueMessage(joinMsg);
 	}
 
 	/**

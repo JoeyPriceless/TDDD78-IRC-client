@@ -30,7 +30,9 @@ public class MessageReceiver implements Runnable {
 				while ((line = conHandler.readLine()) != null) {
 					message = new Message(line);
 					ResponseAction action = ResponseActionFactory.getAction(message.getCommand());
-					action.handle(composer, message.getParams());
+					if (action != null) {
+						action.handle(composer, message);
+					}
 				}
 			} catch (IOException | MessageComposer.MessageLengthException ex) {
 				LOGGER.log(Level.WARNING, ex.getMessage(), ex);

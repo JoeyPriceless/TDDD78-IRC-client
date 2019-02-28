@@ -8,6 +8,6 @@ public class ResponseActionFactory {
 	);
 
 	public static ResponseAction getAction(String command) {
-		return map.getOrDefault(command, new NoResponse());
+		return map.getOrDefault(command, null);
 	}
 }

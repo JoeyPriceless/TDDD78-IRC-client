@@ -75,10 +75,10 @@ public class MessageComposer {
 	public void registerConnection(User user) {
 		try {
 			Message nickMsg = new Message(MessageComposer.compose("NICK", user.getNickname()));
-			Message userMsg = new Message(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*", ":",
-																  user.getRealname()));
+			Message userMsg = new Message(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*",
+																  ":" + user.getRealname()));
 			queueMessage(nickMsg);
-			queueMessage((userMsg));
+			queueMessage(userMsg);
 		} catch (MessageComposer.MessageLengthException ex) {
 			ex.printStackTrace();
 		}

@@ -7,10 +7,11 @@ public class PingResponse implements ResponseAction {
 	public PingResponse() {
 	}
 
-	@Override public void handle(final MessageComposer composer, final String... params) throws
+	// TODO support for secondary pong server.
+	@Override public void handle(final MessageComposer composer, Message response) throws
 			MessageComposer.MessageLengthException
 	{
-		Message message = new Message(MessageComposer.compose("PONG", params));
+		Message message = new Message(MessageComposer.compose("PONG", response.getTrailing()));
 		composer.queueMessage(message);
 	}
 }

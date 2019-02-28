@@ -1,13 +1,15 @@
 package se.liu.ida.joshu135.tddd78.models;
 
+import java.util.EnumMap;
+
 public enum NumericReply {
-//	PingResponse(action);
-//
-//	public final ResponseAction action;
-//
-//	NumericReply(final ResponseAction action, final MessageComposer composer) {
-//		this.action = action;
-//	}
+	RPL_WELCOME("001");
+
+	public final String name;
+
+	NumericReply(final String name) {
+		this.name = name;
+	}
 }
 	// Stack Overflow C# example
 //	    enum NumericReply

@@ -2,6 +2,7 @@ package se.liu.ida.joshu135.tddd78.models;
 
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +36,8 @@ public class Message {
 	}
 
 	public Message(final String msg) {
-		this.message = msg.trim();
+//		this.message = msg.trim();
+		this.message = msg;
 		if (message == null) {
 			LOGGER.warning("Cannot create object from null message.");
 			return;
@@ -52,7 +54,7 @@ public class Message {
 			command = m.group(2);
 			params = m.group(3);
 			trailing = m.group(4);
-			LOGGER.info(String.format("%s --- p[%s] c[%s] p[%s] t[%s] ", message, prefix, command, params, trailing));
+			LOGGER.log(Level.FINE, String.format("%s --- p[%s] c[%s] p[%s] t[%s] ", message, prefix, command, params, trailing));
 		} else {
 			LOGGER.warning(String.format("Could not parse regex '%s'", message));
 		}

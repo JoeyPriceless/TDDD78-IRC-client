@@ -50,7 +50,6 @@ public class ConnectionHandler {
 		String line = reader.readLine();
 		LOGGER.info(line);
 		return line;
-//		}
 	}
 
 //	/**

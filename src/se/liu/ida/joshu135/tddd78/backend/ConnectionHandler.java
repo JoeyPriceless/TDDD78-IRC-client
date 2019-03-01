@@ -24,7 +24,7 @@ public class ConnectionHandler {
 	private BufferedWriter writer;
 	private BufferedReader reader;
 
-	public ConnectionHandler(final String server, final int port, LinkedTransferQueue<Message> messageQueue)
+	public ConnectionHandler(final String server, final int port)
 			throws IOException
 	{
 		this.socket = new Socket(server, port);

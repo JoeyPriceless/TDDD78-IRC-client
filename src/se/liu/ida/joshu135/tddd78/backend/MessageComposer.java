@@ -2,13 +2,18 @@ package se.liu.ida.joshu135.tddd78.backend;
 
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
+import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import java.util.concurrent.LinkedTransferQueue;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Static class that composes messages that are ready to be sent to an IRC server. Also includes shortcuts to frequent commands
  */
 public class MessageComposer {
+	private static final Logger LOGGER = LogConfig.getLogger(MessageComposer.class.getSimpleName());
 	private static final String NEWLINE = "\r\n";
 	private static final int MAX_LENGTH = 512;
 	private static final int MAX_COMMAND_PARAMS = 15;
@@ -42,11 +47,11 @@ public class MessageComposer {
 	 * @throws IllegalArgumentException If params exceed maximum length 15.
 	 * @throws MessageLengthException If the total message is too long (total of 512 chars).
 	 */
-	// TODO add logging
 	public static String composeWithPrefix(String prefix, String command, String... params) throws IllegalArgumentException,
 			MessageLengthException {
 		if (params.length > MAX_COMMAND_PARAMS) {
-			throw new IllegalArgumentException(params.length + " exceeds maximum of 15 params.");
+			String joined = Stream.of(params).collect(Collectors.joining());
+			throw new IllegalArgumentException(joined + "exceeds maximum of 15 params");
 		}
 
 		StringBuilder messageBuilder = new StringBuilder();
@@ -59,7 +64,8 @@ public class MessageComposer {
 		}
 		messageBuilder.append(NEWLINE);
 		if (messageBuilder.length() > MAX_LENGTH) {
-			throw new MessageLengthException("Composed message is longer than max length of 512 characters.");
+			throw new MessageLengthException(String.format("Composed message length (%s) is longer than max length of 512" +
+														   "characters.", messageBuilder.length()));
 		}
 		return messageBuilder.toString();
 	}

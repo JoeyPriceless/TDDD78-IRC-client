@@ -24,7 +24,7 @@ public class GuiMain {
 			ConnectionHandler conHandler = new ConnectionHandler(server, port);
 			MessageSender messageSender = new MessageSender(messageQueue, conHandler);
 			MessageComposer composer = new MessageComposer(messageQueue);
-			MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer);
+			MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer, chatViewer);
 			Thread sendThread = new Thread(messageSender, "SendT");
 			Thread responseThread = new Thread(messageReceiver, "ResponseT");
 			sendThread.start();

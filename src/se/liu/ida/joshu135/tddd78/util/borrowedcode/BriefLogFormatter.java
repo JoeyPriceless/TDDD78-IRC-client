@@ -12,7 +12,7 @@ import java.util.logging.LogRecord;
  */
 public class BriefLogFormatter extends Formatter {
 
-	private static final DateFormat format = new SimpleDateFormat("h:mm:ss");
+	private static final DateFormat format = new SimpleDateFormat("HH:mm:ss");
 	private static final String lineSep = System.getProperty("line.separator");
 
 	public String format(LogRecord record) {

@@ -2,6 +2,7 @@ package se.liu.ida.joshu135.tddd78.backend;
 
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseAction;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseActionFactory;
+import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
@@ -10,13 +11,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MessageReceiver implements Runnable {
-	private static final Logger LOGGER = LogConfig.getLogger(MessageSender.class.getSimpleName());
+	private static final Logger LOGGER = LogConfig.getLogger(MessageReceiver.class.getSimpleName());
+	private ResponseActionFactory factory;
 	private ConnectionHandler conHandler;
 	private MessageComposer composer;
+	private ChatViewer chatViewer;
 
-	public MessageReceiver(final ConnectionHandler conHandler, MessageComposer composer) {
+	public MessageReceiver(final ConnectionHandler conHandler, MessageComposer composer, final ChatViewer chatViewer) {
 		this.conHandler = conHandler;
 		this.composer = composer;
+		this.chatViewer = chatViewer;
+		this.factory = new ResponseActionFactory(chatViewer);
 	}
 
 	/**
@@ -28,7 +33,7 @@ public class MessageReceiver implements Runnable {
 			try {
 				while ((line = conHandler.readLine()) != null) {
 					message = new Message(line);
-					ResponseAction action = ResponseActionFactory.getAction(message.getCommand());
+					ResponseAction action = factory.getAction(message.getCommand());
 					if (action != null) {
 						action.handle(composer, message);
 					}

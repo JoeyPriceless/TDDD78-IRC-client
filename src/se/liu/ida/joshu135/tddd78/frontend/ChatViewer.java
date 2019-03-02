@@ -6,15 +6,19 @@ import javax.swing.*;
 
 public class ChatViewer {
 	private JFrame frame;
+	private ChatComponent chatComponent;
 
 	public ChatViewer() {
 		frame = new JFrame("IRC");
 		frame.setLayout(new MigLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ChatComponent chatComp = new ChatComponent();
-		//frame.add(new JTextArea("lines\nlines", 10, 10));
-		frame.getContentPane().add(chatComp);
+		chatComponent = new ChatComponent();
+		frame.getContentPane().add(chatComponent);
 		frame.pack();
 		frame.setVisible(true);
+	}
+
+	public void appendToChat(String text) {
+		chatComponent.appendText(text);
 	}
 }

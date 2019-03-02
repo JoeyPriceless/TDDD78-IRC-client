@@ -1,12 +1,12 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
-import se.liu.ida.joshu135.tddd78.models.Message;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Swing component that contains the actual chat. Consists of a JTextArea within a JScrollPane as well as methods to manipulate
+ * what's displayed in that chat.
+ */
 public class ChatComponent extends JScrollPane {
 	private JTextArea messageArea;
 

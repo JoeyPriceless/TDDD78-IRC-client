@@ -8,6 +8,10 @@ import java.util.concurrent.LinkedTransferQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Runnable that shares a LinkedTransferQueue with MessageComposer, containing outbound messages.
+ * Messages are sent one at a time and in order. Their responses are dealt with asynchronously in MessageReceiver.
+ */
 public class MessageSender implements Runnable {
 	private static final Logger LOGGER = LogConfig.getLogger(MessageSender.class.getSimpleName());
 	private LinkedTransferQueue<Message> messageQueue;

@@ -5,6 +5,10 @@ import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Factory class for dynamically creating ResponseAction objects depending on the recieved command.
+ * Contains a mapping between commands (Strings/3-letter numerics) and ResponseActions
+ */
 public class ResponseActionFactory {
 	private ChatViewer chatViewer;
 	private Map<String, ResponseAction> map;
@@ -14,10 +18,19 @@ public class ResponseActionFactory {
 		setMap();
 	}
 
+	/**
+	 * Gets an action depending on the given command. If the command cannot be found, a default action will be return.
+	 * @param command An IRC command (UPPER CASE or 3-letter numeric). See https://tools.ietf.org/html/rfc2812 for the full list
+	 *
+	 * @return The ResponseAction corresponding the command, or if there is no corresponing command, a DefaultAction object.
+	 */
 	public ResponseAction getAction(String command) {
 		return map.getOrDefault(command, new DefaultAction(chatViewer));
 	}
 
+	/**
+	 * Initializes the mapping between commands and ResponseActions
+	 */
 	private void setMap() {
 		map = new HashMap<>();
 		map.put("PING", new PongAction());
@@ -35,6 +48,13 @@ public class ResponseActionFactory {
 		addMapRange(map, new int[] {333, 353, 366}, new DontDisplayAction());
 	}
 
+	/**
+	 * Maps a response to all numerics within a range.
+	 * @param map The Hashmap to map to.
+	 * @param start Start of range
+	 * @param end End of range
+	 * @param action The action to be mapped
+	 */
 	private void addMapRange(Map<String, ResponseAction> map, int start, int end, ResponseAction action) {
 		for (int i = start; i <= end; i++) {
 			String numeric = String.format("%03d" , i);
@@ -42,6 +62,12 @@ public class ResponseActionFactory {
 		}
 	}
 
+	/**
+	 * Maps a response to all numerics within an array
+	 * @param map The Hashmap to map to.
+	 * @param command A list of commands to be mapped.
+	 * @param action The action to be mapped
+	 */
 	private void addMapRange(Map<String, ResponseAction> map, int[] command, ResponseAction action) {
 		for (int i : command) {
 			String numeric = String.format("%03d" , i);
@@ -49,6 +75,12 @@ public class ResponseActionFactory {
 		}
 	}
 
+	/**
+	 * Maps a response to all strings within an array
+	 * @param map The Hashmap to map to.
+	 * @param command A list of commands to be mapped.
+	 * @param action The action to be mapped
+	 */
 	private void addMapRange(Map<String, ResponseAction> map, String[] command, ResponseAction action) {
 		for (String s : command) {
 			map.put(s, action);

@@ -25,7 +25,7 @@ public class MessageReceiver implements Runnable {
 	}
 
 	/**
-	 * Infinite loop that handles messages in order and only moves on to the next message after the response has been read.
+	 * A runnable that handles messages in order and only moves on to the next message after the response has been read.
 	 */
 	@Override public void run() {
 		String line;

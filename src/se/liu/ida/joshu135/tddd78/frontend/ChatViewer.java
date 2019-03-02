@@ -4,6 +4,9 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 
+/**
+ * Contains the main Jframe and acts as the backend's interface for GUI management.
+ */
 public class ChatViewer {
 	private JFrame frame;
 	private ChatComponent chatComponent;

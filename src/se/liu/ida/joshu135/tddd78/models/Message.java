@@ -7,6 +7,10 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Contains messages in the BNF format specified in the IRC protocol. Messages are split into different parts and may consists
+ * of: a prefix, a command, up to 15 parameters and some trailing text.
+ */
 public class Message {
 	private static final Logger LOGGER = LogConfig.getLogger(Message.class.getSimpleName());
 	private String message;

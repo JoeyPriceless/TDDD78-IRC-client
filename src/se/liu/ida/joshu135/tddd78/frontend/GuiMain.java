@@ -9,6 +9,9 @@ import se.liu.ida.joshu135.tddd78.models.User;
 
 import java.util.concurrent.LinkedTransferQueue;
 
+/**
+ * Initializes the application and it's GUI.
+ */
 public class GuiMain {
 	public static void main(String[] args) {
 		String server = "irc.freenode.net";

@@ -1,7 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
 
-import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import java.io.BufferedReader;
@@ -10,13 +9,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.concurrent.LinkedTransferQueue;
 import java.util.logging.Logger;
 
 /**
- * Handles the TCP connection to the server and sends/receives messages on a separate thread.
- * Messages are placed in a LinkedTransferQueue and sent in order. Only moves onto the next message after the response has been
- * read for the current message.
+ * Handles the TCP connection to the server and sends/receives messages to the socket.
  */
 public class ConnectionHandler {
 	private static final Logger LOGGER = LogConfig.getLogger(ConnectionHandler.class.getSimpleName());

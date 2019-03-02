@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Static class that composes messages that are ready to be sent to an IRC server. Also includes shortcuts to frequent commands
+ * Composes messages that are ready to be sent to an IRC server. Also includes shortcuts to frequent commands
+ * Messages are placed in a LinkedTransferQueue and dealt with in MessageSender on another thread.
  */
 public class MessageComposer {
 	private static final Logger LOGGER = LogConfig.getLogger(MessageComposer.class.getSimpleName());

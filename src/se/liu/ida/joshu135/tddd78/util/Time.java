@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Utility class that handles time.
+ */
 public class Time {
 	public static String timeString() {
 		Calendar cal = Calendar.getInstance();

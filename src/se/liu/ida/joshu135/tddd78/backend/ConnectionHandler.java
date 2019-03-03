@@ -1,6 +1,7 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
 
+import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import java.io.BufferedReader;
@@ -19,13 +20,40 @@ public class ConnectionHandler {
 	private Socket socket;
 	private BufferedWriter writer;
 	private BufferedReader reader;
+	MessageComposer composer;
+	private String hostname;
+	private int port;
+	private String channel;
 
-	public ConnectionHandler(final String server, final int port)
-			throws IOException
-	{
-		this.socket = new Socket(server, port);
+	public ConnectionHandler(MessageComposer composer) {
+		this.hostname = "";
+		this.channel = "";
+		this.composer = composer;
+	}
+
+	public void setServer(String hostname, int port, User user) throws IOException {
+		if (this.hostname.equals(hostname) && this.port == port) {
+			return;
+		}
+		this.hostname = hostname;
+		this.port = port;
+		this.socket = new Socket(hostname, port);
 		writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 		reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		composer.registerConnection(user);
+	}
+
+	public void setChannel(final String channel) throws MessageComposer.MessageLengthException
+	{
+		if (this.channel.equals(channel)) {
+			return;
+		}
+		this.channel = channel;
+		composer.joinChannel(channel);
+	}
+
+	public String getChannel() {
+		return channel;
 	}
 
 	/**

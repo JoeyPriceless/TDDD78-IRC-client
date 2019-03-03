@@ -110,6 +110,9 @@ public class MessageComposer {
 	 */
 	public void joinChannel(String channel, String key)
 			throws MessageComposer.MessageLengthException {
+		// The "0" argument specifies that user leaves all current channels.
+		Message leaveMsg = new Message(MessageComposer.compose("JOIN", "0"));
+		queueMessage(leaveMsg);
 		String s;
 		if (key != null) {
 			s = MessageComposer.compose("JOIN", channel, key);

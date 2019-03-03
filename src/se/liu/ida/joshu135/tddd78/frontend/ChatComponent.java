@@ -16,6 +16,7 @@ public class ChatComponent extends JScrollPane {
 		setViewportView(messageArea);
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
+		messageArea.setLineWrap(true);
 		messageArea.setWrapStyleWord(true);
 	}
 
@@ -33,5 +34,9 @@ public class ChatComponent extends JScrollPane {
 		// TODO block this if user scrolls up willingly.
 		// Set caret to end of text so that the TextArea scrolls down with the text.
 		//messageArea.setCaretPosition(messageArea.getText().length() - 1);
+	}
+
+	public void clearChat() {
+		messageArea.setText("");
 	}
 }

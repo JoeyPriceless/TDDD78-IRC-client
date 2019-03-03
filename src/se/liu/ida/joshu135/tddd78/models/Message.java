@@ -15,6 +15,8 @@ public class Message {
 	private static final Logger LOGGER = LogConfig.getLogger(Message.class.getSimpleName());
 	private String message;
 	private String prefix;
+	private String nickname;
+	private String userHost;
 	private String command;
 	private String params;
 	private String trailing;
@@ -25,6 +27,14 @@ public class Message {
 
 	public String getPrefix() {
 		return prefix;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public String getUserHost() {
+		return userHost;
 	}
 
 	public String getCommand() {
@@ -48,17 +58,27 @@ public class Message {
 		}
 		// See https://tools.ietf.org/html/rfc2812#section-2.4 for the message format.
 		// Group 0: prefix (including ':')
-		// Group 1: command
+		// Group 1: command   .substring(1); // Remove first character ":"
 		// Group 2: substring of params
 		// Group 3: substring of trailing
-		Pattern p = Pattern.compile("(:\\S*)?\\s?([a-zA-Z]+|\\d{3})\\s([^:]*):?([^\\n\\r]*)");
-		Matcher m = p.matcher(message);
-		if (m.find()) {
-			prefix = m.group(1);
-			command = m.group(2);
-			params = m.group(3);
-			trailing = m.group(4);
-			LOGGER.log(Level.FINE, String.format("%s --- p[%s] c[%s] p[%s] t[%s] ", message, prefix, command, params, trailing));
+		Pattern pGeneral = Pattern.compile("(:\\S*)?\\s?([a-zA-Z]+|\\d{3})\\s([^:]*):?([^\\n\\r]*)");
+		Matcher mGeneral = pGeneral.matcher(message);
+		if (mGeneral.find()) {
+			prefix = mGeneral.group(1);
+			// Check if message has been sent from a user. If so, split the nickname from the hostname.
+			Pattern pUser = Pattern.compile(":(\\S*)?!~?(\\S*)");
+			if (prefix != null) {
+				Matcher mUser = pUser.matcher(prefix);
+				if (mUser.find()) {
+					nickname = mUser.group(1);
+					userHost = mUser.group(2);
+				}
+			}
+			command = mGeneral.group(2);
+			params = mGeneral.group(3);
+			trailing = mGeneral.group(4);
+			LOGGER.log(Level.FINE, String.format("%s --- p[%s] (n[%s]) (h[%s]) c[%s] p[%s] t[%s] ", message, prefix, nickname,
+												 userHost, command, params, trailing));
 		} else {
 			LOGGER.warning(String.format("Could not parse regex '%s'", message));
 		}

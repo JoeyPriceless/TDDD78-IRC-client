@@ -26,19 +26,27 @@ public class User {
 		return mode;
 	}
 
+	public User() {
+		this.mode = "0";
+	}
+
 	public User(final String nickname, final String realname, final String username, final String mode)
 			throws IllegalArgumentException {
-		this(nickname, realname, username);
+		setNames(nickname, realname, username);
 		this.mode = mode;
 	}
 
 	public User(final String nickname, final String realname, final String username) throws IllegalArgumentException {
+		setNames(nickname, realname, username);
+		this.mode = "0";
+	}
+
+	public void setNames(final String nickname, final String realname, final String username) throws IllegalArgumentException {
 		if (nickname.length() > USERNAME_MAX_LENGTH) {
 			throw new IllegalArgumentException("Username exceeds char limit of " + USERNAME_MAX_LENGTH);
 		}
 		this.nickname = nickname;
 		this.realname = realname;
 		this.username = username;
-		this.mode = "0";
 	}
 }

@@ -36,6 +36,7 @@ public class ResponseActionFactory {
 		map.put("PING", new PongAction());
 		map.put("JOIN", new JoinAction(chatViewer));
 		map.put("QUIT", new QuitAction(chatViewer));
+		map.put("PART", new QuitAction(chatViewer));
 
 		// User registration
 		addMapRange(map, 1, 4, new DisplayAction(chatViewer));

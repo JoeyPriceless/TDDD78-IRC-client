@@ -9,10 +9,24 @@ public class QuitAction extends ChatWriter implements ResponseAction {
 		super(chatViewer);
 	}
 
-	// TODO Regex for username / IP in prefix
 	@Override public void handle(final MessageComposer composer, final Message response)
 			throws MessageComposer.MessageLengthException
 	{
-		displayServerMessage(String.format("%s has quit IRC (%s)", response.getPrefix(), response.getTrailing()));
+		String cmd = response.getCommand();
+		String message;
+		// Differentiates between leaving server and leaving channel.
+		if (cmd == null) {
+			return;
+		} else if (cmd.equals("PART")) {
+			message = String.format("%s (%s) has left %s", response.getNickname(), response.getUserHost(),
+												response.getParams());
+		} else {
+			String trail = response.getTrailing().equals("") ? (" - " + response.getTrailing()) : "";
+
+			message = String.format("%s (%s) has quit IRC%s", response.getNickname(), response.getUserHost(),
+									trail);
+		}
+		displayServerMessage(message);
+
 	}
 }

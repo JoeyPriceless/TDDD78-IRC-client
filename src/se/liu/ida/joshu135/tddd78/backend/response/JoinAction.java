@@ -9,10 +9,10 @@ public class JoinAction extends ChatWriter implements ResponseAction {
 		super(chatViewer);
 	}
 
-	// TODO Regex for username / IP in prefix
 	@Override public void handle(final MessageComposer composer, final Message response)
 			throws MessageComposer.MessageLengthException
 	{
-		displayServerMessage(response.getPrefix() + " joins " + response.getParams());
+		displayServerMessage(String.format("%s (%s) joins %s", response.getNickname(), response.getUserHost(),
+										   response.getParams()));
 	}
 }

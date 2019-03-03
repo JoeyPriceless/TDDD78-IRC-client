@@ -21,6 +21,7 @@ public class ChatViewer {
 	private JFrame frame;
 	private JMenuBar menuBar;
 	private ChatComponent chatComponent;
+	private AuthorComponent authorComponent;
 	private ConnectionHandler connectionHandler;
 	private MessageComposer composer;
 	private User user;
@@ -34,7 +35,11 @@ public class ChatViewer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		chatComponent = new ChatComponent();
-		frame.add(chatComponent);
+		authorComponent = new AuthorComponent();
+		JButton sendButton = new JButton("Send");
+		frame.add(chatComponent, "wrap");
+		frame.add(authorComponent);
+		frame.add(sendButton);
 		showServerDialog(true);
 		createMenu();
 		frame.pack();

@@ -20,10 +20,6 @@ public class ChatComponent extends JScrollPane {
 		messageArea.setWrapStyleWord(true);
 	}
 
-	@Override protected void paintComponent(final Graphics g) {
-		super.paintComponent(g);
-	}
-
 	/**
 	 * Appends a string to the chat window.
 	 * @param text The string to append.

@@ -1,5 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
@@ -87,7 +88,7 @@ public class MessageComposer {
 			queueMessage(nickMsg);
 			queueMessage(userMsg);
 		} catch (MessageComposer.MessageLengthException ex) {
-			ex.printStackTrace();
+			LOGGER.severe(ExceptionUtils.getStackTrace(ex));
 		}
 	}
 
@@ -123,6 +124,13 @@ public class MessageComposer {
 		queueMessage(joinMsg);
 	}
 
+	public void sendChannelMessage(String channel, String text) throws MessageLengthException{
+		Message message = new Message(MessageComposer.compose("PRIVMSG", channel, ":" + text));
+		queueMessage(message);
+	}
+
+
+	// TODO implement "lengthAllowance" method which can prewarn user when message gets too long.
 	/**
 	 * Thrown when there is a problem with the length of a composed message. Usually when it exceeds the protocols max length.
 	 */

@@ -13,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import se.liu.ida.joshu135.tddd78.util.Time;
+
 /**
  * Contains the main Jframe and acts as the backend's interface for GUI management.
  */
@@ -35,7 +37,7 @@ public class ChatViewer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		chatComponent = new ChatComponent();
-		authorComponent = new AuthorComponent();
+		authorComponent = new AuthorComponent(this);
 		JButton sendButton = new JButton("Send");
 		frame.add(chatComponent, "wrap");
 		frame.add(authorComponent);
@@ -47,7 +49,20 @@ public class ChatViewer {
 	}
 
 	public void appendToChat(String text) {
-		chatComponent.appendText(text);
+		chatComponent.appendText(String.format("[%s] %s", Time.timeString(), text));
+	}
+
+	public void appendToChat(String sender, String text) {
+		appendToChat(String.format("<%s> %s", sender, text));
+	}
+
+	public void submitMessage(String text) {
+		try {
+			composer.sendChannelMessage(connectionHandler.getChannel(), text);
+		} catch (MessageComposer.MessageLengthException ex) {
+			LOGGER.warning(ex.getMessage());
+		}
+		appendToChat(user.getNickname(), text);
 	}
 
 	// TODO add port/channel formatting errors and handle IO exception

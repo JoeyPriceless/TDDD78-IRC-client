@@ -14,14 +14,10 @@ public abstract class ChatWriter {
 	}
 
 	protected void displayServerMessage(String message) {
-		appendToChat(message);
+		chatViewer.appendToChat(message);
 	}
 
-	protected void displayUserMessage (String sender, String message) {
-		appendToChat(String.format("<%s> %s", sender, message));
-	}
-
-	private void appendToChat(String text) {
-		chatViewer.appendToChat(String.format("[%s] %s", Time.timeString(), text));
+	protected void displayUserMessage(String sender, String message) {
+		chatViewer.appendToChat(sender, message);
 	}
 }

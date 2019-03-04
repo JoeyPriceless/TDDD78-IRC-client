@@ -1,7 +1,7 @@
 package se.liu.ida.joshu135.tddd78.models;
 
 /**
- * Keeps track of information regarding the user such as it's names and status.
+ * Keeps track of information regarding the application's user such as it's names and status.
  */
 public class User {
 	private static final int USERNAME_MAX_LENGTH = 9;

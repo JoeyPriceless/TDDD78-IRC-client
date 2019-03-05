@@ -10,7 +10,6 @@ import java.util.logging.Logger;
  * Static class that sets up a logger with custom formatting.
  */
 public final class LogConfig {
-	private LogConfig() {}
 //	private static final Logger LOGGER = Logger.getLogger(LogConfig.class.getName());
 //
 //	public LogConfig() {

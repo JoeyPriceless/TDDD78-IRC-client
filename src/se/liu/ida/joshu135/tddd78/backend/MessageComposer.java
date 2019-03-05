@@ -6,7 +6,7 @@ import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedTransferQueue;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class MessageComposer {
 	private static final Logger LOGGER = LogConfig.getLogger(MessageComposer.class.getSimpleName());
 	private static final String NEWLINE = "\r\n";
-	private static final int MAX_LENGTH = 512;
+	public static final int MAX_LENGTH = 512;
 	private static final int MAX_COMMAND_PARAMS = 15;
 	private BlockingQueue<Message> messageQueue;
 
@@ -31,9 +31,8 @@ public class MessageComposer {
 	 *
 	 * @return The message, consisting of a command and its params, followed by newline characters \r\n.
 	 * @throws IllegalArgumentException If params exceed maximum length 15.
-	 * @throws MessageLengthException If the total message is too long (total of 512 chars).
 	 */
-	public static String compose(String command, String... params) throws IllegalArgumentException, MessageLengthException {
+	public static String compose(String command, String... params) {
 		// Could not do this as a regular overload due to argvar's parameter ambiguity
 		return composeWithPrefix("", command, params);
 	}
@@ -46,13 +45,14 @@ public class MessageComposer {
 	 *
 	 * @return The message, consisting of an optional prefix, a command and its params, followed by newline characters \r\n.
 	 * @throws IllegalArgumentException If params exceed maximum length 15.
-	 * @throws MessageLengthException If the total message is too long (total of 512 chars).
 	 */
-	public static String composeWithPrefix(String prefix, String command, String... params) throws IllegalArgumentException,
-			MessageLengthException {
+	public static String composeWithPrefix(String prefix, String command, String... params) {
+		String[] shortParams;
 		if (params.length > MAX_COMMAND_PARAMS) {
 			String joined = String.join(" ", params);
-			throw new IllegalArgumentException(joined + "exceeds maximum of 15 params");
+			LOGGER.log(Level.WARNING, command + joined + " -- exceeds maximum of 15 params. Using first 15 params.");
+			shortParams = new String[MAX_COMMAND_PARAMS];
+			System.arraycopy(params, 0, shortParams, 0, shortParams.length);
 		}
 
 		StringBuilder messageBuilder = new StringBuilder();
@@ -65,8 +65,7 @@ public class MessageComposer {
 		}
 		messageBuilder.append(NEWLINE);
 		if (messageBuilder.length() > MAX_LENGTH) {
-			// Autoboxing: not supporting pre-Java 5.0
-			throw new MessageLengthException(String.format("Composed message length (%s) is longer than max length of 512" +
+			LOGGER.log(Level.WARNING, String.format("Composed message length (%s) is longer than max length of 512" +
 														   "characters.", messageBuilder.length()));
 		}
 		return messageBuilder.toString();
@@ -81,24 +80,19 @@ public class MessageComposer {
 	 * https://tools.ietf.org/html/rfc2812#section-3.1
 	 */
 	public void registerConnection(User user) {
-		try {
-			Message nickMsg = new Message(MessageComposer.compose("NICK", user.getNickname()));
-			Message userMsg = new Message(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*",
-																  ":" + user.getRealname()));
-			queueMessage(nickMsg);
-			queueMessage(userMsg);
-		} catch (MessageLengthException ex) {
-			LOGGER.severe(ExceptionUtils.getStackTrace(ex));
-		}
+		Message nickMsg = new Message(MessageComposer.compose("NICK", user.getNickname()));
+		Message userMsg = new Message(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*",
+															  ":" + user.getRealname()));
+		queueMessage(nickMsg);
+		queueMessage(userMsg);
 	}
 
 	/**
 	 * Join a channel without a key
 	 * @param channel channel name
 	 *
-	 * @throws MessageLengthException
 	 */
-	public void joinChannel(String channel) throws MessageLengthException {
+	public void joinChannel(String channel) {
 		joinChannel(channel, null);
 	}
 
@@ -107,10 +101,8 @@ public class MessageComposer {
 	 * @param channel
 	 * @param key
 	 *
-	 * @throws MessageLengthException
 	 */
-	public void joinChannel(String channel, String key)
-			throws MessageLengthException {
+	public void joinChannel(String channel, String key) {
 		// The "0" argument specifies that user leaves all current channels.
 		Message leaveMsg = new Message(MessageComposer.compose("JOIN", "0"));
 		queueMessage(leaveMsg);
@@ -124,37 +116,33 @@ public class MessageComposer {
 		queueMessage(joinMsg);
 	}
 
-	public void sendChannelMessage(String channel, String text) throws MessageLengthException{
+	public void sendChannelMessage(String channel, String text) {
 		Message message = new Message(MessageComposer.compose("PRIVMSG", channel, ":" + text));
 		queueMessage(message);
 	}
 
-
-	// TODO implement "lengthAllowance" method which can prewarn user when message gets too long.
 	/**
-	 * Thrown when there is a problem with the length of a composed message. Usually when it exceeds the protocols max length.
+	 * Takes a vararg of strings that have to be in the message and returns the max length of the variable parts of the message.
+	 * @param maxLength The maximum length. Default: 510
+	 * @param knownStrings All the strings that are required to be in the message.
+	 *
+	 * @return maxLength minus total length of knownStrings
 	 */
-	public static class MessageLengthException extends Exception {
-		public MessageLengthException() {
-			super();
+	public static int lengthAllowance(int maxLength, String... knownStrings) {
+		int length = NEWLINE.length(); // 2 characters for \n\r
+		for (String s : knownStrings) {
+			length += s.length();
 		}
+		return length;
+	}
 
-		public MessageLengthException(final String message) {
-			super(message);
-		}
-
-		public MessageLengthException(final String message, final Throwable cause) {
-			super(message, cause);
-		}
-
-		public MessageLengthException(final Throwable cause) {
-			super(cause);
-		}
-
-		public MessageLengthException(final String message, final Throwable cause, final boolean enableSuppression,
-									  final boolean writableStackTrace)
-		{
-			super(message, cause, enableSuppression, writableStackTrace);
-		}
+	/**
+	 * Takes a vararg of strings that have to be in the message and returns the max length of the variable parts of the message.
+	 * @param knownStrings All the strings that are required to be in the message.
+	 *
+	 * @return maxLength minus total length of knownStrings
+	 */
+	public static int lengthAllowance(String... knownStrings) {
+		return lengthAllowance(MAX_LENGTH, knownStrings);
 	}
 }

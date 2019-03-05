@@ -42,9 +42,6 @@ public class User {
 	}
 
 	public void setNames(final String nickname, final String realname, final String username) throws IllegalArgumentException {
-		if (nickname.length() > USERNAME_MAX_LENGTH) {
-			throw new IllegalArgumentException("Username exceeds char limit of " + USERNAME_MAX_LENGTH);
-		}
 		this.nickname = nickname;
 		this.realname = realname;
 		this.username = username;

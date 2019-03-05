@@ -1,6 +1,5 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
-import se.liu.ida.joshu135.tddd78.backend.MessageComposer.MessageLengthException;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseAction;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseActionFactory;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
@@ -28,15 +27,14 @@ public class MessageReceiver implements Runnable {
 
 	@Override public void run() {
 			try {
-				String line;
-				while ((line = conHandler.readLine()) != null) {
+				for (String line = conHandler.readLine(); line != null; line = conHandler.readLine()) {
 					Message message = new Message(line);
 					ResponseAction action = factory.getAction(message.getCommand());
 					if (action != null) {
 						action.handle(composer, message);
 					}
 				}
-			} catch (IOException | MessageLengthException ex) {
+			} catch (IOException ex) {
 				LOGGER.log(Level.WARNING, ex.getMessage(), ex);
 			}
 	}

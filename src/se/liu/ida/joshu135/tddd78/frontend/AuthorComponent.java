@@ -1,7 +1,14 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
+import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
+import se.liu.ida.joshu135.tddd78.models.Message;
+
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * Component which contains the field for authoring messages. Submits messages to the ChatViewer.
@@ -23,6 +30,17 @@ public class AuthorComponent extends JScrollPane {
 		authorField.setLineWrap(true);
 		authorField.setWrapStyleWord(true);
 		setInputMap();
+
+		// Calculate the max length of an authored message, including the command, IRC's length limit of 510 and a channel name
+		// of up to 50 characters.
+		final int channelMaxLength = 50;
+		int allowance = MessageComposer.lengthAllowance(MessageComposer.MAX_LENGTH - channelMaxLength, "PRIVMSG", ":");
+		// borrowedcode: https://coderanch.com/t/330598/java/limit-text
+		authorField.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent evt) {
+				if (authorField.getText().length() >= allowance) evt.consume();
+			}
+		});
 	}
 
 	private void setInputMap() {

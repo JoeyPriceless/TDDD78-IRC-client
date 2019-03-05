@@ -1,6 +1,7 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
+import se.liu.ida.joshu135.tddd78.models.Numeric;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,26 +40,43 @@ public class ResponseActionFactory {
 		map.put("PART", new QuitAction(chatViewer));
 		map.put("PRIVMSG", new PrivMsgAction(chatViewer));
 
-		// TODO enum STRING -> numeric
 		// User registration
-		addMapRange(map, 1, 4, new DisplayAction(chatViewer));
+		addMapRange(Numeric.RPL_WELCOME.getInt(), Numeric.RPL_CREATED.getInt(), new DisplayAction(chatViewer));
+		addMapList(new int[] {
+					Numeric.RPL_MYINFO.getInt(),
+					Numeric.RPL_SERVERSUPPORTS.getInt()
+		}, new DontDisplayAction());
+
 		// Server user info
-		addMapRange(map, 250, 255, new DisplayAction(chatViewer));
-		addMapRange(map, 265, 266, new DisplayAction(chatViewer));
-		// Message of the Day (MOTD)
-		addMapRange(map, new int[] {372, 375, 376}, new DisplayAction(chatViewer));
+		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayAction(chatViewer));
+		addMapList(new int[] {
+					Numeric.RPL_LUSERLOCALUSER.getInt(),
+					Numeric.RPL_LUSERGLOBALUSER.getInt()
+					}, new DisplayAction(chatViewer));
+		addMapRange(Numeric.RPL_LUSEROP.getInt(), Numeric.RPL_LUSERCHANNELS.getInt(), new NumParamAction(chatViewer));
+		// Message of the Day (MOTD) & topic
+		addMapList(new int[] {
+					Numeric.RPL_MOTD.getInt(),
+					Numeric.RPL_MOTDSTART.getInt(),
+					Numeric.RPL_MOTDEND.getInt(),
+					Numeric.RPL_TOPIC.getInt(),
+					Numeric.RPL_NOTOPIC.getInt()
+					}, new DisplayAction(chatViewer));
+		map.put(Numeric.RPL_TOPICSETBY.getString(), new DontDisplayAction());
 		// Lists all users on server
-		addMapRange(map, new int[] {333, 353, 366}, new DontDisplayAction());
+		addMapList(new int[] {
+					Numeric.RPL_NAMREPLY.getInt(),
+					Numeric.RPL_ENDOFNAMES.getInt()
+					}, new DontDisplayAction());
 	}
 
 	/**
 	 * Maps a response to all numerics within a range.
-	 * @param map The Hashmap to map to.
 	 * @param start Start of range
 	 * @param end End of range
 	 * @param action The action to be mapped
 	 */
-	private void addMapRange(Map<String, ResponseAction> map, int start, int end, ResponseAction action) {
+	private void addMapRange(int start, int end, ResponseAction action) {
 		for (int i = start; i <= end; i++) {
 			//noinspection AutoBoxing not supporting pre 5.0 environments.
 			String numeric = String.format("%03d" , i);
@@ -68,11 +86,10 @@ public class ResponseActionFactory {
 
 	/**
 	 * Maps a response to all numerics within an array
-	 * @param map The Hashmap to map to.
 	 * @param command A list of commands to be mapped.
 	 * @param action The action to be mapped
 	 */
-	private void addMapRange(Map<String, ResponseAction> map, int[] command, ResponseAction action) {
+	private void addMapList(int[] command, ResponseAction action) {
 		for (int i : command) {
 			//noinspection AutoBoxing not supporting pre 5.0 environments.
 			String numeric = String.format("%03d" , i);
@@ -82,11 +99,10 @@ public class ResponseActionFactory {
 
 	/**
 	 * Maps a response to all strings within an array
-	 * @param map The Hashmap to map to.
 	 * @param command A list of commands to be mapped.
 	 * @param action The action to be mapped
 	 */
-	private void addMapRange(Map<String, ResponseAction> map, String[] command, ResponseAction action) {
+	private void addMapList(String[] command, ResponseAction action) {
 		for (String s : command) {
 			map.put(s, action);
 		}

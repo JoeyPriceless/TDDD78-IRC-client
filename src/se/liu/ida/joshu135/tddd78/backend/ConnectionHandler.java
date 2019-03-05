@@ -1,7 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
 
-import se.liu.ida.joshu135.tddd78.backend.MessageComposer.MessageLengthException;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
@@ -40,14 +39,14 @@ public class ConnectionHandler {
 		}
 		this.hostname = hostname;
 		this.port = port;
-		socket.close();
+		if (socket != null) { socket.close(); }
 		socket = new Socket(hostname, port);
 		writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 		reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		composer.registerConnection(user);
 	}
 
-	public void setChannel(final String channel) throws MessageLengthException
+	public void setChannel(final String channel)
 	{
 		if (this.channel.equals(channel)) {
 			return;

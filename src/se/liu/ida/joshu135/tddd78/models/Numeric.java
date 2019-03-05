@@ -1,16 +1,53 @@
 package se.liu.ida.joshu135.tddd78.models;
 
-public enum NumericReply {
-	RPL_WELCOME("001");
+public enum Numeric {
+	// Initial connection
+	RPL_WELCOME("001"),			// :Welcome to the Internet Relay Network <nickname>
+	RPL_YOURHOST("002"),		// :Your host is <server>, running version <ver>
+	RPL_CREATED("003"),			// :This server was created <datetime>
+	RPL_MYINFO("004"),			// <server> <ver> <usermode> <chanmode>
+	RPL_SERVERSUPPORTS("005"),
+	RPL_MOTDSTART("375"),		// :- server Message of the Day
+	RPL_MOTD("372"),			// :- <info>
+	RPL_MOTDEND("376"),			// :End of /MOTD command.
+	RPL_UMODEIS("221"),			// <mode>
 
-	public final String name;
+	// List user
+	RPL_LUSERCLIENT("251"),		// :There are <user> users and <invis> invisible on <serv> servers
+	RPL_LUSEROP("252"),			// <num> :operator(s) online
+	RPL_LUSERUNKNOWN("253"),	// <num> :unknown connection(s)
+	RPL_LUSERCHANNELS("254"),	// <num> :channels formed
+	RPL_LUSERME("255"),			// :I have <user> clients and <serv> servers
+	RPL_LUSERLOCALUSER("265"),	// :Current local users: <curr> Max: <max>
+	RPL_LUSERGLOBALUSER("266"),	// :Current global users: <curr> Max: <max>
 
-	NumericReply(final String name) {
-		this.name = name;
+	// Post-channel join
+	RPL_NOTOPIC("331"),			// <channel> :No topic is set.
+	RPL_TOPIC("322"),			// <channel> :<topic>
+	RPL_TOPICSETBY("333"),		// <channel> <nickname> <time>
+	RPL_NAMREPLY("353"),		// = <channel> :<names>
+	RPL_ENDOFNAMES("366");		// <channel> :End of /NAMES list.
+
+	private final String numeric;
+
+	public int getInt() {
+		return Integer.parseInt(numeric);
+	}
+
+	public String getName() {
+		return toString();
+	}
+
+	public String getString() {
+		return numeric;
+	}
+
+	Numeric(final String numeric) {
+		this.numeric = numeric;
 	}
 }
 	// Stack Overflow C# example
-//	    enum NumericReply
+//	    enum Numeric
 //	    {
 //	        RplNone             = 0,
 //	        // Initial
@@ -217,4 +254,4 @@ public enum NumericReply {
 //	        ErrUsersDontMatch   = 502,                  // :Cant change mode for other users
 //	        ErrSilenceListFull  = 511                   // <mask> :Your silence list is full                                                UNDERNET/DALNET
 //
-//	    };  // eo enum NumericReply
+//	    };  // eo enum Numeric

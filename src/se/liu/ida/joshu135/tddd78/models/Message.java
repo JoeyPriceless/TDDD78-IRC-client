@@ -50,7 +50,6 @@ public class Message {
 	}
 
 	public Message(final String msg) {
-//		this.message = msg.trim();
 		this.message = msg;
 		if (message == null) {
 			LOGGER.warning("Cannot create object from null message.");
@@ -83,5 +82,17 @@ public class Message {
 		} else {
 			LOGGER.warning(String.format("Could not parse regex '%s'", message));
 		}
+	}
+
+	public String[] splitParams() {
+		return splitSpace(params);
+	}
+
+	public String[] splitTrailing() {
+		return splitSpace(trailing);
+	}
+
+	private String[] splitSpace(String text) {
+		return text.split("\\s+");
 	}
 }

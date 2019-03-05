@@ -35,7 +35,7 @@ public final class Main {
 			Thread responseThread = new Thread(messageReceiver, "ResponseT");
 			sendThread.start();
 			responseThread.start();
-		} catch (Exception ex) {
+		} catch (RuntimeException ex) {
 			LOGGER.log(Level.SEVERE, ExceptionUtils.getStackTrace(ex));
 		}
 	}

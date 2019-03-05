@@ -62,7 +62,7 @@ public class ResponseActionFactory {
 					Numeric.RPL_TOPIC.getInt(),
 					Numeric.RPL_NOTOPIC.getInt()
 					}, new DisplayAction(chatViewer));
-		map.put(Numeric.RPL_TOPICSETBY.getString(), new DontDisplayAction());
+		map.put(Numeric.RPL_TOPICSETBY.getNumeric(), new DontDisplayAction());
 		// Lists all users on server
 		addMapList(new int[] {
 					Numeric.RPL_NAMREPLY.getInt(),

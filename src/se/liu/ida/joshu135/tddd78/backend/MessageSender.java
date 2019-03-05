@@ -34,7 +34,6 @@ public class MessageSender implements Runnable {
 				conHandler.writeMessage(msg.getMessage());
 			} catch (InterruptedException ex) {
 				LOGGER.log(Level.WARNING, ex.getMessage(), ex);
-				continue;
 			} catch (IOException ex) {
 				LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 			}

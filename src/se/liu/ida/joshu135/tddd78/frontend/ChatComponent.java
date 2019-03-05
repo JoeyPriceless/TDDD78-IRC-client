@@ -42,7 +42,7 @@ public class ChatComponent extends JScrollPane {
 	 * Source: https://stackoverflow.com/a/39410581
 	 */
 	// Naming convention according to https://www.ida.liu.se/~TDDD78/labs/2019/project/grading.shtml
-	private void scrollSetup_borrowedcode() {
+	@SuppressWarnings("NewMethodNamingConvention") private void scrollSetup_borrowedcode() {
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
 

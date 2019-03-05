@@ -38,7 +38,7 @@ public enum Numeric {
 		return toString();
 	}
 
-	public String getString() {
+	public String getNumeric() {
 		return numeric;
 	}
 

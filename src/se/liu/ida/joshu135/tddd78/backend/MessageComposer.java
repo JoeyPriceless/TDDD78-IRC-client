@@ -1,6 +1,5 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
@@ -60,11 +59,12 @@ public class MessageComposer {
 			messageBuilder.append(":").append(prefix);
 		}
 		messageBuilder.append(command);
-		for (String param : params) {
-			messageBuilder.append(" " + param);
+		for (String param : shortParams) {
+			messageBuilder.append(" ").append(param);
 		}
 		messageBuilder.append(NEWLINE);
 		if (messageBuilder.length() > MAX_LENGTH) {
+			//noinspection AutoBoxing Not supporting Java pre-5.0
 			LOGGER.log(Level.WARNING, String.format("Composed message length (%s) is longer than max length of 512" +
 														   "characters.", messageBuilder.length()));
 		}

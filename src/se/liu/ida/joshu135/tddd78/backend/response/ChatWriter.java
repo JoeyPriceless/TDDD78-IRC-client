@@ -1,7 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
-import se.liu.ida.joshu135.tddd78.util.Time;
 
 /**
  * Abstract class to be extended by any ResponseAction that wishes to append messages to the chat.
@@ -9,7 +8,7 @@ import se.liu.ida.joshu135.tddd78.util.Time;
 public abstract class ChatWriter {
 	private ChatViewer chatViewer;
 
-	public ChatWriter(final ChatViewer chatViewer) {
+	protected ChatWriter(final ChatViewer chatViewer) {
 		this.chatViewer = chatViewer;
 	}
 

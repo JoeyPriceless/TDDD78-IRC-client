@@ -26,10 +26,10 @@ public class MessageSender implements Runnable {
 	 * Infinite loop that handles messages in order and only moves on to the next message after the response has been read.
 	 */
 	@Override public void run() {
-		Message msg;
+		// Infinite loop is intentional. Could potentially be turned into an event listener.
 		while (true) {
 			try {
-				msg = messageQueue.take();
+				Message msg = messageQueue.take();
 				conHandler.writeMessage(msg.getMessage());
 			} catch (InterruptedException ex) {
 				LOGGER.log(Level.WARNING, ex.getMessage(), ex);

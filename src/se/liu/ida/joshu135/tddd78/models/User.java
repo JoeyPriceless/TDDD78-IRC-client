@@ -5,9 +5,9 @@ package se.liu.ida.joshu135.tddd78.models;
  */
 public class User {
 	private static final int USERNAME_MAX_LENGTH = 9;
-	private String nickname;
-	private String realname;
-	private String username;
+	private String nickname = null;
+	private String realname = null;
+	private String username = null;
 	private String mode;
 
 	public String getNickname() {

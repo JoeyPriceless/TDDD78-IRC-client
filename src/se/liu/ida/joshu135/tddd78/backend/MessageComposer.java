@@ -5,10 +5,9 @@ import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Composes messages that are ready to be sent to an IRC server. Also includes shortcuts to frequent commands
@@ -19,9 +18,9 @@ public class MessageComposer {
 	private static final String NEWLINE = "\r\n";
 	private static final int MAX_LENGTH = 512;
 	private static final int MAX_COMMAND_PARAMS = 15;
-	private LinkedTransferQueue<Message> messageQueue;
+	private BlockingQueue<Message> messageQueue;
 
-	public MessageComposer(final LinkedTransferQueue<Message> messageQueue) {
+	public MessageComposer(final BlockingQueue<Message> messageQueue) {
 		this.messageQueue = messageQueue;
 	}
 
@@ -52,20 +51,21 @@ public class MessageComposer {
 	public static String composeWithPrefix(String prefix, String command, String... params) throws IllegalArgumentException,
 			MessageLengthException {
 		if (params.length > MAX_COMMAND_PARAMS) {
-			String joined = Stream.of(params).collect(Collectors.joining());
+			String joined = String.join(" ", params);
 			throw new IllegalArgumentException(joined + "exceeds maximum of 15 params");
 		}
 
 		StringBuilder messageBuilder = new StringBuilder();
-		if (!prefix.equals("")) {
-			messageBuilder.append(":".concat(prefix));
+		if (!prefix.isEmpty()) {
+			messageBuilder.append(":").append(prefix);
 		}
 		messageBuilder.append(command);
 		for (String param : params) {
-			messageBuilder.append(" ".concat(param));
+			messageBuilder.append(" " + param);
 		}
 		messageBuilder.append(NEWLINE);
 		if (messageBuilder.length() > MAX_LENGTH) {
+			// Autoboxing: not supporting pre-Java 5.0
 			throw new MessageLengthException(String.format("Composed message length (%s) is longer than max length of 512" +
 														   "characters.", messageBuilder.length()));
 		}
@@ -87,7 +87,7 @@ public class MessageComposer {
 																  ":" + user.getRealname()));
 			queueMessage(nickMsg);
 			queueMessage(userMsg);
-		} catch (MessageComposer.MessageLengthException ex) {
+		} catch (MessageLengthException ex) {
 			LOGGER.severe(ExceptionUtils.getStackTrace(ex));
 		}
 	}
@@ -96,9 +96,9 @@ public class MessageComposer {
 	 * Join a channel without a key
 	 * @param channel channel name
 	 *
-	 * @throws MessageComposer.MessageLengthException
+	 * @throws MessageLengthException
 	 */
-	public void joinChannel(String channel) throws MessageComposer.MessageLengthException {
+	public void joinChannel(String channel) throws MessageLengthException {
 		joinChannel(channel, null);
 	}
 
@@ -107,10 +107,10 @@ public class MessageComposer {
 	 * @param channel
 	 * @param key
 	 *
-	 * @throws MessageComposer.MessageLengthException
+	 * @throws MessageLengthException
 	 */
 	public void joinChannel(String channel, String key)
-			throws MessageComposer.MessageLengthException {
+			throws MessageLengthException {
 		// The "0" argument specifies that user leaves all current channels.
 		Message leaveMsg = new Message(MessageComposer.compose("JOIN", "0"));
 		queueMessage(leaveMsg);

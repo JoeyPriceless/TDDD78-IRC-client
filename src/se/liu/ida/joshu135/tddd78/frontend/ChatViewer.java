@@ -3,13 +3,12 @@ package se.liu.ida.joshu135.tddd78.frontend;
 import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
+import se.liu.ida.joshu135.tddd78.backend.MessageComposer.MessageLengthException;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import javax.swing.*;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
+import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -20,8 +19,9 @@ import se.liu.ida.joshu135.tddd78.util.Time;
  */
 public class ChatViewer {
 	private static final Logger LOGGER = LogConfig.getLogger(ChatViewer.class.getSimpleName());
+	private static final int DEFAULT_WIDTH = 1400;
+	private static final int DEFAULT_HEIGHT = 700;
 	private JFrame frame;
-	private JMenuBar menuBar;
 	private ChatComponent chatComponent;
 	private AuthorComponent authorComponent;
 	private ConnectionHandler connectionHandler;
@@ -33,18 +33,21 @@ public class ChatViewer {
 		this.user = user;
 		this.composer = composer;
 		frame = new JFrame("IRC");
-		frame.setLayout(new MigLayout());
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new MigLayout("fill"));
+		frame.setPreferredSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
 		JButton sendButton = new JButton("Send");
-		frame.add(chatComponent, "wrap");
-		frame.add(authorComponent);
+		sendButton.addActionListener(e -> authorComponent.submitMessage());
+		frame.add(chatComponent, "grow, span 2, wrap");
+		frame.add(authorComponent, "growx");
 		frame.add(sendButton);
 		showServerDialog(true);
 		createMenu();
 		frame.pack();
+		frame.setLocationRelativeTo(null); // Centralize on screen
 		frame.setVisible(true);
 	}
 
@@ -59,7 +62,7 @@ public class ChatViewer {
 	public void submitMessage(String text) {
 		try {
 			composer.sendChannelMessage(connectionHandler.getChannel(), text);
-		} catch (MessageComposer.MessageLengthException ex) {
+		} catch (MessageLengthException ex) {
 			LOGGER.warning(ex.getMessage());
 		}
 		appendToChat(user.getNickname(), text);
@@ -68,11 +71,12 @@ public class ChatViewer {
 	// TODO add port/channel formatting errors and handle IO exception
 	// TODO add field for user mode and handle errors
 	public void showServerDialog(boolean inputRequired) {
-		final int FIELD_WIDTH = 10;
+		final int fieldWidth = 10;
+		final int shortFieldWidth = 4;
 		// Includes default settings.
-		JTextField serverField = new JTextField("irc.freenode.net", FIELD_WIDTH);
-		JTextField portField = new JTextField("6667", 4);
-		JTextField channelField = new JTextField("#freenode", FIELD_WIDTH);
+		JTextField serverField = new JTextField("irc.freenode.net", fieldWidth);
+		JTextField portField = new JTextField("6667", shortFieldWidth);
+		JTextField channelField = new JTextField("#freenode", fieldWidth);
 		JPanel panel = new JPanel(new MigLayout());
 		panel.add(new JLabel("Server configuration"), "span 2, align center, wrap 5");
 		panel.add(new JLabel("Hostname :"), "align right");
@@ -82,9 +86,9 @@ public class ChatViewer {
 		panel.add(new JLabel("Channel :"), "align right");
 		panel.add((channelField), "wrap 15");
 
-		JTextField userNameField = new JTextField("LiULouie", FIELD_WIDTH);
-		JTextField realNameField = new JTextField("Louis from LiU", FIELD_WIDTH);
-		JTextField nickNameField = new JTextField("LiULou", FIELD_WIDTH);
+		JTextField userNameField = new JTextField("LiULouie", fieldWidth);
+		JTextField realNameField = new JTextField("Louis from LiU", fieldWidth);
+		JTextField nickNameField = new JTextField("LiULou", fieldWidth);
 		panel.add(new JLabel("User configuration"), "span 2, align center, wrap 5");
 		panel.add(new JLabel("Username :"), "align right");
 		panel.add((userNameField), "wrap");
@@ -119,7 +123,7 @@ public class ChatViewer {
 	 * Create a menu bar and populate it
 	 */
 	private void createMenu() {
-		menuBar = new JMenuBar();
+		final JMenuBar menuBar = new JMenuBar();
 		JMenu connectionMenu = new JMenu("Connection");
 		menuBar.add(connectionMenu);
 		JMenuItem serverConfig = new JMenuItem("Server configuration");

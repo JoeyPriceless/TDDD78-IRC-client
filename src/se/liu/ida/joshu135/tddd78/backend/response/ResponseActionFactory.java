@@ -39,6 +39,7 @@ public class ResponseActionFactory {
 		map.put("PART", new QuitAction(chatViewer));
 		map.put("PRIVMSG", new PrivMsgAction(chatViewer));
 
+		// TODO enum STRING -> numeric
 		// User registration
 		addMapRange(map, 1, 4, new DisplayAction(chatViewer));
 		// Server user info
@@ -59,6 +60,7 @@ public class ResponseActionFactory {
 	 */
 	private void addMapRange(Map<String, ResponseAction> map, int start, int end, ResponseAction action) {
 		for (int i = start; i <= end; i++) {
+			//noinspection AutoBoxing not supporting pre 5.0 environments.
 			String numeric = String.format("%03d" , i);
 			map.put(numeric, action);
 		}
@@ -72,6 +74,7 @@ public class ResponseActionFactory {
 	 */
 	private void addMapRange(Map<String, ResponseAction> map, int[] command, ResponseAction action) {
 		for (int i : command) {
+			//noinspection AutoBoxing not supporting pre 5.0 environments.
 			String numeric = String.format("%03d" , i);
 			map.put(numeric, action);
 		}

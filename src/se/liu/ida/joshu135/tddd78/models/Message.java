@@ -14,12 +14,12 @@ import java.util.regex.Pattern;
 public class Message {
 	private static final Logger LOGGER = LogConfig.getLogger(Message.class.getSimpleName());
 	private String message;
-	private String prefix;
-	private String nickname;
-	private String userHost;
-	private String command;
-	private String params;
-	private String trailing;
+	private String prefix = null;
+	private String nickname = null;
+	private String userHost = null;
+	private String command = null;
+	private String params = null;
+	private String trailing = null;
 
 	public String getMessage() {
 		return message;
@@ -66,8 +66,8 @@ public class Message {
 		if (mGeneral.find()) {
 			prefix = mGeneral.group(1);
 			// Check if message has been sent from a user. If so, split the nickname from the hostname.
-			Pattern pUser = Pattern.compile(":(\\S*)?!~?(\\S*)");
 			if (prefix != null) {
+				Pattern pUser = Pattern.compile(":(\\S*)?!~?(\\S*)");
 				Matcher mUser = pUser.matcher(prefix);
 				if (mUser.find()) {
 					nickname = mUser.group(1);
@@ -77,6 +77,7 @@ public class Message {
 			command = mGeneral.group(2);
 			params = mGeneral.group(3);
 			trailing = mGeneral.group(4);
+			// Only for debug
 			LOGGER.log(Level.FINE, String.format("%s --- p[%s] (n[%s]) (h[%s]) c[%s] p[%s] t[%s] ", message, prefix, nickname,
 												 userHost, command, params, trailing));
 		} else {

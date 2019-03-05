@@ -16,8 +16,10 @@ import java.util.logging.Logger;
 /**
  * Initializes the application and it's GUI.
  */
-public class Main {
+public final class Main {
 	private static final Logger LOGGER = LogConfig.getLogger(Main.class.getSimpleName());
+
+	private Main() {}
 
 	public static void main(String[] args) {
 		try {

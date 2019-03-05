@@ -7,7 +7,9 @@ import java.util.Date;
 /**
  * Utility class that handles time.
  */
-public class Time {
+public final class Time {
+	private Time() {}
+
 	public static String timeString() {
 		Calendar cal = Calendar.getInstance();
 		Date date = cal.getTime();

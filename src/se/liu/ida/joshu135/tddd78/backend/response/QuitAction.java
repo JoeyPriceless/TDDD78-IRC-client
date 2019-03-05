@@ -1,6 +1,7 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
+import se.liu.ida.joshu135.tddd78.backend.MessageComposer.MessageLengthException;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
@@ -10,7 +11,7 @@ public class QuitAction extends ChatWriter implements ResponseAction {
 	}
 
 	@Override public void handle(final MessageComposer composer, final Message response)
-			throws MessageComposer.MessageLengthException
+			throws MessageLengthException
 	{
 		String cmd = response.getCommand();
 		String message;
@@ -21,7 +22,7 @@ public class QuitAction extends ChatWriter implements ResponseAction {
 			message = String.format("%s (%s) has left %s", response.getNickname(), response.getUserHost(),
 												response.getParams());
 		} else {
-			String trail = response.getTrailing().equals("") ? (" - " + response.getTrailing()) : "";
+			String trail = response.getTrailing().isEmpty() ? (" - " + response.getTrailing()) : "";
 
 			message = String.format("%s (%s) has quit IRC%s", response.getNickname(), response.getUserHost(),
 									trail);

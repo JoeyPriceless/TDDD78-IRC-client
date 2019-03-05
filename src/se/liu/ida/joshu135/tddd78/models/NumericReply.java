@@ -1,7 +1,5 @@
 package se.liu.ida.joshu135.tddd78.models;
 
-import java.util.EnumMap;
-
 public enum NumericReply {
 	RPL_WELCOME("001");
 

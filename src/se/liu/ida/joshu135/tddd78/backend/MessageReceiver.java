@@ -26,16 +26,17 @@ public class MessageReceiver implements Runnable {
 	}
 
 	@Override public void run() {
-			try {
-				for (String line = conHandler.readLine(); line != null; line = conHandler.readLine()) {
-					Message message = new Message(line);
-					ResponseAction action = factory.getAction(message.getCommand());
-					if (action != null) {
-						action.handle(composer, message);
-					}
+		try {
+			for (String line = conHandler.readLine(); line != null; line = conHandler.readLine()) {
+				Message message = new Message(line);
+				ResponseAction action = factory.getAction(message.getCommand());
+				if (action != null) {
+					action.handle(composer, message);
 				}
-			} catch (IOException ex) {
-				LOGGER.log(Level.WARNING, ex.getMessage(), ex);
+				Thread.sleep(10);
 			}
+		} catch (IOException | InterruptedException ex) {
+			LOGGER.log(Level.WARNING, ex.getMessage(), ex);
+		}
 	}
 }

@@ -65,6 +65,7 @@ public class ChatViewer {
 	}
 
 	// TODO add field for user mode and handle errors
+	// TODO fix switching server/channel errors
 	public void showServerDialog(boolean inputRequired) {
 		final int fieldWidth = 10;
 		final int shortFieldWidth = 4;

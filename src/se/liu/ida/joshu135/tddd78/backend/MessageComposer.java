@@ -46,7 +46,7 @@ public class MessageComposer {
 	 * @throws IllegalArgumentException If params exceed maximum length 15.
 	 */
 	public static String composeWithPrefix(String prefix, String command, String... params) {
-		String[] shortParams;
+		String[] shortParams = params;
 		if (params.length > MAX_COMMAND_PARAMS) {
 			String joined = String.join(" ", params);
 			LOGGER.log(Level.WARNING, command + joined + " -- exceeds maximum of 15 params. Using first 15 params.");

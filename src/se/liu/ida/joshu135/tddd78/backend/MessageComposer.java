@@ -133,7 +133,7 @@ public class MessageComposer {
 		for (String s : knownStrings) {
 			length += s.length();
 		}
-		return length;
+		return maxLength - length;
 	}
 
 	/**

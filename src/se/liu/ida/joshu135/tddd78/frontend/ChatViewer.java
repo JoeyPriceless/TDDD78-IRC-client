@@ -3,6 +3,8 @@ package se.liu.ida.joshu135.tddd78.frontend;
 import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
+import se.liu.ida.joshu135.tddd78.models.Channel;
+import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
@@ -24,9 +26,14 @@ public class ChatViewer {
 	private JFrame frame;
 	private ChatComponent chatComponent;
 	private AuthorComponent authorComponent;
+	private ServerTreeComponent serverTreeComponent;
 	private ConnectionHandler connectionHandler;
 	private MessageComposer composer;
 	private User user;
+
+	public Channel getChannel() {
+		return connectionHandler.getChannel();
+	}
 
 	public ChatViewer(ConnectionHandler connectionHandler, User user, MessageComposer composer) {
 		this.connectionHandler = connectionHandler;
@@ -39,11 +46,16 @@ public class ChatViewer {
 
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
+		serverTreeComponent = new ServerTreeComponent();
 		JButton sendButton = new JButton("Send");
-		sendButton.addActionListener(e -> authorComponent.submitMessage());
-		frame.add(chatComponent, "grow, span 2, wrap");
-		frame.add(authorComponent, "growx");
-		frame.add(sendButton);
+		sendButton.addActionListener(e -> {
+			//authorComponent.submitMessage();
+			composer.listChannels();
+		});
+		frame.add(serverTreeComponent, "cell 0 0 1 2, grow");
+		frame.add(chatComponent, "cell 1 0 6 1, grow");
+		frame.add(authorComponent, "cell 1 1 6 1, growx");
+		frame.add(sendButton, "cell 1 1");
 		showServerDialog(true);
 		createMenu();
 		frame.pack();
@@ -60,7 +72,7 @@ public class ChatViewer {
 	}
 
 	public void submitMessage(String text) {
-		composer.sendChannelMessage(connectionHandler.getChannel(), text);
+		composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
 		appendToChat(user.getNickname(), text);
 	}
 
@@ -71,9 +83,9 @@ public class ChatViewer {
 		final int shortFieldWidth = 4;
 		final int errorWidth = 18;
 		// Includes default settings.
-		JTextField serverField = new JTextField("irc.freenode.net", fieldWidth);
+		JTextField serverField = new JTextField("irc.mibbit.net", fieldWidth);
 		JTextField portField = new JTextField("6667", shortFieldWidth);
-		JTextField channelField = new JTextField("#freenode", fieldWidth);
+		JTextField channelField = new JTextField("#testing", fieldWidth);
 		JPanel panel = new JPanel(new MigLayout());
 		panel.add(new JLabel("Server configuration"), "cell 0 0, span, align center");
 		panel.add(new JLabel("Hostname :"), "cell 0 1, align right");
@@ -130,9 +142,11 @@ public class ChatViewer {
 					if (channel.charAt(0) != '#') {
 						channel = "#" + channel;
 					}
+					Server server = new Server(hostname, port);
 					user.setNames(nickname, realName, username);
-					connectionHandler.setServer(hostname, port, user);
-					connectionHandler.setChannel(channel);
+					connectionHandler.setServer(server, user);
+					connectionHandler.setChannel(server, channel);
+					serverTreeComponent.addServerNode(server);
 					chatComponent.clearChat();
 					isDone = true;
 				} else if (inputRequired) {

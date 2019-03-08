@@ -1,6 +1,8 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
 
+import se.liu.ida.joshu135.tddd78.models.Channel;
+import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
@@ -21,41 +23,38 @@ public class ConnectionHandler {
 	private BufferedWriter writer;
 	private BufferedReader reader;
 	private MessageComposer composer;
-	private String hostname;
-	private int port;
-	private String channel;
+	private Server server;
+	private Channel channel;
 
 	public ConnectionHandler(MessageComposer composer) {
-		this.hostname = "";
-		this.channel = "";
+		this.server = new Server();
 		this.composer = composer;
 		this.writer = null;
 		this.reader = null;
 	}
 
-	public void setServer(String hostname, int port, User user) throws IOException {
-		if (this.hostname.equals(hostname) && this.port == port) {
+	public void setServer(Server server, User user) throws IOException {
+		if (this.server.getHostname() != null && this.server.getHostname().equals(server.getHostname()) &&
+			this.server.getPort() != 0 && this.server.getPort() == server.getPort()) {
 			return;
 		}
-		this.hostname = hostname;
-		this.port = port;
+		this.server = server;
 		if (socket != null) { socket.close(); }
-		socket = new Socket(hostname, port);
+		socket = new Socket(server.getHostname(), server.getPort());
 		writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 		reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		composer.registerConnection(user);
 	}
 
-	public void setChannel(final String channel)
+	public void setChannel(final Server server, final String channel)
 	{
-		if (this.channel.equals(channel)) {
+		if (this.channel != null && this.channel.getName().equals(channel)) {
 			return;
 		}
-		this.channel = channel;
-		composer.joinChannel(channel);
+		this.channel = new Channel(server, channel);
 	}
 
-	public String getChannel() {
+	public Channel getChannel() {
 		return channel;
 	}
 

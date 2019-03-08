@@ -33,7 +33,10 @@ public class MessageSender implements Runnable {
 			try {
 				Message msg = messageQueue.take();
 				conHandler.writeMessage(msg.getMessage());
-				Thread.sleep(10);
+				// Thread doesn't seem to sleep?
+				if (messageQueue.isEmpty()) {
+					Thread.sleep(50);
+				}
 			} catch (InterruptedException ex) {
 				LOGGER.log(Level.WARNING, ex.getMessage(), ex);
 			} catch (IOException ex) {

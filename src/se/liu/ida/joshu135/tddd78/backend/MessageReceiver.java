@@ -36,6 +36,7 @@ public class MessageReceiver implements Runnable {
 				Thread.sleep(10);
 			}
 		} catch (IOException | InterruptedException ex) {
+			// TODO action here?
 			LOGGER.log(Level.WARNING, ex.getMessage(), ex);
 		}
 	}

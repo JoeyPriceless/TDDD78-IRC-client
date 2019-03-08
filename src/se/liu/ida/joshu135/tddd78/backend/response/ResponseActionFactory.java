@@ -42,10 +42,7 @@ public class ResponseActionFactory {
 
 		// User registration
 		addMapRange(Numeric.RPL_WELCOME.getInt(), Numeric.RPL_CREATED.getInt(), new DisplayAction(chatViewer));
-		addMapList(new int[] {
-					Numeric.RPL_MYINFO.getInt(),
-					Numeric.RPL_SERVERSUPPORTS.getInt()
-		}, new DontDisplayAction());
+		map.put(Numeric.RPL_MYINFO.getNumeric(), new RegisteredAction(chatViewer));
 
 		// Server user info
 		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayAction(chatViewer));

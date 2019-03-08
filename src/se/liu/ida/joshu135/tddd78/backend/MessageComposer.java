@@ -80,8 +80,8 @@ public class MessageComposer {
 	 * https://tools.ietf.org/html/rfc2812#section-3.1
 	 */
 	public void registerConnection(User user) {
-		Message nickMsg = new Message(MessageComposer.compose("NICK", user.getNickname()));
-		Message userMsg = new Message(MessageComposer.compose("USER", user.getUsername(), user.getMode(), "*",
+		Message nickMsg = new Message(compose("NICK", user.getNickname()));
+		Message userMsg = new Message(compose("USER", user.getUsername(), user.getMode(), "*",
 															  ":" + user.getRealname()));
 		queueMessage(nickMsg);
 		queueMessage(userMsg);
@@ -104,21 +104,25 @@ public class MessageComposer {
 	 */
 	public void joinChannel(String channel, String key) {
 		// The "0" argument specifies that user leaves all current channels.
-		Message leaveMsg = new Message(MessageComposer.compose("JOIN", "0"));
+		Message leaveMsg = new Message(compose("JOIN", "0"));
 		queueMessage(leaveMsg);
 		String s;
 		if (key != null) {
-			s = MessageComposer.compose("JOIN", channel, key);
+			s = compose("JOIN", channel, key);
 		} else {
-			s = MessageComposer.compose("JOIN", channel);
+			s = compose("JOIN", channel);
 		}
 		Message joinMsg = new Message(s);
 		queueMessage(joinMsg);
 	}
 
 	public void sendChannelMessage(String channel, String text) {
-		Message message = new Message(MessageComposer.compose("PRIVMSG", channel, ":" + text));
+		Message message = new Message(compose("PRIVMSG", channel, ":" + text));
 		queueMessage(message);
+	}
+
+	public void listChannels() {
+		queueMessage(new Message(compose("LIST")));
 	}
 
 	/**

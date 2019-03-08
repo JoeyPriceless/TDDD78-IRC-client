@@ -46,6 +46,10 @@ public class ConnectionHandler {
 		composer.registerConnection(user);
 	}
 
+	public Server getServer() {
+		return server;
+	}
+
 	public void setChannel(final Server server, final String channel)
 	{
 		if (this.channel != null && this.channel.getName().equals(channel)) {

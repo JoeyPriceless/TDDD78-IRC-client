@@ -23,10 +23,17 @@ public enum Numeric {
 
 	// Post-channel join
 	RPL_NOTOPIC("331"),			// <channel> :No topic is set.
-	RPL_TOPIC("322"),			// <channel> :<topic>
+	RPL_TOPIC("332"),			// <channel> :<topic>
 	RPL_TOPICSETBY("333"),		// <channel> <nickname> <time>
 	RPL_NAMREPLY("353"),		// = <channel> :<names>
-	RPL_ENDOFNAMES("366");		// <channel> :End of /NAMES list.
+	RPL_ENDOFNAMES("366"),		// <channel> :End of /NAMES list.
+
+	// List
+	RPL_LISTSTART("321"),		// Channel :Users Name
+	RPL_LIST("322"),			// <channel> <users> :<topic>
+	RPL_LISTEND("323"),			// :End of /LIST
+	RPL_LINKS("364"),			// <server> <hub> :<hops> <info>
+	RPL_ENDOFLINKS("365");		// <mask> :End of /LINKS list.
 
 	private final String numeric;
 

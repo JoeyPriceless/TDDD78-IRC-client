@@ -14,6 +14,14 @@ public class Channel {
 		setNodeParent();
 	}
 
+	/**
+	 * Create a channel without adding it's node to the ServerTree.
+	 * @param name Channel name, including '#' prefix.
+	 */
+	public Channel(final String name) {
+		this.name = name;
+	}
+
 	public Server getServer() {
 		return server;
 	}

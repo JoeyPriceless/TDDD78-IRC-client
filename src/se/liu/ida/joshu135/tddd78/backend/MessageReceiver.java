@@ -2,6 +2,7 @@ package se.liu.ida.joshu135.tddd78.backend;
 
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseAction;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseActionFactory;
+import se.liu.ida.joshu135.tddd78.backend.response.ResponseDialog;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
@@ -30,10 +31,17 @@ public class MessageReceiver implements Runnable {
 			for (String line = conHandler.readLine(); line != null; line = conHandler.readLine()) {
 				Message message = new Message(line);
 				ResponseAction action = factory.getAction(message.getCommand());
-				if (action != null) {
-					action.handle(composer, message);
+				if (action == null) {
+					Thread.sleep(10);
+					continue;
 				}
-				Thread.sleep(10);
+				// If action instance implements ResponseDialog, it needs a MessageComposer in order to response to messages.
+				if (action instanceof ResponseDialog) {
+					((ResponseDialog) action).handle(composer, message);
+				} else {
+					action.handle(message);
+				}
+
 			}
 		} catch (IOException | InterruptedException ex) {
 			// TODO action here?

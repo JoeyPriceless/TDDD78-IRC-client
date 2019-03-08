@@ -84,12 +84,40 @@ public class Message {
 		}
 	}
 
+	/**
+	 * Splits parameters by it's space characters and returns them.
+	 * @return A String[] with up to 15 parameters.
+	 */
 	public String[] splitParams() {
 		return splitSpace(params);
 	}
 
+	/**
+	 * Get a parameter at a certain index.
+	 * @param index Zero-based index of parameter.
+	 *
+	 * @return A string containing the parameter at index i.
+	 */
+	public String getParamAt(int index) {
+		return splitParams()[index];
+	}
+
+	/**
+	 * Splits trailing message by it's space characters and returns them.
+	 * @return A String[] with all trailing parameters.
+	 */
 	public String[] splitTrailing() {
 		return splitSpace(trailing);
+	}
+
+	/**
+	 * Get a trailing parameter at a certain index.
+	 * @param index Zero-based index of trailing param.
+	 *
+	 * @return A string containing the trailing param at index i.
+	 */
+	public String getTrailingAt(int index) {
+		return splitTrailing()[index];
 	}
 
 	private String[] splitSpace(String text) {

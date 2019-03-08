@@ -4,13 +4,13 @@ import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class DefaultAction extends ChatWriter implements ResponseAction {
+public class DefaultAction extends ViewEditor implements ResponseAction {
 	public DefaultAction(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 
-	@Override public void handle(final MessageComposer composer, final Message response)
+	@Override public void handle(final Message message)
 	{
-		displayServerMessage(response.getTrailing());
+		displayServerMessage(message.getTrailing());
 	}
 }

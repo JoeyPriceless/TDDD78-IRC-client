@@ -46,25 +46,34 @@ public class ResponseActionFactory {
 
 		// Server user info
 		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayAction(chatViewer));
-		addMapList(new int[] {
-					Numeric.RPL_LUSERLOCALUSER.getInt(),
-					Numeric.RPL_LUSERGLOBALUSER.getInt()
+		addMapList(new String[] {
+					Numeric.RPL_LUSERLOCALUSER.getNumeric(),
+					Numeric.RPL_LUSERGLOBALUSER.getNumeric()
 					}, new DisplayAction(chatViewer));
 		addMapRange(Numeric.RPL_LUSEROP.getInt(), Numeric.RPL_LUSERCHANNELS.getInt(), new NumParamAction(chatViewer));
 		// Message of the Day (MOTD) & topic
-		addMapList(new int[] {
-					Numeric.RPL_MOTD.getInt(),
-					Numeric.RPL_MOTDSTART.getInt(),
-					Numeric.RPL_MOTDEND.getInt(),
-					Numeric.RPL_TOPIC.getInt(),
-					Numeric.RPL_NOTOPIC.getInt()
+		addMapList(new String[] {
+					Numeric.RPL_MOTD.getNumeric(),
+					Numeric.RPL_MOTDSTART.getNumeric(),
+					Numeric.RPL_MOTDEND.getNumeric(),
+					Numeric.RPL_TOPIC.getNumeric(),
+					Numeric.RPL_NOTOPIC.getNumeric()
 					}, new DisplayAction(chatViewer));
 		map.put(Numeric.RPL_TOPICSETBY.getNumeric(), new DontDisplayAction());
-		// Lists all users on server
-		addMapList(new int[] {
-					Numeric.RPL_NAMREPLY.getInt(),
-					Numeric.RPL_ENDOFNAMES.getInt()
+		// Lists all users when joining server
+		addMapList(new String[] {
+					Numeric.RPL_NAMREPLY.getNumeric(),
+					Numeric.RPL_ENDOFNAMES.getNumeric()
 					}, new DontDisplayAction());
+
+		// Response to LIST command
+		map.put(Numeric.RPL_LIST.getNumeric(), new ListAction(chatViewer));
+		map.put(Numeric.RPL_LISTEND.getNumeric(), new EndListAction(chatViewer));
+		addMapList(new String[] {
+				Numeric.RPL_LISTSTART.getNumeric(),
+				Numeric.RPL_LINKS.getNumeric(),
+				Numeric.RPL_ENDOFLINKS.getNumeric(),
+		}, new DontDisplayAction());
 	}
 
 	/**

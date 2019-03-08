@@ -3,7 +3,7 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class PongAction implements ResponseAction {
+public class PongAction implements ResponseDialog {
 	public PongAction() {
 	}
 
@@ -22,5 +22,9 @@ public class PongAction implements ResponseAction {
 		}
 		Message message = new Message(MessageComposer.compose("PONG", server));
 		composer.queueMessage(message);
+	}
+
+	@Override public void handle(final Message message) {
+		throw new UnsupportedOperationException("Action requires access to MessageComposer.");
 	}
 }

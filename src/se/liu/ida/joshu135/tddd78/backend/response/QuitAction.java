@@ -4,12 +4,12 @@ import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class QuitAction extends ChatWriter implements ResponseAction {
+public class QuitAction extends ViewEditor implements ResponseAction {
 	public QuitAction(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 
-	@Override public void handle(final MessageComposer composer, final Message response)
+	@Override public void handle(final Message response)
 	{
 		String cmd = response.getCommand();
 		String message;

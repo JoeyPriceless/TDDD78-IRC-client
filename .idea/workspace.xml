@@ -2,17 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ea5da4-b8c5-4748-96cb-103f08006017" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerTreeComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/EndListAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ListAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ChatWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ViewEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DefaultAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DefaultAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DisplayAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DisplayAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DontDisplayAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DontDisplayAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/JoinAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/JoinAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NumParamAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NumParamAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/QuitAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/QuitAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseActionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseActionFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Numeric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Numeric.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,34 +45,95 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ListAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="124" column="38" lean-forward="true" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
+            <state relative-caret-position="143">
+              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
               <folding>
-                <element signature="e#3818#3819#0" expanded="true" />
-                <element signature="e#3851#3852#0" expanded="true" />
-                <element signature="e#4486#4487#0" expanded="true" />
-                <element signature="e#4522#4523#0" expanded="true" />
+                <element signature="e#203#204#0" expanded="true" />
+                <element signature="e#227#228#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageSender.java">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ViewEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+            <state relative-caret-position="238">
+              <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
+              <folding>
+                <element signature="e#686#687#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="216">
+              <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="19" column="53" lean-forward="true" selection-start-line="19" selection-end-line="20" />
+              <folding>
+                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#1275#1276#0" expanded="true" />
+                <element signature="e#2757#2758#0" expanded="true" />
+                <element signature="e#2793#2794#0" expanded="true" />
+                <element signature="e#2994#2995#0" expanded="true" />
+                <element signature="e#3014#3015#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/EndListAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding>
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#356#357#0" expanded="true" />
+                <element signature="e#415#416#0" expanded="true" />
+                <element signature="e#433#434#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="111" column="86" lean-forward="true" selection-start-line="110" selection-start-column="16" selection-end-line="111" selection-end-column="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -67,87 +141,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseActionFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="44" column="58" lean-forward="true" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+            <state relative-caret-position="138">
+              <caret line="70" column="81" selection-start-line="70" selection-start-column="81" selection-end-line="70" selection-end-column="81" />
               <folding>
                 <element signature="e#1052#1053#0" expanded="true" />
                 <element signature="e#1122#1123#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
-              <folding>
-                <element signature="e#363#364#0" expanded="true" />
-                <element signature="e#398#399#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="165" column="5" selection-start-line="165" selection-start-column="5" selection-end-line="165" selection-end-column="5" />
-              <folding>
-                <element signature="e#1231#1232#0" expanded="true" />
-                <element signature="e#1261#1262#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerTreeComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-              <folding>
-                <element signature="e#260#261#0" expanded="true" />
-                <element signature="e#285#286#0" expanded="true" />
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#339#340#0" expanded="true" />
-                <element signature="e#396#397#0" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#496#497#0" expanded="true" />
-                <element signature="e#542#543#0" expanded="true" />
-                <element signature="e#918#919#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#528#529#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -168,10 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>message</find>
-      <find>JScrollPane</find>
-      <find>view</find>
-      <find>MOTD</find>
       <find>255</find>
       <find>authorComponent</find>
       <find>socket</find>
@@ -194,10 +188,14 @@
       <find>registered</find>
       <find>MY_INFO</find>
       <find>376</find>
-      <find>servertree</find>
       <find>join</find>
       <find>channel</find>
       <find>ping</find>
+      <find>servertree</find>
+      <find>panel</find>
+      <find>panel.</find>
+      <find>322</find>
+      <find>summon</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -209,15 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Reply.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageParser.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ResponseAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/Response/ResponseAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/Map.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseMAp.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/Ping.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseMap.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Cli.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/MessageComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/chatViewer.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NoResponse.java" />
@@ -228,46 +217,55 @@
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/GuiMain.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/AuthorFieldComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/Time.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ChatWriter.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/borrowedcode/BriefLogFormatter.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/LogConfig.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/NumericReply.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/Text.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Message.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DefaultAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NumParamAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DontDisplayAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/QuitAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/JoinAction.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DisplayAction.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Main.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Numeric.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/AuthorComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ServerTree.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerTree.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Server.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseActionFactory.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageSender.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerTreeComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerDialog.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelBrowser.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ChatWriter.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DefaultAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DisplayAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseDialog.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/JoinAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NumParamAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/QuitAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DontDisplayAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Message.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Numeric.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelBrowserComponent.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelBrowserDialog.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ViewEditor.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/EndListAction.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseActionFactory.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ListAction.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelDialog.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="77" />
-    <option name="y" value="31" />
-    <option name="width" value="1750" />
-    <option name="height" value="980" />
+    <option name="x" value="-8" />
+    <option name="y" value="50" />
+    <option name="width" value="790" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -381,7 +379,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="aTDDD78-2019-v1" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -457,14 +455,14 @@
     <editor active="true" />
     <layout>
       <window_info auto_hide="true" content_ui="combo" id="Project" order="0" weight="0.2080537" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
       <window_info anchor="bottom" x="23" y="336" width="1490" height="232" id="Run" order="2" weight="0.3286119" />
-      <window_info anchor="bottom" x="23" y="399" width="1490" height="321" id="Debug" order="3" sideWeight="0.49731544" weight="0.4546742" />
+      <window_info active="true" anchor="bottom" x="23" y="399" width="1490" height="321" id="Debug" order="3" sideWeight="0.49731544" visible="true" weight="0.4546742" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -573,24 +571,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/javax/swing/JScrollPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="302" column="24" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="833" selection-start-line="833" selection-end-line="833" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/javax/swing/JOptionPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561">
-          <caret line="436" column="25" selection-start-line="436" selection-start-column="25" selection-end-line="436" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -608,17 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ChatWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="e#333#334#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,34 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NumParamAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DontDisplayAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/QuitAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/AuthorComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -682,13 +627,6 @@
           <folding>
             <element signature="e#2543#2544#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DisplayAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -702,110 +640,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/JoinAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/OneDrive - Linköpings universitet/Skola/TDDD80 Mobilapp/Android-GUI-lektion/MtFragmetsApp/app/src/main/java/com/skillbind/myar/lektion/MasterFragment.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DefaultAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#368#369#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-155">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#1023#1024#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Numeric.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageSender.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
           <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#528#529#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerTreeComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-          <folding>
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#918#919#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,17 +663,191 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/ConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+          <folding>
+            <element signature="e#1663#1664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+          <folding>
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Channel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+          <folding>
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DisplayAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DefaultAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+          <folding>
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NumParamAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PongAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="26" selection-start-line="26" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/QuitAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/DontDisplayAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerTreeComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="106" column="55" selection-start-line="106" selection-start-column="55" selection-end-line="106" selection-end-column="55" />
+          <folding>
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1023#1024#0" expanded="true" />
+            <element signature="e#2477#2478#0" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2583#2584#0" expanded="true" />
+            <element signature="e#2698#2699#0" expanded="true" />
+            <element signature="e#2733#2734#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="59" lean-forward="true" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/Numeric.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="35" column="62" lean-forward="true" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/JoinAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/javax/swing/JOptionPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="310" column="13" selection-start-line="310" selection-start-column="13" selection-end-line="310" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ServerDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="111" column="86" lean-forward="true" selection-start-line="110" selection-start-column="16" selection-end-line="111" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseActionFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="44" column="58" lean-forward="true" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+        <state relative-caret-position="138">
+          <caret line="70" column="81" selection-start-line="70" selection-start-column="81" selection-end-line="70" selection-end-column="81" />
           <folding>
             <element signature="e#1052#1053#0" expanded="true" />
             <element signature="e#1122#1123#0" expanded="true" />
@@ -840,25 +855,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/RegisteredAction.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ListAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+        <state relative-caret-position="143">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
           <folding>
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="25" column="61" lean-forward="true" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/javax/swing/JScrollPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="389" column="16" selection-start-line="389" selection-start-column="16" selection-end-line="389" selection-end-column="16" />
+          <folding>
+            <element signature="e#13106#13107#0" expanded="true" />
+            <element signature="e#13164#13165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/javax/swing/plaf/basic/BasicScrollPaneUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ViewEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
+          <folding>
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/EndListAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#415#416#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="165" column="5" selection-start-line="165" selection-start-column="5" selection-end-line="165" selection-end-column="5" />
+        <state relative-caret-position="68">
+          <caret line="19" column="53" lean-forward="true" selection-start-line="19" selection-end-line="20" />
           <folding>
             <element signature="e#1231#1232#0" expanded="true" />
-            <element signature="e#1261#1262#0" expanded="true" />
+            <element signature="e#1275#1276#0" expanded="true" />
+            <element signature="e#2757#2758#0" expanded="true" />
+            <element signature="e#2793#2794#0" expanded="true" />
+            <element signature="e#2994#2995#0" expanded="true" />
+            <element signature="e#3014#3015#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
         </state>
       </provider>
     </entry>

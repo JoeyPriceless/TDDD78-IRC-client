@@ -15,9 +15,13 @@ import java.util.logging.Logger;
 public class MessageComposer {
 	private static final Logger LOGGER = LogConfig.getLogger(MessageComposer.class.getSimpleName());
 	private static final String NEWLINE = "\r\n";
-	public static final int MAX_LENGTH = 512;
 	private static final int MAX_COMMAND_PARAMS = 15;
 	private BlockingQueue<Message> messageQueue;
+
+	/**
+	 * Max length of a message, including newline characters "\r\n"
+	 */
+	public static final int MAX_LENGTH = 512;
 
 	public MessageComposer(final BlockingQueue<Message> messageQueue) {
 		this.messageQueue = messageQueue;
@@ -96,12 +100,6 @@ public class MessageComposer {
 		joinChannel(channel, null);
 	}
 
-	/**
-	 * Join a channel with a key
-	 * @param channel
-	 * @param key
-	 *
-	 */
 	public void joinChannel(String channel, String key) {
 		// The "0" argument specifies that user leaves all current channels.
 		Message leaveMsg = new Message(compose("JOIN", "0"));

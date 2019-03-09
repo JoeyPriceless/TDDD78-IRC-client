@@ -31,10 +31,6 @@ public class MessageReceiver implements Runnable {
 			for (String line = conHandler.readLine(); line != null; line = conHandler.readLine()) {
 				Message message = new Message(line);
 				ResponseAction action = factory.getAction(message.getCommand());
-				if (action == null) {
-					Thread.sleep(10);
-					continue;
-				}
 				// If action instance implements ResponseDialog, it needs a MessageComposer in order to response to messages.
 				if (action instanceof ResponseDialog) {
 					((ResponseDialog) action).handle(composer, message);
@@ -43,7 +39,7 @@ public class MessageReceiver implements Runnable {
 				}
 
 			}
-		} catch (IOException | InterruptedException ex) {
+		} catch (IOException ex) {
 			// TODO action here?
 			LOGGER.log(Level.WARNING, ex.getMessage(), ex);
 		}

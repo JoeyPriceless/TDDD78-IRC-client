@@ -9,12 +9,13 @@ import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
+import javax.swing.*;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Initializes the application and it's GUI.
+ * Initializes the application and its GUI.
  */
 public final class Main {
 	private static final Logger LOGGER = LogConfig.getLogger(Main.class.getSimpleName());
@@ -35,8 +36,10 @@ public final class Main {
 			Thread responseThread = new Thread(messageReceiver, "ResponseT");
 			sendThread.start();
 			responseThread.start();
-		} catch (RuntimeException ex) {
-			LOGGER.log(Level.SEVERE, ExceptionUtils.getStackTrace(ex));
+		} catch (Exception ex) {
+			String stackTrace = ExceptionUtils.getStackTrace(ex);
+			LOGGER.log(Level.SEVERE, stackTrace);
+			JOptionPane.showMessageDialog(null, stackTrace, "Critical error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

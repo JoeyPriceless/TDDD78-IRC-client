@@ -2,16 +2,17 @@ package se.liu.ida.joshu135.tddd78.models;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+/**
+ * A server with a name and associated server. Also contains its JTree node.
+ */
 public class Channel {
-	private Server server;
+	private Server server = null;
 	private String name;
-	private DefaultMutableTreeNode node;
+	private DefaultMutableTreeNode node = null;
 
 	public Channel(final Server server, final String name) {
-		this.server = server;
 		this.name = name;
-		node = new DefaultMutableTreeNode(this);
-		setNodeParent();
+		setServer(server);
 	}
 
 	/**
@@ -21,6 +22,11 @@ public class Channel {
 	public Channel(final String name) {
 		this.name = name;
 	}
+
+	public void setServer(final Server server) {
+		this.server = server;
+		node = new DefaultMutableTreeNode(this);
+		setNodeParent();	}
 
 	public Server getServer() {
 		return server;

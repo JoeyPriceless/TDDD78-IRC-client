@@ -5,22 +5,24 @@ import se.liu.ida.joshu135.tddd78.models.Server;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
-import java.awt.*;
 
+/**
+ * Scrollable JTree that displays the user's selected server and channel.
+ */
 public class ServerTreeComponent extends JScrollPane {
 	private JTree serverTree;
 	private DefaultMutableTreeNode root;
-	private static final int DEPTH = 2;
+	private DefaultTreeModel model;
 
 	public ServerTreeComponent() {
 		root = new DefaultMutableTreeNode("Servers");
-		TreeModel model = new DefaultTreeModel(root);
+		model = new DefaultTreeModel(root);
 		serverTree = new JTree(model);
 		setViewportView(serverTree);
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
 		//serverTree.setRootVisible(false);
+		serverTree.treeDidChange();
 	}
 
 	public void addServerNode(Server server) {
@@ -29,8 +31,8 @@ public class ServerTreeComponent extends JScrollPane {
 		expandTree();
 	}
 
-	private void expandTree() {
-		for (int i = 0; i < DEPTH; i++) {
+	public void expandTree() {
+		for (int i = 0; i < serverTree.getRowCount(); i++) {
 			serverTree.expandRow(i);
 		}
 	}

@@ -24,7 +24,7 @@ public class ChatViewer {
 	private ChatComponent chatComponent;
 	private AuthorComponent authorComponent;
 	private ServerTreeComponent serverTreeComponent;
-	private ChannelDialog channelDialog;
+	private ChannelDialog channelDialog = null;
 	private ConnectionHandler connectionHandler;
 	private MessageComposer composer;
 	private User user;
@@ -46,10 +46,7 @@ public class ChatViewer {
 		authorComponent = new AuthorComponent(this);
 		serverTreeComponent = new ServerTreeComponent();
 		JButton sendButton = new JButton("Send");
-		sendButton.addActionListener(e -> {
-			//authorComponent.submitMessage();
-			composer.listChannels();
-		});
+		sendButton.addActionListener(e -> authorComponent.submitMessage());
 		frame.add(serverTreeComponent, "cell 0 0 1 2, grow");
 		frame.add(chatComponent, "cell 1 0 6 1, grow");
 		frame.add(authorComponent, "cell 1 1 6 1, growx");
@@ -59,6 +56,25 @@ public class ChatViewer {
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Centralize on screen
 		frame.setVisible(true);
+	}
+
+	/**
+	 * Create a menu bar and populate it
+	 */
+	private void createMenu() {
+		final JMenuBar menuBar = new JMenuBar();
+		JMenu connectionMenu = new JMenu("Connection");
+		menuBar.add(connectionMenu);
+		JMenuItem serverConfig = new JMenuItem("Server configuration");
+		serverConfig.addActionListener(e -> ServerDialog.show(user, connectionHandler, chatComponent, serverTreeComponent,
+															  false));
+		JMenuItem channelConfig = new JMenuItem("Channel browser");
+		channelConfig.addActionListener(e -> showChannelDialog());
+		connectionMenu.add(serverConfig);
+		connectionMenu.add(channelConfig);
+
+
+		frame.setJMenuBar(menuBar);
 	}
 
 	public void appendToChat(String text) {
@@ -75,10 +91,12 @@ public class ChatViewer {
 	}
 
 	public void showChannelDialog() {
-		channelDialog = new ChannelDialog(connectionHandler);
+		channelDialog = new ChannelDialog(connectionHandler, composer);
+		composer.listChannels();
+		// Since this command is called on MessageReceiver's thread (SenderT), the dialog has to be opened on another thread
+		// in order to not incoming server messages.
 		Thread channelDialogThread = new Thread(channelDialog, "ChannelT");
 		channelDialogThread.start();
-		composer.listChannels();
 	}
 
 	public void addChannelToBrowser(Channel channel) {
@@ -87,20 +105,6 @@ public class ChatViewer {
 
 	public void endOfList() {
 		channelDialog.endOfList();
-	}
-
-	/**
-	 * Create a menu bar and populate it
-	 */
-	private void createMenu() {
-		final JMenuBar menuBar = new JMenuBar();
-		JMenu connectionMenu = new JMenu("Connection");
-		menuBar.add(connectionMenu);
-		JMenuItem serverConfig = new JMenuItem("Server configuration");
-		serverConfig.addActionListener(e -> ServerDialog.show(user, connectionHandler, chatComponent, serverTreeComponent,
-															  false));
-		connectionMenu.add(serverConfig);
-
-		frame.setJMenuBar(menuBar);
+		serverTreeComponent.expandTree();
 	}
 }

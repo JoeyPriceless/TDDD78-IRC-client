@@ -10,9 +10,7 @@ public class RegisteredAction extends ViewEditor implements ResponseDialog {
 		super(chatViewer);
 	}
 
-	@Override public void handle(final MessageComposer composer, final Message response) {
-		// TODO convoluted way to get channel name?
-//		composer.joinChannel(chatViewer.getChannel().getName());
+	@Override public void handle(final MessageComposer composer, final Message message) {
 		showChannelDialog();
 	}
 

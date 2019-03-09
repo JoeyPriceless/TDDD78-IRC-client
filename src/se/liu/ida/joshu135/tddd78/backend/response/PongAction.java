@@ -9,9 +9,9 @@ public class PongAction implements ResponseDialog {
 
 	// Respond to a PING message with a PONG.
 	// If ping contains 2 parameters, send the response to the second one.
-	@Override public void handle(final MessageComposer composer, Message response) throws IllegalArgumentException
+	@Override public void handle(final MessageComposer composer, Message message) throws IllegalArgumentException
 	{
-		String[] trail = response.splitTrailing();
+		String[] trail = message.splitTrailing();
 		String server;
 		if (trail.length == 0) {
 			throw new IllegalArgumentException("No PONG server");
@@ -20,8 +20,8 @@ public class PongAction implements ResponseDialog {
 		} else {
 			server = trail[1];
 		}
-		Message message = new Message(MessageComposer.compose("PONG", server));
-		composer.queueMessage(message);
+		Message response = new Message(MessageComposer.compose("PONG", server));
+		composer.queueMessage(response);
 	}
 
 	@Override public void handle(final Message message) {

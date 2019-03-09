@@ -8,9 +8,11 @@ public class JoinAction extends ViewEditor implements ResponseAction {
 		super(chatViewer);
 	}
 
-	@Override public void handle(final Message response)
+	@Override public void handle(final Message message)
 	{
-		displayServerMessage(String.format("%s (%s) joins %s", response.getNickname(), response.getUserHost(),
-										   response.getParams()));
+		// Varies between servers whether server name is in params or trailing...
+		String channelName = message.getParams().isEmpty() ? message.getTrailing() : message.getParams();
+		displayServerMessage(String.format("%s (%s) joins %s", message.getNickname(), message.getUserHost(),
+										   channelName));
 	}
 }

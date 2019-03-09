@@ -2,22 +2,16 @@ package se.liu.ida.joshu135.tddd78.models;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+/**
+ * A server with a hostname, port and JTree node used for displaying it.
+ */
 public class Server {
-	private String displayName;
-	private String hostname;
+	private String hostname = null;
 	private int port;
 	private DefaultMutableTreeNode node;
 
-	public String getDisplayName() {
-		return displayName;
-	}
-
 	public String getHostname() {
 		return hostname;
-	}
-
-	public void setDisplayName(final String displayName) {
-		this.displayName = displayName;
 	}
 
 	public int getPort() {
@@ -30,8 +24,6 @@ public class Server {
 
 	public Server(final String hostname, final int port) {
 		this.hostname = hostname;
-		// TODO extract displayname from 005 response. "NETWORK=freenode"
-		this.displayName = hostname;
 		this.port = port;
 		node = new DefaultMutableTreeNode(this);
 	}
@@ -41,6 +33,6 @@ public class Server {
 	}
 
 	@Override public String toString() {
-		return displayName;
+		return hostname;
 	}
 }

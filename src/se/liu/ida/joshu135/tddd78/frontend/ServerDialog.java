@@ -13,11 +13,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Component that contains fields for registering to a server. The static method "show" can be used to display it's dialog.
+ */
 public class ServerDialog extends JPanel {
 	private static final Logger LOGGER = LogConfig.getLogger(ServerDialog.class.getSimpleName());
 	private static final int FIELD_WIDTH = 10;
 	private static final int SHORT_FIELD_WIDTH = 4;
 	private static final int ERROR_WIDTH = 18;
+	// TODO remove these
 	private static String defaultHostname = "irc.mibbit.net";
 	private static String defaultPort = "6667";
 	private static String defaultUsername = "LiULouie";
@@ -26,7 +30,6 @@ public class ServerDialog extends JPanel {
 
 	private JTextField serverField;
 	private JTextField portField;
-	private JTextField channelField;
 	private JTextField userNameField;
 	private JTextField realNameField;
 	private JTextField nickNameField;
@@ -38,10 +41,6 @@ public class ServerDialog extends JPanel {
 
 	public String getPort() {
 		return portField.getText();
-	}
-
-	public String getChannel() {
-		return channelField.getText();
 	}
 
 	public String getUserName() {
@@ -65,25 +64,22 @@ public class ServerDialog extends JPanel {
 		setLayout(new MigLayout());
 		serverField = new JTextField(defaultHostname, FIELD_WIDTH);
 		portField = new JTextField(defaultPort, SHORT_FIELD_WIDTH);
-		channelField = new JTextField("#testing", FIELD_WIDTH);
 		add(new JLabel("Server configuration"), "cell 0 0, span, align center");
 		add(new JLabel("Hostname :"), "cell 0 1, align right");
 		add((serverField), "cell 1 1");
 		add(new JLabel("Port : "), "cell 0 2, align right");
 		add(portField, "cell 1 2");
-		add(new JLabel("Channel :"), "cell 0 3, align right");
-		add((channelField), "cell 1 3");
 
 		userNameField = new JTextField(defaultUsername, FIELD_WIDTH);
 		realNameField = new JTextField(defaultRealName, FIELD_WIDTH);
 		nickNameField = new JTextField(defaultNickname, FIELD_WIDTH);
-		add(new JLabel("User configuration"), "cell 0 4, span, align center");
-		add(new JLabel("Username :"), "cell 0 5, align right");
-		add((userNameField), "cell 1 5");
-		add(new JLabel("Real Name :"), "cell 0 6, align right");
-		add(realNameField, "cell 1 6");
-		add(new JLabel("Nickname :"), "cell 0 7, align right");
-		add((nickNameField), "cell 1 7");
+		add(new JLabel("User configuration"), "cell 0 3, span, align center");
+		add(new JLabel("Username :"), "cell 0 4, align right");
+		add((userNameField), "cell 1 4");
+		add(new JLabel("Real Name :"), "cell 0 5, align right");
+		add(realNameField, "cell 1 5");
+		add(new JLabel("Nickname :"), "cell 0 6, align right");
+		add((nickNameField), "cell 1 6");
 
 		// Only visible when there is an error to show.
 		errorComp = new JTextArea();
@@ -113,23 +109,17 @@ public class ServerDialog extends JPanel {
 				if (result == JOptionPane.OK_OPTION) {
 					String hostname = serverDialog.getServer();
 					int port = Integer.parseInt(serverDialog.getPort());
-					String channel = serverDialog.getChannel();
 					String nickname = serverDialog.getNickname();
 					String realName = serverDialog.getRealName();
 					String username = serverDialog.getUserName();
-					if (hostname.isEmpty() || channel.isEmpty() || nickname.isEmpty() ||
+					if (hostname.isEmpty() || nickname.isEmpty() ||
 						realName.isEmpty() || username.isEmpty()) {
 						errorMessage = "There are empty fields.";
 						continue;
 					}
-					// If user forgets "#" before channel, prepend it.
-					if (channel.charAt(0) != '#') {
-						channel = "#" + channel;
-					}
 					Server server = new Server(hostname, port);
 					user.setNames(nickname, realName, username);
 					connectionHandler.setServer(server, user);
-					connectionHandler.setChannel(server, channel);
 					serverTreeComponent.addServerNode(server);
 					chatComponent.clearChat();
 					isDone = true;

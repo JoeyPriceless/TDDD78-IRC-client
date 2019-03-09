@@ -9,15 +9,8 @@ import java.util.logging.Logger;
 /**
  * Static class that sets up a logger with custom formatting.
  */
+@SuppressWarnings("UtilityClassWithoutPrivateConstructor") // Adding a private constructor causes IllegalAccessException
 public final class LogConfig {
-//	private static final Logger LOGGER = Logger.getLogger(LogConfig.class.getName());
-//
-//	public LogConfig() {
-//		LOGGER.setLevel(Level.INFO);
-//		ConsoleHandler handler = new ConsoleHandler();
-//		handler.setFormatter(new BriefLogFormatter());
-//		LOGGER.addHandler(handler);
-//	}
 
 	public static Logger getLogger(String name) {
 		Logger logger = Logger.getLogger(name);

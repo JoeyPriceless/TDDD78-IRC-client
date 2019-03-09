@@ -1,69 +1,64 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
+import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Dialog that opens a channel browser. The object is created and continually supplied with channel names by LIST responses.
+ * Once the end of the responses has been indicated, the dialog is updated with the results. Run in a seperate thread to
+ * avoid blocking the receiving thread.
+ */
 public class ChannelDialog extends JScrollPane implements Runnable {
 	private static final Logger LOGGER = LogConfig.getLogger(ChannelDialog.class.getSimpleName());
 	private static final int HEIGHT = 500;
 	private static final int WIDTH = 150;
 	private Server server;
+	private Channel selectedChannel = null;
 	private ConnectionHandler connectionHandler;
+	private MessageComposer composer;
 	private JList<Channel> channelList;
 	private DefaultListModel<Channel> model;
 
-	public ChannelDialog(final ConnectionHandler connectionHandler) {
+	public ChannelDialog(final ConnectionHandler connectionHandler, MessageComposer composer) {
+		super();
 		this.connectionHandler = connectionHandler;
+		this.composer = composer;
 		this.server = connectionHandler.getServer();
 		model = new DefaultListModel<>();
-		channelList = new JList<>(model);
+		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
+		placeholderModel.addElement(new Channel("Loading... Please wait :)"));
+		channelList = new JList<>(placeholderModel);
 		channelList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setViewportView(channelList);
-		horizontalScrollBarPolicy = HORIZONTAL_SCROLLBAR_NEVER;
-		verticalScrollBarPolicy = VERTICAL_SCROLLBAR_AS_NEEDED;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		channelList.addListSelectionListener(e -> selectedChannel = channelList.getSelectedValue());
 	}
 
 	@Override public void run() {
 		int result = JOptionPane.showConfirmDialog(null, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION,
 																   JOptionPane.PLAIN_MESSAGE);
+		if (result == JOptionPane.OK_OPTION) {
+			selectedChannel.setServer(server);
+			connectionHandler.setChannel(selectedChannel);
+			composer.joinChannel(selectedChannel.getName());
+		}
 	}
-
-//	public static void showDialog(ConnectionHandler connectionHandler) {
-//		ChannelDialog channelDialog = new ChannelDialog(connectionHandler);
-//		int result = JOptionPane.showConfirmDialog(null, channelDialog, "Channel browser", JOptionPane.OK_CANCEL_OPTION,
-//																   JOptionPane.PLAIN_MESSAGE);
-//	}
 
 	public void addChannel(Channel channel) {
 		model.addElement(channel);
-		if (model.getSize() % 10 == 0) {
-			channelList.updateUI();
-		}
 	}
 
+	// TODO tree structure is not automatically updated.
 	public void endOfList() {
-		// Sometimes the UI would not update at the end due to timing issues.
-		// This method tries retries the operation until it goes through.
-		while (true) {
-			try {
-				Thread.sleep(10);
-				channelList.updateUI();
-				return;
-			} catch (NullPointerException ex) {
-				LOGGER.log(Level.WARNING, ExceptionUtils.getStackTrace(ex));
-			} catch (InterruptedException ex) {
-
-			}
-		}
+		// Remove placeholder element and replace it with the finalized list.
+		model.removeElementAt(0);
+		channelList.setModel(model);
 	}
 }

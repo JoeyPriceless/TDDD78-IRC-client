@@ -27,16 +27,13 @@ public class MessageSender implements Runnable {
 	 */
 	// TODO implement listener
 	@Override public void run() {
+		final int sleepDuration = 50;
 		// Infinite loop is intentional. Could potentially be turned into an event listener.
 		//noinspection InfiniteLoopStatement
 		while (true) {
 			try {
 				Message msg = messageQueue.take();
 				conHandler.writeMessage(msg.getMessage());
-				// Thread doesn't seem to sleep?
-				if (messageQueue.isEmpty()) {
-					Thread.sleep(50);
-				}
 			} catch (InterruptedException ex) {
 				LOGGER.log(Level.WARNING, ex.getMessage(), ex);
 			} catch (IOException ex) {

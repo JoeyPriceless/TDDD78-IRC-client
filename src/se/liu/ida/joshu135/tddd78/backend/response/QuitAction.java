@@ -1,6 +1,5 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
-import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
@@ -9,23 +8,23 @@ public class QuitAction extends ViewEditor implements ResponseAction {
 		super(chatViewer);
 	}
 
-	@Override public void handle(final Message response)
+	@Override public void handle(final Message message)
 	{
-		String cmd = response.getCommand();
-		String message;
+		String cmd = message.getCommand();
+		String messageText;
 		// Differentiates between leaving server and leaving channel.
 		if (cmd == null) {
 			return;
 		} else if (cmd.equals("PART")) {
-			message = String.format("%s (%s) has left %s", response.getNickname(), response.getUserHost(),
-												response.getParams());
+			messageText = String.format("%s (%s) has left %s", message.getNickname(), message.getUserHost(),
+									message.getParams());
 		} else {
-			String trail = response.getTrailing().isEmpty() ? (" - " + response.getTrailing()) : "";
+			String trail = message.getTrailing().isEmpty() ? (" - " + message.getTrailing()) : "";
 
-			message = String.format("%s (%s) has quit IRC%s", response.getNickname(), response.getUserHost(),
+			messageText = String.format("%s (%s) has quit IRC%s", message.getNickname(), message.getUserHost(),
 									trail);
 		}
-		displayServerMessage(message);
+		displayServerMessage(messageText);
 
 	}
 }

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
 /**
@@ -19,12 +20,12 @@ import java.util.logging.Logger;
  */
 public class ConnectionHandler {
 	private static final Logger LOGGER = LogConfig.getLogger(ConnectionHandler.class.getSimpleName());
-	private Socket socket;
+	private Socket socket = null;
 	private BufferedWriter writer;
 	private BufferedReader reader;
 	private MessageComposer composer;
 	private Server server;
-	private Channel channel;
+	private Channel channel = null;
 
 	public ConnectionHandler(MessageComposer composer) {
 		this.server = new Server();
@@ -33,7 +34,8 @@ public class ConnectionHandler {
 		this.reader = null;
 	}
 
-	public void setServer(Server server, User user) throws IOException {
+	// IOException is needed socket, etc. Don't see why I would add redudant UnknownHostException.
+	@SuppressWarnings("OverlyBroadThrowsClause") public void setServer(Server server, User user) throws IOException {
 		if (this.server.getHostname() != null && this.server.getHostname().equals(server.getHostname()) &&
 			this.server.getPort() != 0 && this.server.getPort() == server.getPort()) {
 			return;
@@ -58,6 +60,14 @@ public class ConnectionHandler {
 		this.channel = new Channel(server, channel);
 	}
 
+	public void setChannel(Channel channel)
+	{
+		if (this.channel != null && this.channel.equals(channel)) {
+			return;
+		}
+		this.channel = channel;
+	}
+
 	public Channel getChannel() {
 		return channel;
 	}
@@ -66,7 +76,7 @@ public class ConnectionHandler {
 	 * Takes a variable number of messages and sends them all at once and in order.
 	 * @param msgs A list of messages
 	 *
-	 * @throws IOException
+	 * @throws IOException If an I/O exception occurs in writer.
 	 */
 	public void writeMessage(String... msgs) throws IOException {
 		for (String msg : msgs) {

@@ -59,7 +59,7 @@ public class AuthorComponent extends JPanel {
 		// borrowedcode: https://coderanch.com/t/330598/java/limit-text
 		authorField.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent evt) {
-				if (!isValidMessage()) evt.consume();
+				if (isTooLong()) evt.consume();
 			}
 		});
 	}
@@ -70,12 +70,16 @@ public class AuthorComponent extends JPanel {
 		authorField.setText("");
 	}
 
-	public boolean isValidMessage() {
+	public boolean isTooLong() {
 		// Calculate the max length of an authored message, including the command, IRC's length limit of 510 and a channel name
 		// of up to 50 characters. Don't allow more characters if user's message exceeds this length
 		final int channelMaxLength = 50;
 		int allowance = MessageComposer.lengthAllowance(MessageComposer.MAX_LENGTH - channelMaxLength, "PRIVMSG", ":");
 		int length = authorField.getText().length();
-		return (length <= allowance && length > 0);
+		return length > allowance;
+	}
+
+	public boolean isValidMessage() {
+		return (!isTooLong() && authorField.getText().length() > 0);
 	}
 }

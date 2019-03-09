@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  */
 public class ChannelDialog extends JScrollPane implements Runnable {
 	private static final Logger LOGGER = LogConfig.getLogger(ChannelDialog.class.getSimpleName());
+	private static final Channel PLACEHOLDER_CHANNEL = new Channel("Loading... Please wait :)", false);
 	private static final int HEIGHT = 500;
 	private static final int WIDTH = 150;
 	private Server server;
@@ -40,7 +41,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 		this.server = connectionHandler.getServer();
 		channelListModel = new DefaultListModel<>();
 		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
-		placeholderModel.addElement(new Channel("Loading... Please wait :)", false));
+		placeholderModel.addElement(PLACEHOLDER_CHANNEL);
 		channelList = new JList<>(placeholderModel);
 		channelList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setViewportView(channelList);
@@ -75,7 +76,9 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 
 	public void endOfList() {
 		// Remove placeholder element and replace it with the finalized list.
-		channelListModel.removeElementAt(0);
+		if (channelListModel.getElementAt(0).equals(PLACEHOLDER_CHANNEL)) {
+			channelListModel.removeElementAt(0);
+		}
 		channelList.setModel(channelListModel);
 	}
 }

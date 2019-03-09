@@ -4,19 +4,18 @@ import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
+import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 import se.liu.ida.joshu135.tddd78.util.Time;
 
 /**
- * Contains the main Jframe and acts as the backend's interface for GUI management.
+ * Contains the main JFrame and acts as the backend's interface for GUI management.
  */
 public class ChatViewer {
 	private static final Logger LOGGER = LogConfig.getLogger(ChatViewer.class.getSimpleName());
@@ -52,7 +51,7 @@ public class ChatViewer {
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
 		serverTreeComponent = new ServerTreeComponent();
-		userListComponent = new UserListComponent();
+		userListComponent = new UserListComponent(this);
 		frame.add(serverTreeComponent, "dock west");
 		frame.add(userListComponent, "dock east");
 		frame.add(chatComponent, "grow");
@@ -90,8 +89,13 @@ public class ChatViewer {
 	}
 
 	public void submitMessage(String text) {
-		composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
-		appendToChat(user.getNickname(), text);
+		// The "//" prefix is used to debug messages.
+//		if (text.substring(0, 2).equals("//")) {
+//			composer.queueMessage(new Message(text.substring(2) + "/r/n"));
+//		} else {
+			composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
+			appendToChat(user.getNickname(), text);
+//		}
 	}
 
 	public void showServerDialog(boolean inputRequired, String errorMessage) {
@@ -118,5 +122,15 @@ public class ChatViewer {
 	public void endOfList() {
 		channelDialog.endOfList();
 		serverTreeComponent.expandTree();
+	}
+
+	public void requestNames(boolean onlyChannel) {
+		String messageString;
+		if (onlyChannel) {
+			messageString = MessageComposer.compose("NAMES", connectionHandler.getChannel().getName());
+		} else {
+			messageString = MessageComposer.compose("NAMES");
+		}
+		composer.queueMessage(new Message(messageString));
 	}
 }

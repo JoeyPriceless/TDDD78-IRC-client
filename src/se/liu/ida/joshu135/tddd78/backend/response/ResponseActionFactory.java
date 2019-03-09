@@ -43,6 +43,12 @@ public class ResponseActionFactory {
 		// User registration
 		addMapRange(Numeric.RPL_WELCOME.getInt(), Numeric.RPL_CREATED.getInt(), new DisplayAction(chatViewer));
 		map.put(Numeric.RPL_MYINFO.getNumeric(), new RegisteredAction(chatViewer));
+		addMapRange(Numeric.ERR_NONICKNAMEGIVEN.getInt(), Numeric.ERR_UNAVAILABLERESOURCE.getInt(),
+					new OpenServerDialogAction(chatViewer));
+		addMapList(new String[] {
+				Numeric.ERR_ALREADYREGISTERED.getNumeric(),
+				Numeric.ERR_NOTREGISTERED.getNumeric()
+					}, new OpenServerDialogAction(chatViewer));
 
 		// Server user info
 		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayAction(chatViewer));

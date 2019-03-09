@@ -85,8 +85,12 @@ public class ChatViewer {
 		appendToChat(user.getNickname(), text);
 	}
 
+	public void showServerDialog(boolean inputRequired, String errorMessage) {
+		ServerDialog.show(frame, user, connectionHandler, serverTreeComponent, inputRequired, errorMessage);
+	}
+
 	public void showServerDialog(boolean inputRequired) {
-		ServerDialog.show(frame, user, connectionHandler, serverTreeComponent, true);
+		ServerDialog.show(frame, user, connectionHandler, serverTreeComponent, inputRequired);
 	}
 
 	public void showChannelDialog() {

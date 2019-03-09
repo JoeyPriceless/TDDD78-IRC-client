@@ -21,7 +21,7 @@ public abstract class ViewEditor {
 		chatViewer.appendToChat(sender, message);
 	}
 
-	protected void showServerDialog() {}
+	protected void showServerDialog(String errorMessage) { chatViewer.showServerDialog(true, errorMessage); }
 
 	protected  void showChannelDialog() { chatViewer.showChannelDialog(); }
 

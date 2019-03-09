@@ -92,13 +92,15 @@ public class ServerDialog extends JPanel {
 		add(errorComp, "cell 0 8, span");
 	}
 
-	// TODO add field for user mode and handle errors
-	// TODO fix switching server/channel errors
 	public static void show(Component parentComponent, User user, ConnectionHandler connectionHandler,
-							ServerTreeComponent serverTreeComponent, boolean inputRequired) {
+								ServerTreeComponent serverTreeComponent, boolean inputRequired)
+	{
+		show(parentComponent, user, connectionHandler, serverTreeComponent, inputRequired, null);
+	}
+	public static void show(Component parentComponent, User user, ConnectionHandler connectionHandler,
+							ServerTreeComponent serverTreeComponent, boolean inputRequired, String errorMessage) {
 		ServerDialog serverDialog = new ServerDialog();
 		boolean isDone = false;
-		String errorMessage = null;
 		while (!isDone) {
 			if (errorMessage != null) {
 				serverDialog.showError(errorMessage);

@@ -5,38 +5,47 @@ package se.liu.ida.joshu135.tddd78.util.borrowedcode;
 public enum Numeric {
 	// TODO put comments in javadoc
 	// Initial connection
-	RPL_WELCOME("001"),			// :Welcome to the Internet Relay Network <nickname>
-	RPL_YOURHOST("002"),		// :Your host is <server>, running version <ver>
-	RPL_CREATED("003"),			// :This server was created <datetime>
-	RPL_MYINFO("004"),			// <server> <ver> <usermode> <chanmode>
+	RPL_WELCOME("001"),				// :Welcome to the Internet Relay Network <nickname>
+	RPL_YOURHOST("002"),			// :Your host is <server>, running version <ver>
+	RPL_CREATED("003"),				// :This server was created <datetime>
+	RPL_MYINFO("004"),				// <server> <ver> <usermode> <chanmode>
 	RPL_SERVERSUPPORTS("005"),
-	RPL_MOTDSTART("375"),		// :- server Message of the Day
-	RPL_MOTD("372"),			// :- <info>
-	RPL_MOTDEND("376"),			// :End of /MOTD command.
-	RPL_UMODEIS("221"),			// <mode>
+	RPL_MOTDSTART("375"),			// :- server Message of the Day
+	RPL_MOTD("372"),				// :- <info>
+	RPL_MOTDEND("376"),				// :End of /MOTD command.
+	RPL_UMODEIS("221"),				// <mode>
 
 	// List user
-	RPL_LUSERCLIENT("251"),		// :There are <user> users and <invis> invisible on <serv> servers
-	RPL_LUSEROP("252"),			// <num> :operator(s) online
-	RPL_LUSERUNKNOWN("253"),	// <num> :unknown connection(s)
-	RPL_LUSERCHANNELS("254"),	// <num> :channels formed
-	RPL_LUSERME("255"),			// :I have <user> clients and <serv> servers
-	RPL_LUSERLOCALUSER("265"),	// :Current local users: <curr> Max: <max>
-	RPL_LUSERGLOBALUSER("266"),	// :Current global users: <curr> Max: <max>
+	RPL_LUSERCLIENT("251"),			// :There are <user> users and <invis> invisible on <serv> servers
+	RPL_LUSEROP("252"),				// <num> :operator(s) online
+	RPL_LUSERUNKNOWN("253"),		// <num> :unknown connection(s)
+	RPL_LUSERCHANNELS("254"),			// <num> :channels formed
+	RPL_LUSERME("255"),				// :I have <user> clients and <serv> servers
+	RPL_LUSERLOCALUSER("265"),		// :Current local users: <curr> Max: <max>
+	RPL_LUSERGLOBALUSER("266"),		// :Current global users: <curr> Max: <max>
 
 	// Post-channel join
-	RPL_NOTOPIC("331"),			// <channel> :No topic is set.
-	RPL_TOPIC("332"),			// <channel> :<topic>
-	RPL_TOPICSETBY("333"),		// <channel> <nickname> <time>
-	RPL_NAMREPLY("353"),		// = <channel> :<names>
-	RPL_ENDOFNAMES("366"),		// <channel> :End of /NAMES list.
+	RPL_NOTOPIC("331"),				// <channel> :No topic is set.
+	RPL_TOPIC("332"),				// <channel> :<topic>
+	RPL_TOPICSETBY("333"),			// <channel> <nickname> <time>
+	RPL_NAMREPLY("353"),			// = <channel> :<names>
+	RPL_ENDOFNAMES("366"),			// <channel> :End of /NAMES list.
 
 	// List
-	RPL_LISTSTART("321"),		// Channel :Users Name
-	RPL_LIST("322"),			// <channel> <users> :<topic>
-	RPL_LISTEND("323"),			// :End of /LIST
-	RPL_LINKS("364"),			// <server> <hub> :<hops> <info>
-	RPL_ENDOFLINKS("365");		// <mask> :End of /LINKS list.
+	RPL_LISTSTART("321"),			// Channel :Users Name
+	RPL_LIST("322"),				// <channel> <users> :<topic>
+	RPL_LISTEND("323"),				// :End of /LIST
+	RPL_LINKS("364"),				// <server> <hub> :<hops> <info>
+	RPL_ENDOFLINKS("365"),			// <mask> :End of /LINKS list.
+
+	// Errors
+	ERR_NONICKNAMEGIVEN("431"),		// :No nickname given
+	ERR_ERRONEUSNICKNAME("432"),	// <nickname> :Erroneus Nickname
+	ERR_NICKNAMEINUSE("433"),		// <nickname> :Nickname is already in use.
+	ERR_NICKNAMECOLLISION("436"),	// <nickname> :Nickname collision KILL
+	ERR_UNAVAILABLERESOURCE("437"), // <channel> :Cannot change nickname while banned on channel
+	ERR_ALREADYREGISTERED("462"),	// :You may not reregister
+	ERR_NOTREGISTERED("451");		// <command> :Register first.
 
 	private final String numeric;
 

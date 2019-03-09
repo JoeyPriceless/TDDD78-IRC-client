@@ -45,12 +45,9 @@ public class ChatViewer {
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
 		serverTreeComponent = new ServerTreeComponent();
-		JButton sendButton = new JButton("Send");
-		sendButton.addActionListener(e -> authorComponent.submitMessage());
-		frame.add(serverTreeComponent, "cell 0 0 1 2, grow");
-		frame.add(chatComponent, "cell 1 0 6 1, grow");
-		frame.add(authorComponent, "cell 1 1 6 1, growx");
-		frame.add(sendButton, "cell 1 1");
+		frame.add(serverTreeComponent, "dock west, grow 30");
+		frame.add(chatComponent, "grow 70");
+		frame.add(authorComponent, "dock south");
 		ServerDialog.show(user, connectionHandler, chatComponent, serverTreeComponent, true);
 		createMenu();
 		frame.pack();

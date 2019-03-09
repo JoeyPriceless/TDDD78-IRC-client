@@ -1,5 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseAction;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseActionFactory;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseDialog;
@@ -27,21 +28,22 @@ public class MessageReceiver implements Runnable {
 	}
 
 	@Override public void run() {
-		try {
-			for (String line = conHandler.readLine(); line != null; line = conHandler.readLine()) {
-				Message message = new Message(line);
-				ResponseAction action = factory.getAction(message.getCommand());
-				// If action instance implements ResponseDialog, it needs a MessageComposer in order to response to messages.
-				if (action instanceof ResponseDialog) {
-					((ResponseDialog) action).handle(composer, message);
-				} else {
-					action.handle(message);
-				}
-
+		String line;
+		while (true) {
+			line = conHandler.readLine();
+			if (line == null) {
+				LOGGER.warning("Received null line");
+				continue;
 			}
-		} catch (IOException ex) {
-			// TODO action here?
-			LOGGER.log(Level.WARNING, ex.getMessage(), ex);
+			Message message = new Message(line);
+			ResponseAction action = factory.getAction(message.getCommand());
+			// If action instance implements ResponseDialog, it needs a MessageComposer in order to response to messages.
+			if (action instanceof ResponseDialog) {
+				((ResponseDialog) action).handle(composer, message);
+			} else {
+				action.handle(message);
+			}
+
 		}
 	}
 }

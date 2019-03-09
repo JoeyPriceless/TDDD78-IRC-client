@@ -45,10 +45,10 @@ public class ChatViewer {
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
 		serverTreeComponent = new ServerTreeComponent();
-		frame.add(serverTreeComponent, "dock west, grow 30");
-		frame.add(chatComponent, "grow 70");
+		frame.add(serverTreeComponent, "dock west");
+		frame.add(chatComponent, "grow");
 		frame.add(authorComponent, "dock south");
-		ServerDialog.show(user, connectionHandler, chatComponent, serverTreeComponent, true);
+		ServerDialog.show(user, connectionHandler, serverTreeComponent, true);
 		createMenu();
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Centralize on screen
@@ -63,13 +63,12 @@ public class ChatViewer {
 		JMenu connectionMenu = new JMenu("Connection");
 		menuBar.add(connectionMenu);
 		JMenuItem serverConfig = new JMenuItem("Server configuration");
-		serverConfig.addActionListener(e -> ServerDialog.show(user, connectionHandler, chatComponent, serverTreeComponent,
+		serverConfig.addActionListener(e -> ServerDialog.show(user, connectionHandler, serverTreeComponent,
 															  false));
 		JMenuItem channelConfig = new JMenuItem("Channel browser");
 		channelConfig.addActionListener(e -> showChannelDialog());
 		connectionMenu.add(serverConfig);
 		connectionMenu.add(channelConfig);
-
 
 		frame.setJMenuBar(menuBar);
 	}
@@ -88,7 +87,7 @@ public class ChatViewer {
 	}
 
 	public void showChannelDialog() {
-		channelDialog = new ChannelDialog(connectionHandler, composer);
+		channelDialog = new ChannelDialog(connectionHandler, composer, chatComponent, serverTreeComponent);
 		composer.listChannels();
 		// Since this command is called on MessageReceiver's thread (SenderT), the dialog has to be opened on another thread
 		// in order to not incoming server messages.

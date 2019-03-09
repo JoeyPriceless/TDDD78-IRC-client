@@ -79,6 +79,8 @@ public class MessageComposer {
 		messageQueue.add(msg);
 	}
 
+	public void clearQueue() { messageQueue.clear(); }
+
 	/**
 	 * Register a connection with an IRC server. Send NICK & USER message.
 	 * https://tools.ietf.org/html/rfc2812#section-3.1

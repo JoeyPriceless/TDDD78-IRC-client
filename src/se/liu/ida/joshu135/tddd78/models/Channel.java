@@ -1,46 +1,51 @@
 package se.liu.ida.joshu135.tddd78.models;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.Objects;
 
 /**
  * A server with a name and associated server. Also contains its JTree node.
  */
 public class Channel {
-	private Server server = null;
 	private String name;
 	private DefaultMutableTreeNode node = null;
-
-	public Channel(final Server server, final String name) {
-		this.name = name;
-		setServer(server);
-	}
-
-	/**
-	 * Create a channel without adding it's node to the ServerTree.
-	 * @param name Channel name, including '#' prefix.
-	 */
-	public Channel(final String name) {
-		this.name = name;
-	}
-
-	public void setServer(final Server server) {
-		this.server = server;
-		node = new DefaultMutableTreeNode(this);
-		setNodeParent();	}
-
-	public Server getServer() {
-		return server;
-	}
 
 	public String getName() {
 		return name;
 	}
 
-	private void setNodeParent() {
-		server.getNode().add(node);
+	public DefaultMutableTreeNode getNode() {
+		return node;
+	}
+
+	public Channel(final String name, boolean shouldCreateNode) {
+		this.name = name;
+		if (shouldCreateNode) {
+			createNode();
+		}
+	}
+
+	public void createNode() {
+		node = new DefaultMutableTreeNode(this);
+	}
+
+	public void destroyNode() {
+		node.removeFromParent();
+		node = null;
 	}
 
 	@Override public String toString() {
 		return name;
+	}
+
+	@Override public boolean equals(final Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		final Channel channel = (Channel) o;
+		return Objects.equals(name, channel.name);
+	}
+
+	@Override public int hashCode() {
+		return Objects.hash(name);
 	}
 }

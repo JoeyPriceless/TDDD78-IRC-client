@@ -1,6 +1,7 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
@@ -12,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
 /**
@@ -34,7 +34,8 @@ public class ConnectionHandler {
 		this.reader = null;
 	}
 
-	// IOException is needed socket, etc. Don't see why I would add redudant UnknownHostException.
+	// IOException is needed for socket, etc and contains UnknownHostException. I Don't see why I would add a redundant
+	// UnknownHostException onto a required IOException.
 	@SuppressWarnings("OverlyBroadThrowsClause") public void setServer(Server server, User user) throws IOException {
 		if (this.server.getHostname() != null && this.server.getHostname().equals(server.getHostname()) &&
 			this.server.getPort() != 0 && this.server.getPort() == server.getPort()) {
@@ -52,12 +53,14 @@ public class ConnectionHandler {
 		return server;
 	}
 
-	public void setChannel(final Server server, final String channel)
+	public void setChannel(final Server server, final Channel channel)
 	{
-		if (this.channel != null && this.channel.getName().equals(channel)) {
+		if (this.channel != null && this.channel.equals(channel)) {
 			return;
 		}
-		this.channel = new Channel(server, channel);
+		channel.createNode();
+		server.replaceChannel(channel);
+		this.channel = channel;
 	}
 
 	public void setChannel(Channel channel)
@@ -86,9 +89,14 @@ public class ConnectionHandler {
 		writer.flush();
 	}
 
-	public String readLine() throws IOException {
-		String line = reader.readLine();
-		LOGGER.info(line);
+	public String readLine() {
+		String line = null;
+		try {
+		 	line = reader.readLine();
+			LOGGER.info(line);
+		} catch (IOException ex) {
+			LOGGER.warning(ExceptionUtils.getStackTrace(ex));
+		}
 		return line;
 	}
 

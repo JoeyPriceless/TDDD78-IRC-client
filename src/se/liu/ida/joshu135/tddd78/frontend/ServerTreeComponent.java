@@ -16,6 +16,10 @@ public class ServerTreeComponent extends JScrollPane {
 	private DefaultMutableTreeNode root;
 	private DefaultTreeModel model;
 
+	public DefaultTreeModel getModel() {
+		return model;
+	}
+
 	public ServerTreeComponent() {
 		root = new DefaultMutableTreeNode("Servers");
 		model = new DefaultTreeModel(root);

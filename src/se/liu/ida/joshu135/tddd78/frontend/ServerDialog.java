@@ -94,7 +94,7 @@ public class ServerDialog extends JPanel {
 
 	// TODO add field for user mode and handle errors
 	// TODO fix switching server/channel errors
-	public static void show(User user, ConnectionHandler connectionHandler, ChatComponent chatComponent,
+	public static void show(User user, ConnectionHandler connectionHandler,
 							ServerTreeComponent serverTreeComponent, boolean inputRequired) {
 		ServerDialog serverDialog = new ServerDialog();
 		boolean isDone = false;
@@ -117,11 +117,11 @@ public class ServerDialog extends JPanel {
 						errorMessage = "There are empty fields.";
 						continue;
 					}
+					// TODO update tree when switching servers.
 					Server server = new Server(hostname, port);
 					user.setNames(nickname, realName, username);
 					connectionHandler.setServer(server, user);
 					serverTreeComponent.addServerNode(server);
-					chatComponent.clearChat();
 					isDone = true;
 				} else if (inputRequired) {
 					// If input is required to continue and user dismisses the window, exit the program.

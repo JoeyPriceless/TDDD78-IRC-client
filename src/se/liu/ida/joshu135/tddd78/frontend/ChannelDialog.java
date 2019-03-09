@@ -7,6 +7,7 @@ import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.util.logging.Logger;
 
@@ -23,17 +24,22 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 	private Channel selectedChannel = null;
 	private ConnectionHandler connectionHandler;
 	private MessageComposer composer;
+	private ChatComponent chatComponent;
+	private ServerTreeComponent serverTreeComponent;
 	private JList<Channel> channelList;
-	private DefaultListModel<Channel> model;
+	private DefaultListModel<Channel> channelListModel;
 
-	public ChannelDialog(final ConnectionHandler connectionHandler, MessageComposer composer) {
+	public ChannelDialog(ConnectionHandler connectionHandler, MessageComposer composer, ChatComponent chatComponent,
+						 ServerTreeComponent serverTreeComponent) {
 		super();
 		this.connectionHandler = connectionHandler;
 		this.composer = composer;
+		this.chatComponent = chatComponent;
+		this.serverTreeComponent = serverTreeComponent;
 		this.server = connectionHandler.getServer();
-		model = new DefaultListModel<>();
+		channelListModel = new DefaultListModel<>();
 		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
-		placeholderModel.addElement(new Channel("Loading... Please wait :)"));
+		placeholderModel.addElement(new Channel("Loading... Please wait :)", false));
 		channelList = new JList<>(placeholderModel);
 		channelList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setViewportView(channelList);
@@ -42,23 +48,32 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 	}
 
 	@Override public void run() {
-		int result = JOptionPane.showConfirmDialog(null, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION,
-																   JOptionPane.PLAIN_MESSAGE);
-		if (result == JOptionPane.OK_OPTION) {
-			selectedChannel.setServer(server);
-			connectionHandler.setChannel(selectedChannel);
-			composer.joinChannel(selectedChannel.getName());
+		boolean isDone = false;
+		while (!isDone) {
+			int result = JOptionPane.showConfirmDialog(null, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+			if (result == JOptionPane.OK_OPTION) {
+				if (selectedChannel == null) continue;
+				if (selectedChannel.equals(connectionHandler.getChannel())) return;
+				connectionHandler.setChannel(server, selectedChannel);
+				composer.joinChannel(selectedChannel.getName());
+				// Updates the tree data model and shows the new channel.
+				serverTreeComponent.getModel().nodeStructureChanged(server.getNode());
+				serverTreeComponent.expandTree();
+				chatComponent.clearChat();
+				isDone = true;
+			} else {
+				return;
+			}
 		}
 	}
 
 	public void addChannel(Channel channel) {
-		model.addElement(channel);
+		channelListModel.addElement(channel);
 	}
 
-	// TODO tree structure is not automatically updated.
 	public void endOfList() {
 		// Remove placeholder element and replace it with the finalized list.
-		model.removeElementAt(0);
-		channelList.setModel(model);
+		channelListModel.removeElementAt(0);
+		channelList.setModel(channelListModel);
 	}
 }

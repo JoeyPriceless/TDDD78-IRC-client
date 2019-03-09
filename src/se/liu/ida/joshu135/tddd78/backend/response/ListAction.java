@@ -15,7 +15,7 @@ public class ListAction extends ViewEditor implements ResponseAction {
 		if (!name.contains("#")) {
 			return;
 		}
-		Channel channel = new Channel(name);
+		Channel channel = new Channel(name, false);
 		addChannelToBrowser(channel);
 	}
 }

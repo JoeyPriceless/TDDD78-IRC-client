@@ -42,12 +42,22 @@ public class Server {
 		channels.remove(channel);
 	}
 
-	public void replaceChannel(Channel newChannel) {
+	public void clearChannels() {
 		for (Channel c : channels) {
 			node.remove(c.getNode());
 		}
 		channels.clear();
+	}
+
+	public void replaceChannel(Channel newChannel) {
+		clearChannels();
 		addChannel(newChannel);
+	}
+
+	public void destroyNode() {
+		clearChannels();
+		this.node.removeFromParent();
+		this.node = null;
 	}
 
 	public DefaultMutableTreeNode getNode() {

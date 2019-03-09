@@ -1,6 +1,9 @@
-package se.liu.ida.joshu135.tddd78.models;
+package se.liu.ida.joshu135.tddd78.util.borrowedcode;
 
+// Source : https://stackoverflow.com/a/8490188/4400799.
+// Converted from C# to Java by myself
 public enum Numeric {
+	// TODO put comments in javadoc
 	// Initial connection
 	RPL_WELCOME("001"),			// :Welcome to the Internet Relay Network <nickname>
 	RPL_YOURHOST("002"),		// :Your host is <server>, running version <ver>
@@ -53,7 +56,6 @@ public enum Numeric {
 		this.numeric = numeric;
 	}
 }
-	// Stack Overflow C# example
 //	    enum Numeric
 //	    {
 //	        RplNone             = 0,

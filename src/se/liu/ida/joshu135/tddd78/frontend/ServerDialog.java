@@ -94,7 +94,7 @@ public class ServerDialog extends JPanel {
 
 	// TODO add field for user mode and handle errors
 	// TODO fix switching server/channel errors
-	public static void show(User user, ConnectionHandler connectionHandler,
+	public static void show(Component parentComponent, User user, ConnectionHandler connectionHandler,
 							ServerTreeComponent serverTreeComponent, boolean inputRequired) {
 		ServerDialog serverDialog = new ServerDialog();
 		boolean isDone = false;
@@ -104,7 +104,7 @@ public class ServerDialog extends JPanel {
 				serverDialog.showError(errorMessage);
 			}
 			try {
-				int result = JOptionPane.showConfirmDialog(null, serverDialog, "Connect to a server", JOptionPane.OK_CANCEL_OPTION,
+				int result = JOptionPane.showConfirmDialog(parentComponent, serverDialog, "Connect to a server", JOptionPane.OK_CANCEL_OPTION,
 														   JOptionPane.PLAIN_MESSAGE);
 				if (result == JOptionPane.OK_OPTION) {
 					String hostname = serverDialog.getServer();
@@ -118,10 +118,14 @@ public class ServerDialog extends JPanel {
 						continue;
 					}
 					// TODO update tree when switching servers.
-					Server server = new Server(hostname, port);
+					Server newServer = new Server(hostname, port);
+					Server currentServer = connectionHandler.getServer();
 					user.setNames(nickname, realName, username);
-					connectionHandler.setServer(server, user);
-					serverTreeComponent.addServerNode(server);
+					if (currentServer != null) {
+						serverTreeComponent.removeServerNode(connectionHandler.getServer());
+					}
+					connectionHandler.setServer(newServer, user);
+					serverTreeComponent.addServerNode(newServer);
 					isDone = true;
 				} else if (inputRequired) {
 					// If input is required to continue and user dismisses the window, exit the program.

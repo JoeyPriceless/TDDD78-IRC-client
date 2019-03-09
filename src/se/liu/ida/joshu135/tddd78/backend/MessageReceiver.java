@@ -31,7 +31,7 @@ public class MessageReceiver implements Runnable {
 		String line;
 		while (true) {
 			line = conHandler.readLine();
-			if (line == null) {
+			if (line == null || line.equals("null")) {
 				LOGGER.warning("Received null line");
 				continue;
 			}

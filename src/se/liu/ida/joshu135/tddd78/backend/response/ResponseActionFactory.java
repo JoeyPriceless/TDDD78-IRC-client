@@ -1,7 +1,7 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
-import se.liu.ida.joshu135.tddd78.models.Numeric;
+import se.liu.ida.joshu135.tddd78.util.borrowedcode.Numeric;
 
 import java.util.HashMap;
 import java.util.Map;

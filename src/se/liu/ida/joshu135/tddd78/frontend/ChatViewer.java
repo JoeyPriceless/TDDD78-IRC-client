@@ -48,11 +48,11 @@ public class ChatViewer {
 		frame.add(serverTreeComponent, "dock west");
 		frame.add(chatComponent, "grow");
 		frame.add(authorComponent, "dock south");
-		ServerDialog.show(user, connectionHandler, serverTreeComponent, true);
 		createMenu();
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Centralize on screen
 		frame.setVisible(true);
+		showServerDialog(true);
 	}
 
 	/**
@@ -63,8 +63,7 @@ public class ChatViewer {
 		JMenu connectionMenu = new JMenu("Connection");
 		menuBar.add(connectionMenu);
 		JMenuItem serverConfig = new JMenuItem("Server configuration");
-		serverConfig.addActionListener(e -> ServerDialog.show(user, connectionHandler, serverTreeComponent,
-															  false));
+		serverConfig.addActionListener(e -> showServerDialog(false));
 		JMenuItem channelConfig = new JMenuItem("Channel browser");
 		channelConfig.addActionListener(e -> showChannelDialog());
 		connectionMenu.add(serverConfig);
@@ -84,6 +83,10 @@ public class ChatViewer {
 	public void submitMessage(String text) {
 		composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
 		appendToChat(user.getNickname(), text);
+	}
+
+	public void showServerDialog(boolean inputRequired) {
+		ServerDialog.show(frame, user, connectionHandler, serverTreeComponent, true);
 	}
 
 	public void showChannelDialog() {

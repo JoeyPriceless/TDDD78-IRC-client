@@ -33,8 +33,14 @@ public class ServerTreeComponent extends JScrollPane {
 
 	public void addServerNode(Server server) {
 		root.add(server.getNode());
+		model.nodeStructureChanged(root);
 		// For some reason, this can't happen at root initialization but doesn't need to happen on every channel.
 		expandTree();
+	}
+
+	public void removeServerNode(Server server) {
+		server.destroyNode();
+		model.nodeStructureChanged(root);
 	}
 
 	public void expandTree() {

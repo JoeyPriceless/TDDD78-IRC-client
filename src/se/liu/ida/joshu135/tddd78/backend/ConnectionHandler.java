@@ -26,10 +26,12 @@ public class ConnectionHandler {
 	private MessageComposer composer;
 	private Server server;
 	private Channel channel = null;
+	private User user;
 
-	public ConnectionHandler(MessageComposer composer) {
-		this.server = null;
+	public ConnectionHandler(MessageComposer composer, User user) {
 		this.composer = composer;
+		this.user = user;
+		this.server = null;
 		this.writer = null;
 		this.reader = null;
 	}
@@ -38,7 +40,8 @@ public class ConnectionHandler {
 	// UnknownHostException onto a required IOException.
 	@SuppressWarnings("OverlyBroadThrowsClause") public void setServer(Server server, User user) throws IOException {
 		if (this.server != null && this.server.getHostname().equals(server.getHostname()) &&
-			this.server.getPort() != 0 && this.server.getPort() == server.getPort()) {
+			this.server.getPort() != 0 && this.server.getPort() == server.getPort() &&
+			this.user.equals(user)) {
 			return;
 		}
 		this.server = server;

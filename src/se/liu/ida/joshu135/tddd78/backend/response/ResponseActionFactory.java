@@ -66,11 +66,9 @@ public class ResponseActionFactory {
 					Numeric.RPL_NOTOPIC.getNumeric()
 					}, new DisplayAction(chatViewer));
 		map.put(Numeric.RPL_TOPICSETBY.getNumeric(), new DontDisplayAction());
-		// Lists all users when joining server
-		addMapList(new String[] {
-					Numeric.RPL_NAMREPLY.getNumeric(),
-					Numeric.RPL_ENDOFNAMES.getNumeric()
-					}, new DontDisplayAction());
+		// Lists all users
+		map.put(Numeric.RPL_NAMREPLY.getNumeric(), new NamesAction(chatViewer));
+		map.put(Numeric.RPL_ENDOFNAMES.getNumeric(), new EndNamesAction(chatViewer));
 
 		// Response to LIST command
 		map.put(Numeric.RPL_LIST.getNumeric(), new ListAction(chatViewer));

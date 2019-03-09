@@ -7,7 +7,6 @@ import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.util.logging.Logger;
 
@@ -26,16 +25,18 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 	private MessageComposer composer;
 	private ChatComponent chatComponent;
 	private ServerTreeComponent serverTreeComponent;
+	private UserListComponent userListComponent;
 	private JList<Channel> channelList;
 	private DefaultListModel<Channel> channelListModel;
 
 	public ChannelDialog(ConnectionHandler connectionHandler, MessageComposer composer, ChatComponent chatComponent,
-						 ServerTreeComponent serverTreeComponent) {
+						 ServerTreeComponent serverTreeComponent, UserListComponent userListComponent) {
 		super();
 		this.connectionHandler = connectionHandler;
 		this.composer = composer;
 		this.chatComponent = chatComponent;
 		this.serverTreeComponent = serverTreeComponent;
+		this.userListComponent = userListComponent;
 		this.server = connectionHandler.getServer();
 		channelListModel = new DefaultListModel<>();
 		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
@@ -59,6 +60,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 				// Updates the tree data model and shows the new channel.
 				serverTreeComponent.getModel().nodeStructureChanged(server.getNode());
 				serverTreeComponent.expandTree();
+				userListComponent.clear();
 				chatComponent.clearChat();
 				isDone = true;
 			} else {

@@ -7,7 +7,7 @@ import se.liu.ida.joshu135.tddd78.models.Channel;
  * Abstract class to be extended by any ResponseAction that wishes to edit the user interface through ChatViewer
  */
 public abstract class ViewEditor {
-	private ChatViewer chatViewer;
+	protected ChatViewer chatViewer;
 
 	protected ViewEditor(final ChatViewer chatViewer) {
 		this.chatViewer = chatViewer;
@@ -23,9 +23,5 @@ public abstract class ViewEditor {
 
 	protected void showServerDialog(String errorMessage) { chatViewer.showServerDialog(true, errorMessage); }
 
-	protected  void showChannelDialog() { chatViewer.showChannelDialog(); }
-
-	protected void addChannelToBrowser(Channel channel) { chatViewer.addChannelToBrowser(channel); }
-
-	protected void endOfList() { chatViewer.endOfList(); }
+	protected void showChannelDialog() { chatViewer.showChannelDialog(); }
 }

@@ -16,6 +16,6 @@ public class ListAction extends ViewEditor implements ResponseAction {
 			return;
 		}
 		Channel channel = new Channel(name, false);
-		addChannelToBrowser(channel);
+		chatViewer.addChannelToBrowser(channel);
 	}
 }

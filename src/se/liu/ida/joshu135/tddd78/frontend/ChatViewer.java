@@ -9,6 +9,8 @@ import se.liu.ida.joshu135.tddd78.util.LogConfig;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import se.liu.ida.joshu135.tddd78.util.Time;
@@ -24,6 +26,7 @@ public class ChatViewer {
 	private ChatComponent chatComponent;
 	private AuthorComponent authorComponent;
 	private ServerTreeComponent serverTreeComponent;
+	private UserListComponent userListComponent;
 	private ChannelDialog channelDialog = null;
 	private ConnectionHandler connectionHandler;
 	private MessageComposer composer;
@@ -31,6 +34,10 @@ public class ChatViewer {
 
 	public Channel getChannel() {
 		return connectionHandler.getChannel();
+	}
+
+	public UserListComponent getUserListComponent() {
+		return userListComponent;
 	}
 
 	public ChatViewer(ConnectionHandler connectionHandler, User user, MessageComposer composer) {
@@ -45,7 +52,9 @@ public class ChatViewer {
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
 		serverTreeComponent = new ServerTreeComponent();
+		userListComponent = new UserListComponent();
 		frame.add(serverTreeComponent, "dock west");
+		frame.add(userListComponent, "dock east");
 		frame.add(chatComponent, "grow");
 		frame.add(authorComponent, "dock south");
 		createMenu();
@@ -94,7 +103,7 @@ public class ChatViewer {
 	}
 
 	public void showChannelDialog() {
-		channelDialog = new ChannelDialog(connectionHandler, composer, chatComponent, serverTreeComponent);
+		channelDialog = new ChannelDialog(connectionHandler, composer, chatComponent, serverTreeComponent, userListComponent);
 		composer.listChannels();
 		// Since this command is called on MessageReceiver's thread (SenderT), the dialog has to be opened on another thread
 		// in order to not incoming server messages.

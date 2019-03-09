@@ -10,9 +10,11 @@ public class JoinAction extends ViewEditor implements ResponseAction {
 
 	@Override public void handle(final Message message)
 	{
-		// Varies between servers whether server name is in params or trailing...
+		// Varies between servers whether channel name is in params or trailing...
+		String nickname = message.getNickname();
 		String channelName = message.getParams().isEmpty() ? message.getTrailing() : message.getParams();
-		displayServerMessage(String.format("%s (%s) joins %s", message.getNickname(), message.getUserHost(),
+		displayServerMessage(String.format("%s (%s) joins %s", nickname, message.getUserHost(),
 										   channelName));
+		chatViewer.getUserListComponent().addUser(nickname);
 	}
 }

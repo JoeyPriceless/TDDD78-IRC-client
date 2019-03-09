@@ -12,19 +12,19 @@ public class QuitAction extends ViewEditor implements ResponseAction {
 	{
 		String cmd = message.getCommand();
 		String messageText;
+		String nickname = message.getNickname();
+		String host = message.getUserHost();
 		// Differentiates between leaving server and leaving channel.
 		if (cmd == null) {
 			return;
 		} else if (cmd.equals("PART")) {
-			messageText = String.format("%s (%s) has left %s", message.getNickname(), message.getUserHost(),
-									message.getParams());
+			messageText = String.format("%s (%s) has left %s", nickname, host, message.getParams());
 		} else {
 			String trail = message.getTrailing().isEmpty() ? (" - " + message.getTrailing()) : "";
 
-			messageText = String.format("%s (%s) has quit IRC%s", message.getNickname(), message.getUserHost(),
-									trail);
+			messageText = String.format("%s (%s) has quit IRC%s", nickname, host, trail);
 		}
 		displayServerMessage(messageText);
-
+		chatViewer.getUserListComponent().removeUser(nickname);
 	}
 }

@@ -89,13 +89,8 @@ public class ChatViewer {
 	}
 
 	public void submitMessage(String text) {
-		// The "//" prefix is used to debug messages.
-//		if (text.substring(0, 2).equals("//")) {
-//			composer.queueMessage(new Message(text.substring(2) + "/r/n"));
-//		} else {
-			composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
-			appendToChat(user.getNickname(), text);
-//		}
+		composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
+		appendToChat(user.getNickname(), text);
 	}
 
 	public void showServerDialog(boolean inputRequired, String errorMessage) {

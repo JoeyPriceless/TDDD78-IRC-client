@@ -2,7 +2,7 @@ package se.liu.ida.joshu135.tddd78.backend;
 
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
-import se.liu.ida.joshu135.tddd78.util.LogConfig;
+import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.logging.Level;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * Messages are placed in a LinkedTransferQueue and dealt with in MessageSender on another thread.
  */
 public class MessageComposer {
-	private static final Logger LOGGER = LogConfig.getLogger(MessageComposer.class.getSimpleName());
+	private static final Logger LOGGER = LogUtil.getLogger(MessageComposer.class.getSimpleName());
 	private static final String NEWLINE = "\r\n";
 	private static final int MAX_COMMAND_PARAMS = 15;
 	private BlockingQueue<Message> messageQueue;

@@ -3,8 +3,8 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class QuitAction extends ViewEditor implements ResponseAction {
-	public QuitAction(final ChatViewer chatViewer) {
+public class QuitHandler extends AbstractViewEditor implements ResponseHandler {
+	public QuitHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

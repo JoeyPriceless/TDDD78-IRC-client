@@ -5,7 +5,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
-import se.liu.ida.joshu135.tddd78.util.LogConfig;
+import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * Handles the TCP connection to the server and sends/receives messages to the socket.
  */
 public class ConnectionHandler {
-	private static final Logger LOGGER = LogConfig.getLogger(ConnectionHandler.class.getSimpleName());
+	private static final Logger LOGGER = LogUtil.getLogger(ConnectionHandler.class.getSimpleName());
 	private Socket socket = null;
 	private BufferedWriter writer;
 	private BufferedReader reader;

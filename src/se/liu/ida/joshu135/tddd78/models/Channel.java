@@ -4,7 +4,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.Objects;
 
 /**
- * A server with a name and associated server. Also contains its JTree node.
+ * A channel with a name and associated server. Also contains its JTree node.
  */
 public class Channel {
 	private String name;

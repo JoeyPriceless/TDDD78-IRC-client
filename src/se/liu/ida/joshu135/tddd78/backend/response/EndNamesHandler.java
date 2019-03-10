@@ -3,8 +3,8 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class EndNamesAction extends ViewEditor implements ResponseAction {
-	public EndNamesAction(final ChatViewer chatViewer) {
+public class EndNamesHandler extends AbstractViewEditor implements ResponseHandler {
+	public EndNamesHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

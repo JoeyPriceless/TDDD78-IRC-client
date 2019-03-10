@@ -4,12 +4,12 @@ import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 
 /**
- * Abstract class to be extended by any ResponseAction that wishes to edit the user interface through ChatViewer
+ * Abstract class to be extended by any ResponseHandler that wishes to edit the user interface through ChatViewer
  */
-public abstract class ViewEditor {
+public abstract class AbstractViewEditor {
 	protected ChatViewer chatViewer;
 
-	protected ViewEditor(final ChatViewer chatViewer) {
+	protected AbstractViewEditor(final ChatViewer chatViewer) {
 		this.chatViewer = chatViewer;
 	}
 

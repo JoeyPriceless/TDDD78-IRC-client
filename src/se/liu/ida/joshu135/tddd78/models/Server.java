@@ -42,20 +42,21 @@ public class Server {
 		channels.remove(channel);
 	}
 
-	public void clearChannels() {
+	// Simply gruesome.
+	public void killChildren() {
 		for (Channel c : channels) {
-			node.remove(c.getNode());
+			c.destroyNode();
 		}
 		channels.clear();
 	}
 
 	public void replaceChannel(Channel newChannel) {
-		clearChannels();
+		killChildren();
 		addChannel(newChannel);
 	}
 
 	public void destroyNode() {
-		clearChannels();
+		killChildren();
 		this.node.removeFromParent();
 		this.node = null;
 	}

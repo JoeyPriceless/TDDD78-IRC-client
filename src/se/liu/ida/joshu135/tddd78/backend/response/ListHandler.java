@@ -4,8 +4,8 @@ import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class ListAction extends ViewEditor implements ResponseAction {
-	public ListAction(final ChatViewer chatViewer) {
+public class ListHandler extends AbstractViewEditor implements ResponseHandler {
+	public ListHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

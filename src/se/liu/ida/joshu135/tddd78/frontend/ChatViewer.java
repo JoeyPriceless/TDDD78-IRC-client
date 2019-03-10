@@ -6,7 +6,7 @@ import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.User;
-import se.liu.ida.joshu135.tddd78.util.LogConfig;
+import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ import se.liu.ida.joshu135.tddd78.util.Time;
  * Contains the main JFrame and acts as the backend's interface for GUI management.
  */
 public class ChatViewer {
-	private static final Logger LOGGER = LogConfig.getLogger(ChatViewer.class.getSimpleName());
+	private static final Logger LOGGER = LogUtil.getLogger(ChatViewer.class.getSimpleName());
 	private static final int DEFAULT_WIDTH = 1400;
 	private static final int DEFAULT_HEIGHT = 700;
 	private JFrame frame;

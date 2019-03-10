@@ -3,8 +3,8 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class NumParamAction extends ViewEditor implements ResponseAction {
-	public NumParamAction(final ChatViewer chatViewer) {
+public class NumParamHandler extends AbstractViewEditor implements ResponseHandler {
+	public NumParamHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

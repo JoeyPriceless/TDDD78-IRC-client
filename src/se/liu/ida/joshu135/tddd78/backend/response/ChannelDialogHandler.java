@@ -4,9 +4,9 @@ import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class RegisteredAction extends ViewEditor implements ResponseDialog {
+public class ChannelDialogHandler extends AbstractViewEditor implements Correspondent {
 
-	public RegisteredAction(final ChatViewer chatViewer) {
+	public ChannelDialogHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

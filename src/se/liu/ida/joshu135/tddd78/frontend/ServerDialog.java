@@ -5,7 +5,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
-import se.liu.ida.joshu135.tddd78.util.LogConfig;
+import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * Component that contains fields for registering to a server. The static method "show" can be used to display it's dialog.
  */
 public class ServerDialog extends JPanel {
-	private static final Logger LOGGER = LogConfig.getLogger(ServerDialog.class.getSimpleName());
+	private static final Logger LOGGER = LogUtil.getLogger(ServerDialog.class.getSimpleName());
 	private static final int FIELD_WIDTH = 10;
 	private static final int SHORT_FIELD_WIDTH = 4;
 	private static final int ERROR_WIDTH = 18;
@@ -119,7 +119,6 @@ public class ServerDialog extends JPanel {
 						errorMessage = "There are empty fields.";
 						continue;
 					}
-					// TODO update tree when switching servers.
 					Server newServer = new Server(hostname, port);
 					Server currentServer = connectionHandler.getServer();
 					user.setNames(nickname, realName, username);

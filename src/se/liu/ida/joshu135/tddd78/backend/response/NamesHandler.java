@@ -6,8 +6,8 @@ import se.liu.ida.joshu135.tddd78.models.Message;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class NamesAction extends ViewEditor implements ResponseAction {
-	public NamesAction(final ChatViewer chatViewer) {
+public class NamesHandler extends AbstractViewEditor implements ResponseHandler {
+	public NamesHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

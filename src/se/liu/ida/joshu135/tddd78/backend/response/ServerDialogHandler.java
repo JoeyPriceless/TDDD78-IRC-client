@@ -3,8 +3,8 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
-public class OpenServerDialogAction extends ViewEditor implements ResponseAction {
-	public OpenServerDialogAction(final ChatViewer chatViewer) {
+public class ServerDialogHandler extends AbstractViewEditor implements ResponseHandler {
+	public ServerDialogHandler(final ChatViewer chatViewer) {
 		super(chatViewer);
 	}
 

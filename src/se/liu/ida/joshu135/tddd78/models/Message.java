@@ -1,6 +1,6 @@
 package se.liu.ida.joshu135.tddd78.models;
 
-import se.liu.ida.joshu135.tddd78.util.LogConfig;
+import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * of: a prefix, a command, up to 15 parameters and some trailing text.
  */
 public class Message {
-	private static final Logger LOGGER = LogConfig.getLogger(Message.class.getSimpleName());
+	private static final Logger LOGGER = LogUtil.getLogger(Message.class.getSimpleName());
 	private String message;
 	private String prefix = null;
 	private String nickname = null;

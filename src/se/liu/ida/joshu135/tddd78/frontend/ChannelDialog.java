@@ -4,7 +4,7 @@ import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Server;
-import se.liu.ida.joshu135.tddd78.util.LogConfig;
+import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * avoid blocking the receiving thread.
  */
 public class ChannelDialog extends JScrollPane implements Runnable {
-	private static final Logger LOGGER = LogConfig.getLogger(ChannelDialog.class.getSimpleName());
+	private static final Logger LOGGER = LogUtil.getLogger(ChannelDialog.class.getSimpleName());
 	private static final Channel PLACEHOLDER_CHANNEL = new Channel("Loading... Please wait :)", false);
 	private static final int HEIGHT = 500;
 	private static final int WIDTH = 150;

@@ -80,6 +80,29 @@ public class ChatViewer {
 		channelConfig.addActionListener(e -> showChannelDialog());
 		connectionMenu.add(serverConfig);
 		connectionMenu.add(channelConfig);
+
+		JMenu statusMenu = new JMenu("Status");
+		menuBar.add(statusMenu);
+		String defaultAway = "Set Away status";
+		JMenuItem awayStatus = new JMenuItem(defaultAway);
+		awayStatus.addActionListener(e -> {
+			String messageString;
+			String defaultNotAway = "Remove Away status";
+			if (awayStatus.getText().equals(defaultAway)) {
+				String input = JOptionPane.showInputDialog(frame, "Away message:");
+				// Default message is "Away"
+				String awayMessage = input.isEmpty() ? "Away" : input;
+				awayStatus.setText(defaultNotAway);
+				messageString = MessageComposer.compose("AWAY", awayMessage);
+			} else {
+				awayStatus.setText(defaultAway);
+				messageString = MessageComposer.compose("AWAY");
+			}
+
+			composer.queueMessage(new Message(messageString));
+		});
+		statusMenu.add(awayStatus);
+
 		frame.setJMenuBar(menuBar);
 	}
 

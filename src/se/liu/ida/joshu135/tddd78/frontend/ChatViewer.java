@@ -3,13 +3,21 @@ package se.liu.ida.joshu135.tddd78.frontend;
 import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
+import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
+import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
+import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
 import se.liu.ida.joshu135.tddd78.util.Time;
@@ -29,17 +37,13 @@ public class ChatViewer {
 	private ChannelDialog channelDialog = null;
 	private ConnectionHandler connectionHandler;
 	private MessageComposer composer;
-	private User user;
-
-	public Channel getChannel() {
-		return connectionHandler.getChannel();
-	}
+	private AppUser user;
 
 	public UserListComponent getUserListComponent() {
 		return userListComponent;
 	}
 
-	public ChatViewer(ConnectionHandler connectionHandler, User user, MessageComposer composer) {
+	public ChatViewer(ConnectionHandler connectionHandler, AppUser user, MessageComposer composer) {
 		this.connectionHandler = connectionHandler;
 		this.user = user;
 		this.composer = composer;
@@ -50,12 +54,12 @@ public class ChatViewer {
 
 		chatComponent = new ChatComponent();
 		authorComponent = new AuthorComponent(this);
-		serverTreeComponent = new ServerTreeComponent();
-		userListComponent = new UserListComponent(this);
+		userListComponent = new UserListComponent(this, new UserDoubleClickListener());
+		serverTreeComponent = new ServerTreeComponent(new ServerTreeSelectionListener());
 		frame.add(serverTreeComponent, "dock west");
 		frame.add(userListComponent, "dock east");
-		frame.add(chatComponent, "grow");
 		frame.add(authorComponent, "dock south");
+		frame.add(chatComponent, "grow");
 		createMenu();
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Centralize on screen
@@ -76,21 +80,54 @@ public class ChatViewer {
 		channelConfig.addActionListener(e -> showChannelDialog());
 		connectionMenu.add(serverConfig);
 		connectionMenu.add(channelConfig);
-
 		frame.setJMenuBar(menuBar);
 	}
 
-	public void appendToChat(String text) {
-		chatComponent.appendText(String.format("[%s] %s", Time.timeString(), text));
+	public void appendPrivMsg(String sender, String text) {
+		 if (!sender.startsWith("#")) {
+		 	appendToUser(sender, sender, text);
+		 } else {
+		 	appendToChannel(sender, text);
+		 }
 	}
 
-	public void appendToChat(String sender, String text) {
-		appendToChat(String.format("<%s> %s", sender, text));
+	public void appendToChannel(String sender, String text) {
+		Channel activeChannel = connectionHandler.getServer().getActiveChannel();
+		String message = formatMessage(sender, text);
+		if (activeChannel == null) {
+			chatComponent.appendText(message);
+		} else {
+			activeChannel.appendText(message);
+		}
+		chatComponent.update();
+	}
+
+	private void appendToUser(String sender, String target, String text) {
+		Server server = connectionHandler.getServer();
+		User user = server.getUser(target, false);
+		user.appendText(formatMessage(sender, text));
+		// Update tree display to display possible new conversations.
+		serverTreeComponent.updateStructure(server.getNode(), user.getNode());
+		chatComponent.update();
 	}
 
 	public void submitMessage(String text) {
-		composer.sendChannelMessage(connectionHandler.getChannel().getName(), text);
-		appendToChat(user.getNickname(), text);
+		String target = connectionHandler.getServer().getActiveChild().getName();
+		String userName = user.getNickname();
+		composer.sendPrivMsg(target, text);
+		if (!target.startsWith("#")) {
+			appendToUser(userName, target, text);
+		} else {
+			appendToChannel(userName, text);
+		}
+	}
+
+	private String formatMessage(String sender, String text) {
+		if (sender == null) {
+			return String.format("[%s] %s", Time.timeString(), text);
+		} else {
+			return String.format("[%s] <%s> %s", Time.timeString(), sender, text);
+		}
 	}
 
 	public void showServerDialog(boolean inputRequired, String errorMessage) {
@@ -121,11 +158,49 @@ public class ChatViewer {
 
 	public void requestNames(boolean onlyChannel) {
 		String messageString;
+		// If user selects all names on server, it is always granted. If the user is an a channel and selects channel names,
+		// request all names in channel. If the user is in a private conversation, simply set the UserList to the name of the
+		// recipient.
 		if (onlyChannel) {
-			messageString = MessageComposer.compose("NAMES", connectionHandler.getChannel().getName());
+			AbstractServerChild channelOrUser = connectionHandler.getServer().getActiveChild();
+			if (channelOrUser instanceof Channel) {
+				messageString = MessageComposer.compose("NAMES", channelOrUser.getName());
+			} else {
+				userListComponent.clear();
+				userListComponent.addUser(channelOrUser.getName());
+				return;
+			}
 		} else {
 			messageString = MessageComposer.compose("NAMES");
 		}
 		composer.queueMessage(new Message(messageString));
+	}
+
+	private class ServerTreeSelectionListener implements TreeSelectionListener {
+		@Override public void valueChanged(final TreeSelectionEvent e) {
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)e.getPath().getLastPathComponent();
+			Object userObject = node.getUserObject();
+			// If selection is not a channel or user, don't do anything.
+			if (!(userObject instanceof AbstractServerChild)) return;
+			AbstractServerChild selectedChild = (AbstractServerChild)userObject;
+			chatComponent.setSource(selectedChild);
+			DefaultMutableTreeNode parent = (DefaultMutableTreeNode)node.getParent();
+			// TODO can't switch server due to error here.
+			((Server)parent.getUserObject()).setActiveChild(selectedChild);
+			userListComponent.refresh();
+		}
+	}
+
+	private class UserDoubleClickListener extends MouseAdapter {
+		public void mouseClicked(MouseEvent event) {
+			JList list = (JList)event.getSource();
+			if (event.getClickCount() == 2) {
+				int index = list.locationToIndex(event.getPoint());
+				String name = (String)list.getModel().getElementAt(index);
+				User user = connectionHandler.getServer().getUser(name, true);
+				serverTreeComponent.updateStructure(connectionHandler.getServer().getNode(), user.getNode());
+				chatComponent.setSource(user);
+			}
+		}
 	}
 }

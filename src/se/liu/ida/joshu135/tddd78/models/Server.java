@@ -8,10 +8,11 @@ import java.util.List;
  * A server with a hostname, port and JTree node used for displaying it.
  */
 public class Server {
-	private String hostname = null;
+	private String hostname;
 	private int port;
 	private DefaultMutableTreeNode node;
-	private List<Channel> channels;
+	private AbstractServerChild activeChild;
+	private List<AbstractServerChild> children;
 
 	public String getHostname() {
 		return hostname;
@@ -21,38 +22,79 @@ public class Server {
 		return port;
 	}
 
-	public Server() {
-		node = new DefaultMutableTreeNode(this);
+	public AbstractServerChild getActiveChild() {
+		return activeChild;
+	}
+
+	public void setActiveChild(final AbstractServerChild activeChild) {
+		this.activeChild = activeChild;
+	}
+
+	public Channel getActiveChannel() {
+		for (AbstractServerChild child : children) {
+			if (child instanceof Channel)
+				return (Channel)child;
+		}
+		return null;
+	}
+
+	public User getUser(String name, boolean setActive) {
+		for (AbstractServerChild child : children) {
+			if (child instanceof User && child.getName().equals(name))
+				return (User)child;
+		}
+		// If no such conversation exists, initialize it.
+		User newUser = new User(name, false);
+		addChild(newUser, setActive);
+		return newUser;
 	}
 
 	public Server(final String hostname, final int port) {
 		this.hostname = hostname;
 		this.port = port;
 		node = new DefaultMutableTreeNode(this);
-		channels = new ArrayList<>();
+		children = new ArrayList<>();
 	}
 
-	public void addChannel(Channel channel) {
-		node.add(channel.getNode());
-		channels.add(channel);
+	public void addChild(AbstractServerChild child, boolean setActive) {
+		if (setActive) {
+			activeChild = child;
+		}
+		if (children.contains(child)) {
+			return;
+		}
+		child.createNode();
+		node.add(child.getNode());
+		children.add(child);
 	}
 
-	public void removeChannel(Channel channel) {
-		node.remove(channel.getNode());
-		channels.remove(channel);
+	public void killChild(AbstractServerChild child) {
+		children.remove(child);
+		if (children.size() == 0) {
+			activeChild = null;
+		} else if (activeChild.equals(child)) {
+			activeChild = children.get(children.size() - 1);
+		}
+		child.destroyNode();
 	}
 
 	// Simply gruesome.
 	public void killChildren() {
-		for (Channel c : channels) {
+		for (AbstractServerChild c : children) {
 			c.destroyNode();
 		}
-		channels.clear();
+		children.clear();
+		activeChild = null;
 	}
 
 	public void replaceChannel(Channel newChannel) {
-		killChildren();
-		addChannel(newChannel);
+		if (children.contains(newChannel)) {
+			return;
+		}
+		if (activeChild instanceof Channel) {
+			killChild(activeChild);
+		}
+		addChild(newChannel, true);
 	}
 
 	public void destroyNode() {

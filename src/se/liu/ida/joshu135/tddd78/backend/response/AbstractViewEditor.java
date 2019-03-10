@@ -1,7 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
-import se.liu.ida.joshu135.tddd78.models.Channel;
 
 /**
  * Abstract class to be extended by any ResponseHandler that wishes to edit the user interface through ChatViewer
@@ -14,14 +13,14 @@ public abstract class AbstractViewEditor {
 	}
 
 	protected void displayServerMessage(String message) {
-		chatViewer.appendToChat(message);
+		chatViewer.appendToChannel(null, message);
 	}
 
-	protected void displayUserMessage(String sender, String message) {
-		chatViewer.appendToChat(sender, message);
+	protected void showServerDialog(String errorMessage) {
+		chatViewer.showServerDialog(true, errorMessage);
 	}
 
-	protected void showServerDialog(String errorMessage) { chatViewer.showServerDialog(true, errorMessage); }
-
-	protected void showChannelDialog() { chatViewer.showChannelDialog(); }
+	protected void showChannelDialog() {
+		chatViewer.showChannelDialog();
+	}
 }

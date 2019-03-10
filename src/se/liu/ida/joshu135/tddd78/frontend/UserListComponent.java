@@ -4,26 +4,26 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class UserListComponent extends JPanel {
 	private static final String[] SCOPE_OPTIONS = new String[] { "Channel", "Server" };
 	private static final Dimension SIZE = new Dimension(170, 0);
 	private JComboBox<String> scopeBox;
-	private String selectedScope;
 	private JList<String> userList;
 	private DefaultListModel<String> userListModel;
 	private ChatViewer chatViewer;
 
-	public UserListComponent(ChatViewer chatViewer) {
+	public UserListComponent(ChatViewer chatViewer, MouseListener mouseListener) {
 		this.chatViewer = chatViewer;
 		this.setLayout(new MigLayout());
 		scopeBox = new JComboBox<>(SCOPE_OPTIONS);
-		scopeBox.addActionListener(new ScopeBoxListener());
+		scopeBox.addActionListener(e -> refresh());
 		userListModel = new DefaultListModel<>();
 		userList = new JList<>();
+		userList.addMouseListener(mouseListener);
 		JScrollPane scrollPane = new JScrollPane(userList);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		add(scopeBox, "dock north");
@@ -54,27 +54,23 @@ public class UserListComponent extends JPanel {
 		// Temporarily disable scopeBox to avoid unwanted calls to the ActionListener
 		scopeBox.setEnabled(false);
 		scopeBox.setSelectedIndex(0);
-		selectedScope = (String)scopeBox.getSelectedItem();
+		scopeBox.setEnabled(true);
 	}
 
 
 	public void endOfName() {
 		userList.setModel(userListModel);
-		scopeBox.setEnabled(true);
 	}
 
-	private class ScopeBoxListener implements ActionListener {
-		@Override public void actionPerformed(final ActionEvent e) {
-			String newScope = (String)scopeBox.getSelectedItem();
-			if (newScope == null || newScope.equals(selectedScope)) return;
+	public void refresh() {
+		String newScope = (String)scopeBox.getSelectedItem();
+		if (newScope == null) return;
 
-			userListModel.clear();
-			if (newScope.equals(SCOPE_OPTIONS[0])) { // Channel
-				chatViewer.requestNames(true);
-			} else if (newScope.equals(SCOPE_OPTIONS[1])) { // Server
-				chatViewer.requestNames(false);
-			}
-			selectedScope = newScope;
+		userListModel.clear();
+		if (newScope.equals(SCOPE_OPTIONS[0])) { // Channel
+			chatViewer.requestNames(true);
+		} else if (newScope.equals(SCOPE_OPTIONS[1])) { // Server
+			chatViewer.requestNames(false);
 		}
 	}
 }

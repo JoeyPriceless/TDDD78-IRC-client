@@ -1,10 +1,14 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
+import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
 import se.liu.ida.joshu135.tddd78.models.Server;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 
 /**
@@ -16,36 +20,41 @@ public class ServerTreeComponent extends JScrollPane {
 	private DefaultMutableTreeNode root;
 	private DefaultTreeModel model;
 
-	public DefaultTreeModel getModel() {
-		return model;
-	}
-
-	public ServerTreeComponent() {
+	public ServerTreeComponent(TreeSelectionListener listener) {
 		root = new DefaultMutableTreeNode("Servers");
 		model = new DefaultTreeModel(root);
 		serverTree = new JTree(model);
 		setViewportView(serverTree);
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
-		//serverTree.setRootVisible(false);
+		serverTree.setRootVisible(false);
 		setPreferredSize(SIZE);
+		serverTree.addTreeSelectionListener(listener);
 	}
 
 	public void addServerNode(Server server) {
 		root.add(server.getNode());
-		model.nodeStructureChanged(root);
-		// For some reason, this can't happen at root initialization but doesn't need to happen on every channel.
+		updateStructure(root);
 		expandTree();
 	}
 
 	public void removeServerNode(Server server) {
 		server.destroyNode();
-		model.nodeStructureChanged(root);
+		updateStructure(root);
 	}
 
 	public void expandTree() {
 		for (int i = 0; i < serverTree.getRowCount(); i++) {
 			serverTree.expandRow(i);
 		}
+	}
+
+	public void updateStructure(DefaultMutableTreeNode atNode) {
+		model.nodeStructureChanged(atNode);
+	}
+
+	public void updateStructure(DefaultMutableTreeNode atNode, DefaultMutableTreeNode selectedNode) {
+		updateStructure(atNode);
+		serverTree.setSelectionPath(new TreePath(selectedNode.getPath()));
 	}
 }

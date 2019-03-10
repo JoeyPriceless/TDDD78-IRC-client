@@ -10,6 +10,9 @@ public class PrivMsgHandler extends AbstractViewEditor implements ResponseHandle
 
 	@Override public void handle(final Message message)
 	{
-		displayUserMessage(message.getNickname(), message.getTrailing());
+		// All servers will send a private message with "VERSION" upon registration. These are not displayed to the user.
+		if (!message.getTrailing().equals("\u0001VERSION\u0001")) {
+			chatViewer.appendPrivMsg(message.getNickname(), message.getTrailing());
+		}
 	}
 }

@@ -50,19 +50,20 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 	}
 
 	@Override public void run() {
+		// Loop re-opens dialog if no channel was selected.
 		boolean isDone = false;
 		while (!isDone) {
 			int result = JOptionPane.showConfirmDialog(null, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 			if (result == JOptionPane.OK_OPTION) {
 				if (selectedChannel == null) continue;
-				if (selectedChannel.equals(connectionHandler.getChannel())) return;
-				connectionHandler.setChannel(server, selectedChannel);
+				if (selectedChannel.equals(server.getActiveChild())) return;
+				server.replaceChannel(selectedChannel);
 				composer.joinChannel(selectedChannel.getName());
 				// Updates the tree data model and shows the new channel.
-				serverTreeComponent.getModel().nodeStructureChanged(server.getNode());
+				serverTreeComponent.updateStructure(server.getNode(), selectedChannel.getNode());
 				serverTreeComponent.expandTree();
 				userListComponent.clear();
-				chatComponent.clearChat();
+				chatComponent.setSource(server.getActiveChild());
 				isDone = true;
 			} else {
 				return;

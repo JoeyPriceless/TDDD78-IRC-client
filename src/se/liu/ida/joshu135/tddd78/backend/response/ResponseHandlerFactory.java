@@ -40,7 +40,7 @@ public class ResponseHandlerFactory {
 		map.put("PART", new QuitHandler(chatViewer));
 		map.put("PRIVMSG", new PrivMsgHandler(chatViewer));
 
-		// User registration
+		// AppUser registration
 		addMapRange(Numeric.RPL_WELCOME.getInt(), Numeric.RPL_CREATED.getInt(), new DisplayHandler(chatViewer));
 		map.put(Numeric.RPL_MYINFO.getNumeric(), new ChannelDialogHandler(chatViewer));
 		addMapRange(Numeric.ERR_NONICKNAMEGIVEN.getInt(), Numeric.ERR_UNAVAILABLERESOURCE.getInt(),

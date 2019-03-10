@@ -2,9 +2,8 @@ package se.liu.ida.joshu135.tddd78.backend;
 
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import se.liu.ida.joshu135.tddd78.models.Channel;
+import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.models.Server;
-import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import java.io.BufferedReader;
@@ -25,10 +24,9 @@ public class ConnectionHandler {
 	private BufferedReader reader;
 	private MessageComposer composer;
 	private Server server;
-	private Channel channel = null;
-	private User user;
+	private AppUser user;
 
-	public ConnectionHandler(MessageComposer composer, User user) {
+	public ConnectionHandler(MessageComposer composer, AppUser user) {
 		this.composer = composer;
 		this.user = user;
 		this.server = null;
@@ -38,7 +36,7 @@ public class ConnectionHandler {
 
 	// IOException is needed for socket, etc and contains UnknownHostException. I Don't see why I would add a redundant
 	// UnknownHostException onto a required IOException.
-	@SuppressWarnings("OverlyBroadThrowsClause") public void setServer(Server server, User user) throws IOException {
+	@SuppressWarnings("OverlyBroadThrowsClause") public void setServer(Server server, AppUser user) throws IOException {
 		if (this.server != null && this.server.getHostname().equals(server.getHostname()) &&
 			this.server.getPort() != 0 && this.server.getPort() == server.getPort() &&
 			this.user.equals(user)) {
@@ -54,28 +52,6 @@ public class ConnectionHandler {
 
 	public Server getServer() {
 		return server;
-	}
-
-	public void setChannel(final Server server, final Channel channel)
-	{
-		if (this.channel != null && this.channel.equals(channel)) {
-			return;
-		}
-		channel.createNode();
-		server.replaceChannel(channel);
-		this.channel = channel;
-	}
-
-	public void setChannel(Channel channel)
-	{
-		if (this.channel != null && this.channel.equals(channel)) {
-			return;
-		}
-		this.channel = channel;
-	}
-
-	public Channel getChannel() {
-		return channel;
 	}
 
 	/**

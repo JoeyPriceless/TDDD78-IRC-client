@@ -1,5 +1,7 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
+import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
+
 import javax.swing.*;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
@@ -11,6 +13,7 @@ import java.awt.event.MouseWheelListener;
  * what's displayed in that chat.
  */
 public class ChatComponent extends JScrollPane {
+	private AbstractServerChild source;
 	private JTextArea messageArea;
 	private boolean doAutoScroll = true;
 
@@ -18,9 +21,15 @@ public class ChatComponent extends JScrollPane {
 		messageArea = new JTextArea();
 		messageArea.setEditable(false);
 		setViewportView(messageArea);
-		scrollSetup_borrowedcode();
+		scrollSetupborrowedcode();
 		messageArea.setLineWrap(true);
 		messageArea.setWrapStyleWord(true);
+	}
+
+	public void setSource(final AbstractServerChild source) {
+		clearChat();
+		this.source = source;
+		update();
 	}
 
 	/**
@@ -36,13 +45,19 @@ public class ChatComponent extends JScrollPane {
 		messageArea.setText("");
 	}
 
+	public void update() {
+		if (source != null) {
+			messageArea.setText(source.getHistory());
+		}
+	}
+
 	/**
 	 * Configures the scroll bar to only scroll automatically when it's at the bottom.
 	 * Makes sure that user isn't brought to the bottom when viewing old messages.
 	 * Source: https://stackoverflow.com/a/39410581
 	 */
 	// Naming convention according to https://www.ida.liu.se/~TDDD78/labs/2019/project/grading.shtml
-	@SuppressWarnings("NewMethodNamingConvention") private void scrollSetup_borrowedcode() {
+	private void scrollSetupborrowedcode() {
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
 

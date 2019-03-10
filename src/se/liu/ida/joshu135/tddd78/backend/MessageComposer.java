@@ -1,7 +1,7 @@
 package se.liu.ida.joshu135.tddd78.backend;
 
 import se.liu.ida.joshu135.tddd78.models.Message;
-import se.liu.ida.joshu135.tddd78.models.User;
+import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import java.util.concurrent.BlockingQueue;
@@ -85,7 +85,7 @@ public class MessageComposer {
 	 * Register a connection with an IRC server. Send NICK & USER message.
 	 * https://tools.ietf.org/html/rfc2812#section-3.1
 	 */
-	public void registerConnection(User user) {
+	public void registerConnection(AppUser user) {
 		Message nickMsg = new Message(compose("NICK", user.getNickname()));
 		Message userMsg = new Message(compose("USER", user.getUsername(), user.getMode(), "*",
 															  ":" + user.getRealname()));
@@ -116,7 +116,7 @@ public class MessageComposer {
 		queueMessage(joinMsg);
 	}
 
-	public void sendChannelMessage(String channel, String text) {
+	public void sendPrivMsg(String channel, String text) {
 		Message message = new Message(compose("PRIVMSG", channel, ":" + text));
 		queueMessage(message);
 	}

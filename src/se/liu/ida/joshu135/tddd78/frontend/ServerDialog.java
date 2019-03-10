@@ -3,8 +3,8 @@ package se.liu.ida.joshu135.tddd78.frontend;
 import net.miginfocom.swing.MigLayout;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
+import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.models.Server;
-import se.liu.ida.joshu135.tddd78.models.User;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
@@ -73,7 +73,7 @@ public class ServerDialog extends JPanel {
 		userNameField = new JTextField(defaultUsername, FIELD_WIDTH);
 		realNameField = new JTextField(defaultRealName, FIELD_WIDTH);
 		nickNameField = new JTextField(defaultNickname, FIELD_WIDTH);
-		add(new JLabel("User configuration"), "cell 0 3, span, align center");
+		add(new JLabel("AppUser configuration"), "cell 0 3, span, align center");
 		add(new JLabel("Username :"), "cell 0 4, align right");
 		add((userNameField), "cell 1 4");
 		add(new JLabel("Real Name :"), "cell 0 5, align right");
@@ -92,12 +92,12 @@ public class ServerDialog extends JPanel {
 		add(errorComp, "cell 0 8, span");
 	}
 
-	public static void show(Component parentComponent, User user, ConnectionHandler connectionHandler,
-								ServerTreeComponent serverTreeComponent, boolean inputRequired)
+	public static void show(Component parentComponent, AppUser user, ConnectionHandler connectionHandler,
+							ServerTreeComponent serverTreeComponent, boolean inputRequired)
 	{
 		show(parentComponent, user, connectionHandler, serverTreeComponent, inputRequired, null);
 	}
-	public static void show(Component parentComponent, User user, ConnectionHandler connectionHandler,
+	public static void show(Component parentComponent, AppUser user, ConnectionHandler connectionHandler,
 							ServerTreeComponent serverTreeComponent, boolean inputRequired, String errorMessage) {
 		ServerDialog serverDialog = new ServerDialog();
 		boolean isDone = false;

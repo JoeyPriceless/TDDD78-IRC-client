@@ -6,7 +6,7 @@ import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.backend.MessageReceiver;
 import se.liu.ida.joshu135.tddd78.backend.MessageSender;
 import se.liu.ida.joshu135.tddd78.models.Message;
-import se.liu.ida.joshu135.tddd78.models.User;
+import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
@@ -26,7 +26,7 @@ public final class Main {
 		try {
 			LinkedTransferQueue<Message> messageQueue = new LinkedTransferQueue<>();
 			MessageComposer composer = new MessageComposer(messageQueue);
-			User user = new User();
+			AppUser user = new AppUser();
 			ConnectionHandler conHandler = new ConnectionHandler(composer, user);
 			ChatViewer chatViewer = new ChatViewer(conHandler, user, composer);
 

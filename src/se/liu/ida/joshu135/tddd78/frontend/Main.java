@@ -29,7 +29,7 @@ public final class Main {
 		ChatViewer chatViewer = new ChatViewer(conHandler, user, composer);
 
 		MessageSender messageSender = new MessageSender(messageQueue, conHandler);
-		MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer, chatViewer);
+		MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer, chatViewer.getMediator());
 		Thread sendThread = new Thread(messageSender, "SendT");
 		Thread responseThread = new Thread(messageReceiver, "ResponseT");
 		sendThread.start();

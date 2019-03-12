@@ -1,12 +1,13 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
+import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
 public class ListHandler extends AbstractViewEditor implements ResponseHandler {
-	public ListHandler(final ChatViewer chatViewer) {
-		super(chatViewer);
+	public ListHandler(final ViewMediator mediator) {
+		super(mediator);
 	}
 
 	@Override public void handle(final Message message) {
@@ -16,6 +17,6 @@ public class ListHandler extends AbstractViewEditor implements ResponseHandler {
 			return;
 		}
 		Channel channel = new Channel(name, false);
-		chatViewer.addChannelToBrowser(channel);
+		mediator.addChannelToBrowser(channel);
 	}
 }

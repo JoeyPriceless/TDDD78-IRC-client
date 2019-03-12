@@ -21,7 +21,7 @@ public class ServerDialog extends JPanel {
 	private static final int FIELD_WIDTH = 10;
 	private static final int SHORT_FIELD_WIDTH = 4;
 	private static final int ERROR_WIDTH = 18;
-	// TODO remove these
+	// TODO Fetch last login if available
 	private static String defaultHostname = "irc.mibbit.net";
 	private static String defaultPort = "6667";
 	private static String defaultUsername = "LiULouie";
@@ -92,13 +92,11 @@ public class ServerDialog extends JPanel {
 		add(errorComp, "cell 0 8, span");
 	}
 
-	public static void show(Component parentComponent, AppUser user, ConnectionHandler connectionHandler,
-							ServerTreeComponent serverTreeComponent, boolean inputRequired)
+	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired)
 	{
-		show(parentComponent, user, connectionHandler, serverTreeComponent, inputRequired, null);
+		show(parentComponent, mediator, inputRequired, null);
 	}
-	public static void show(Component parentComponent, AppUser user, ConnectionHandler connectionHandler,
-							ServerTreeComponent serverTreeComponent, boolean inputRequired, String errorMessage) {
+	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired, String errorMessage) {
 		ServerDialog serverDialog = new ServerDialog();
 		boolean isDone = false;
 		while (!isDone) {
@@ -120,13 +118,7 @@ public class ServerDialog extends JPanel {
 						continue;
 					}
 					Server newServer = new Server(hostname, port);
-					Server currentServer = connectionHandler.getServer();
-					user.setNames(nickname, realName, username);
-					if (currentServer != null) {
-						serverTreeComponent.removeServerNode(connectionHandler.getServer());
-					}
-					connectionHandler.setServer(newServer, user);
-					serverTreeComponent.addServerNode(newServer);
+					mediator.setServer(newServer, nickname, realName, username);
 					isDone = true;
 				} else if (inputRequired) {
 					// If input is required to continue and user dismisses the window, exit the program.

@@ -123,6 +123,16 @@ public class MessageComposer {
 		queueMessage(new Message(compose("LIST")));
 	}
 
+	public void setAway(String awayMessage) {
+		String messageString = MessageComposer.compose("AWAY", awayMessage);
+		queueMessage(new Message(messageString));
+	}
+
+	public void removeAway() {
+		String messageString = MessageComposer.compose("AWAY");
+		queueMessage(new Message(messageString));
+	}
+
 	/**
 	 * Takes a vararg of strings that have to be in the message and returns the max length of the variable parts of the message.
 	 * @param maxLength The maximum length. Default: 510

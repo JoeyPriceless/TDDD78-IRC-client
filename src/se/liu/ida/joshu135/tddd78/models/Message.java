@@ -1,6 +1,7 @@
 package se.liu.ida.joshu135.tddd78.models;
 
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
+import se.liu.ida.joshu135.tddd78.util.Time;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -124,5 +125,13 @@ public class Message {
 
 	private String[] splitSpace(String text) {
 		return text.split("\\s+");
+	}
+
+	public static String formatMessage(String sender, String text) {
+		if (sender == null) {
+			return String.format("[%s] %s", Time.timeString(), text);
+		} else {
+			return String.format("[%s] <%s> %s", Time.timeString(), sender, text);
+		}
 	}
 }

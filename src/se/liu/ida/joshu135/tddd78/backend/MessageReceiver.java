@@ -4,6 +4,7 @@ import se.liu.ida.joshu135.tddd78.backend.response.Correspondent;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseHandlerFactory;
 import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
+import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
@@ -18,10 +19,10 @@ public class MessageReceiver implements Runnable {
 	private ConnectionHandler conHandler;
 	private MessageComposer composer;
 
-	public MessageReceiver(final ConnectionHandler conHandler, MessageComposer composer, final ChatViewer chatViewer) {
+	public MessageReceiver(final ConnectionHandler conHandler, MessageComposer composer, final ViewMediator mediator) {
 		this.conHandler = conHandler;
 		this.composer = composer;
-		this.factory = new ResponseHandlerFactory(chatViewer);
+		this.factory = new ResponseHandlerFactory(mediator);
 	}
 
 	@Override public void run() {

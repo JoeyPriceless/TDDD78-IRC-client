@@ -78,16 +78,4 @@ public class ConnectionHandler {
 		}
 		return line;
 	}
-
-//	/**
-//	 * Join multiple channels, optionally with keys
-//	 * @param channelKey A hashmap with each channel to join where key is the channel and value is it's key.
-//	 *
-//	 * @throws MessageComposer.MessageLengthException
-//	 * @throws IOException
-//	 */
-//	public void joinChannels(HashMap<String, String> channelKey) throws MessageComposer.MessageLengthException, IOException {
-//		String join = MessageComposer.compose("JOIN", channel);
-//		writeMessage(join);
-//	}
 }

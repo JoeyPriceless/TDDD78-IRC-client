@@ -19,8 +19,10 @@ public class ServerTreeComponent extends JScrollPane {
 	private JTree serverTree;
 	private DefaultMutableTreeNode root;
 	private DefaultTreeModel model;
+	private ViewMediator mediator;
 
-	public ServerTreeComponent(UserListComponent userListComponent, ChatComponent chatComponent) {
+	public ServerTreeComponent(ViewMediator mediator) {
+		this.mediator = mediator;
 		root = new DefaultMutableTreeNode("Servers");
 		model = new DefaultTreeModel(root);
 		serverTree = new JTree(model);
@@ -29,7 +31,7 @@ public class ServerTreeComponent extends JScrollPane {
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
 		serverTree.setRootVisible(false);
 		setPreferredSize(SIZE);
-		serverTree.addTreeSelectionListener(new SelectionListener(userListComponent, chatComponent));
+		serverTree.addTreeSelectionListener(new SelectionListener());
 	}
 
 	public void addServerNode(Server server) {
@@ -59,14 +61,6 @@ public class ServerTreeComponent extends JScrollPane {
 	}
 
 	private class SelectionListener implements TreeSelectionListener {
-		private UserListComponent userListComponent;
-		private ChatComponent chatComponent;
-
-		public SelectionListener(final UserListComponent userListComponent, final ChatComponent chatComponent) {
-			this.userListComponent = userListComponent;
-			this.chatComponent = chatComponent;
-		}
-
 		@Override public void valueChanged(final TreeSelectionEvent e) {
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)e.getPath().getLastPathComponent();
 			DefaultMutableTreeNode parent = (DefaultMutableTreeNode)node.getParent();
@@ -77,13 +71,14 @@ public class ServerTreeComponent extends JScrollPane {
 			if (!(userObject instanceof AbstractServerChild)) {
 				return;
 			} else if (parent == null) {
-				userListComponent.clear();
+				mediator.clearUserList();
 				return;
 			}
 			AbstractServerChild selectedChild = (AbstractServerChild)userObject;
-			chatComponent.setSource(selectedChild);
+//			mediator.changeViewSource(selectedChild);
+			mediator.getChatComponent().setSource(selectedChild);
 			((Server)parent.getUserObject()).setActiveChild(selectedChild);
-			userListComponent.refresh();
+			mediator.getUserListComponent().refresh();
 		}
 	}
 }

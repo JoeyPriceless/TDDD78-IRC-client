@@ -4,7 +4,6 @@ import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -14,12 +13,12 @@ import java.awt.event.KeyEvent;
  */
 public class AuthorComponent extends JPanel {
 	private JTextArea authorField;
-	private ChatViewer chatViewer;
+	private ViewMediator mediator;
 	private static final int HEIGHT = 1;
 
 	// TODO block text submit before connection to server/channel.
-	public AuthorComponent(ChatViewer chatViewer) {
-		this.chatViewer = chatViewer;
+	public AuthorComponent(ViewMediator mediator) {
+		this.mediator = mediator;
 		this.setLayout(new MigLayout());
 		authorField = new JTextArea();
 		authorField.setRows(HEIGHT);
@@ -66,7 +65,7 @@ public class AuthorComponent extends JPanel {
 
 	public void submitMessage() {
 		String noNewlines = authorField.getText().replace("\n", "").replace("\r", "");
-		chatViewer.submitMessage(noNewlines);
+		mediator.submitMessage(noNewlines);
 		authorField.setText("");
 	}
 

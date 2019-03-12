@@ -1,7 +1,6 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
 import net.miginfocom.swing.MigLayout;
-import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 
@@ -16,16 +15,16 @@ public class UserListComponent extends JPanel {
 	private JComboBox<String> scopeBox;
 	private JList<String> userList;
 	private DefaultListModel<String> userListModel;
-	private ChatViewer chatViewer;
+	private ViewMediator mediator;
 
-	public UserListComponent(ChatViewer chatViewer, ConnectionHandler connectionHandler) {
-		this.chatViewer = chatViewer;
+	public UserListComponent(ViewMediator mediator) {
+		this.mediator = mediator;
 		this.setLayout(new MigLayout());
 		scopeBox = new JComboBox<>(SCOPE_OPTIONS);
 		scopeBox.addActionListener(e -> refresh());
 		userListModel = new DefaultListModel<>();
 		userList = new JList<>();
-		userList.addMouseListener(new DoubleClickListener(connectionHandler));
+		userList.addMouseListener(new DoubleClickListener());
 		JScrollPane scrollPane = new JScrollPane(userList);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		add(scopeBox, "dock north");
@@ -70,27 +69,21 @@ public class UserListComponent extends JPanel {
 
 		userListModel.clear();
 		if (newScope.equals(SCOPE_OPTIONS[0])) { // Channel/User
-			chatViewer.requestNames(true);
+			mediator.requestNames(true);
 		} else if (newScope.equals(SCOPE_OPTIONS[1])) { // Server
-			chatViewer.requestNames(false);
+			mediator.requestNames(false);
 		}
 	}
 
 	private class DoubleClickListener extends MouseAdapter {
-			private ConnectionHandler connectionHandler;
-
-		public DoubleClickListener(final ConnectionHandler connectionHandler) {
-			this.connectionHandler = connectionHandler;
-		}
-
 		public void mouseClicked(MouseEvent event) {
 				JList list = (JList)event.getSource();
 				if (event.getClickCount() == 2) {
 					int index = list.locationToIndex(event.getPoint());
 					String name = (String)list.getModel().getElementAt(index);
-					Server server = connectionHandler.getServer();
+					Server server = mediator.getServer();
 					User user = server.getUser(name, true);
-					chatViewer.changeViewSource(user);
+					mediator.changeViewSource(user);
 				}
 			}
 		}

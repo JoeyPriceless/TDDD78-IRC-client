@@ -1,6 +1,6 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
-import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
+import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.util.borrowedcode.Numeric;
 
 import java.util.HashMap;
@@ -11,11 +11,11 @@ import java.util.Map;
  * Contains a mapping between commands (Strings/3-letter numerics) and ResponseActions
  */
 public class ResponseHandlerFactory {
-	private ChatViewer chatViewer;
+	private ViewMediator mediator;
 	private Map<String, ResponseHandler> map;
 
-	public ResponseHandlerFactory(final ChatViewer chatViewer) {
-		this.chatViewer = chatViewer;
+	public ResponseHandlerFactory(final ViewMediator mediator) {
+		this.mediator = mediator;
 		setMap();
 	}
 
@@ -26,7 +26,7 @@ public class ResponseHandlerFactory {
 	 * @return The ResponseHandler corresponding the command, or if there is no corresponing command, a DefaultHandler object.
 	 */
 	public ResponseHandler getAction(String command) {
-		return map.getOrDefault(command, new DisplayHandler(chatViewer));
+		return map.getOrDefault(command, new DisplayHandler(mediator));
 	}
 
 	/**
@@ -35,28 +35,28 @@ public class ResponseHandlerFactory {
 	private void setMap() {
 		map = new HashMap<>();
 		map.put("PING", new PongHandler());
-		map.put("JOIN", new JoinHandler(chatViewer));
-		map.put("QUIT", new QuitHandler(chatViewer));
-		map.put("PART", new QuitHandler(chatViewer));
-		map.put("PRIVMSG", new PrivMsgHandler(chatViewer));
+		map.put("JOIN", new JoinHandler(mediator));
+		map.put("QUIT", new QuitHandler(mediator));
+		map.put("PART", new QuitHandler(mediator));
+		map.put("PRIVMSG", new PrivMsgHandler(mediator));
 
 		// AppUser registration
-		addMapRange(Numeric.RPL_WELCOME.getInt(), Numeric.RPL_CREATED.getInt(), new DisplayHandler(chatViewer));
-		map.put(Numeric.RPL_MYINFO.getNumeric(), new ChannelDialogHandler(chatViewer));
+		addMapRange(Numeric.RPL_WELCOME.getInt(), Numeric.RPL_CREATED.getInt(), new DisplayHandler(mediator));
+		map.put(Numeric.RPL_MYINFO.getNumeric(), new ChannelDialogHandler(mediator));
 		addMapRange(Numeric.ERR_NONICKNAMEGIVEN.getInt(), Numeric.ERR_UNAVAILABLERESOURCE.getInt(),
-					new ServerDialogHandler(chatViewer));
+					new ServerDialogHandler(mediator));
 		addMapList(new String[] {
 				Numeric.ERR_ALREADYREGISTERED.getNumeric(),
 				Numeric.ERR_NOTREGISTERED.getNumeric()
-					}, new ServerDialogHandler(chatViewer));
+					}, new ServerDialogHandler(mediator));
 
 		// Server user info
-		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayHandler(chatViewer));
+		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayHandler(mediator));
 		addMapList(new String[] {
 					Numeric.RPL_LUSERLOCALUSER.getNumeric(),
 					Numeric.RPL_LUSERGLOBALUSER.getNumeric()
-					}, new DisplayHandler(chatViewer));
-		addMapRange(Numeric.RPL_LUSEROP.getInt(), Numeric.RPL_LUSERCHANNELS.getInt(), new NumParamHandler(chatViewer));
+					}, new DisplayHandler(mediator));
+		addMapRange(Numeric.RPL_LUSEROP.getInt(), Numeric.RPL_LUSERCHANNELS.getInt(), new NumParamHandler(mediator));
 		// Message of the Day (MOTD) & topic
 		addMapList(new String[] {
 					Numeric.RPL_MOTD.getNumeric(),
@@ -64,15 +64,15 @@ public class ResponseHandlerFactory {
 					Numeric.RPL_MOTDEND.getNumeric(),
 					Numeric.RPL_TOPIC.getNumeric(),
 					Numeric.RPL_NOTOPIC.getNumeric()
-					}, new DisplayHandler(chatViewer));
+					}, new DisplayHandler(mediator));
 		map.put(Numeric.RPL_TOPICSETBY.getNumeric(), new DontDisplayHandler());
 		// Lists all users
-		map.put(Numeric.RPL_NAMREPLY.getNumeric(), new NamesHandler(chatViewer));
-		map.put(Numeric.RPL_ENDOFNAMES.getNumeric(), new EndNamesHandler(chatViewer));
+		map.put(Numeric.RPL_NAMREPLY.getNumeric(), new NamesHandler(mediator));
+		map.put(Numeric.RPL_ENDOFNAMES.getNumeric(), new EndNamesHandler(mediator));
 
 		// Response to LIST command
-		map.put(Numeric.RPL_LIST.getNumeric(), new ListHandler(chatViewer));
-		map.put(Numeric.RPL_LISTEND.getNumeric(), new EndListHandler(chatViewer));
+		map.put(Numeric.RPL_LIST.getNumeric(), new ListHandler(mediator));
+		map.put(Numeric.RPL_LISTEND.getNumeric(), new EndListHandler(mediator));
 		addMapList(new String[] {
 				Numeric.RPL_LISTSTART.getNumeric(),
 				Numeric.RPL_LINKS.getNumeric(),

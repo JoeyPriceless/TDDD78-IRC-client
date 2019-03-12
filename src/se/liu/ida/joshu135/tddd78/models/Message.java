@@ -25,6 +25,7 @@ public class Message {
 		return message;
 	}
 
+	// Useful getter to have.
 	public String getPrefix() {
 		return prefix;
 	}
@@ -116,6 +117,7 @@ public class Message {
 	 *
 	 * @return A string containing the trailing param at index i.
 	 */
+	// Useful method to have.
 	public String getTrailingAt(int index) {
 		return splitTrailing()[index];
 	}

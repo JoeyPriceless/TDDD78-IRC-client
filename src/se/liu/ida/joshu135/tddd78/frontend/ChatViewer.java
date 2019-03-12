@@ -9,29 +9,19 @@ import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
-import se.liu.ida.joshu135.tddd78.util.LogUtil;
+import se.liu.ida.joshu135.tddd78.util.Time;
 
 import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.logging.Logger;
-
-import se.liu.ida.joshu135.tddd78.util.Time;
 
 /**
  * Contains the main JFrame and acts as the backend's interface for GUI management.
  */
 public class ChatViewer {
-	private static final Logger LOGGER = LogUtil.getLogger(ChatViewer.class.getSimpleName());
 	private static final int DEFAULT_WIDTH = 1400;
 	private static final int DEFAULT_HEIGHT = 700;
 	private JFrame frame;
 	private ChatComponent chatComponent;
-	private AuthorComponent authorComponent;
 	private ServerTreeComponent serverTreeComponent;
 	private UserListComponent userListComponent;
 	private ChannelDialog channelDialog = null;
@@ -53,9 +43,9 @@ public class ChatViewer {
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		chatComponent = new ChatComponent();
-		authorComponent = new AuthorComponent(this);
-		userListComponent = new UserListComponent(this, new UserDoubleClickListener());
-		serverTreeComponent = new ServerTreeComponent(new ServerTreeSelectionListener());
+		final AuthorComponent authorComponent = new AuthorComponent(this);
+		userListComponent = new UserListComponent(this, connectionHandler);
+		serverTreeComponent = new ServerTreeComponent(userListComponent, chatComponent);
 		frame.add(serverTreeComponent, "dock west");
 		frame.add(userListComponent, "dock east");
 		frame.add(authorComponent, "dock south");
@@ -87,12 +77,11 @@ public class ChatViewer {
 		JMenuItem awayStatus = new JMenuItem(defaultAway);
 		awayStatus.addActionListener(e -> {
 			String messageString;
-			String defaultNotAway = "Remove Away status";
 			if (awayStatus.getText().equals(defaultAway)) {
 				String input = JOptionPane.showInputDialog(frame, "Away message:");
 				// Default message is "Away"
 				String awayMessage = input.isEmpty() ? "Away" : input;
-				awayStatus.setText(defaultNotAway);
+				awayStatus.setText("Remove Away status");
 				messageString = MessageComposer.compose("AWAY", awayMessage);
 			} else {
 				awayStatus.setText(defaultAway);
@@ -106,6 +95,14 @@ public class ChatViewer {
 		frame.setJMenuBar(menuBar);
 	}
 
+	public void changeViewSource(AbstractServerChild selectedChild) {
+		Server server = connectionHandler.getServer();
+		// Updates the tree data model and shows the new channel.
+		userListComponent.clear();
+		server.setActiveChild(selectedChild);
+		serverTreeComponent.updateStructure(server.getNode(), selectedChild.getNode());
+	}
+
 	public void appendPrivMsg(String sender, String text) {
 		 if (!sender.startsWith("#")) {
 		 	appendToUser(sender, sender, text);
@@ -115,7 +112,7 @@ public class ChatViewer {
 	}
 
 	public void appendToChannel(String sender, String text) {
-		Channel activeChannel = connectionHandler.getServer().getActiveChannel();
+		Channel activeChannel = connectionHandler.getServer().getChannel();
 		String message = formatMessage(sender, text);
 		if (activeChannel == null) {
 			chatComponent.appendText(message);
@@ -162,7 +159,7 @@ public class ChatViewer {
 	}
 
 	public void showChannelDialog() {
-		channelDialog = new ChannelDialog(connectionHandler, composer, chatComponent, serverTreeComponent, userListComponent);
+		channelDialog = new ChannelDialog(connectionHandler, composer, this);
 		composer.listChannels();
 		// Since this command is called on MessageReceiver's thread (SenderT), the dialog has to be opened on another thread
 		// in order to not incoming server messages.
@@ -176,7 +173,7 @@ public class ChatViewer {
 
 	public void endOfList() {
 		channelDialog.endOfList();
-		serverTreeComponent.expandTree();
+		//serverTreeComponent.expandTree();
 	}
 
 	public void requestNames(boolean onlyChannel) {
@@ -185,45 +182,21 @@ public class ChatViewer {
 		// request all names in channel. If the user is in a private conversation, simply set the UserList to the name of the
 		// recipient.
 		if (onlyChannel) {
-			AbstractServerChild channelOrUser = connectionHandler.getServer().getActiveChild();
-			if (channelOrUser instanceof Channel) {
-				messageString = MessageComposer.compose("NAMES", channelOrUser.getName());
+			AbstractServerChild child = connectionHandler.getServer().getActiveChild();
+			// Inspection: this is a clear case where different actions need to happen depending on if the child is a user or
+			// channel. Can't simply abstract this away in AbstractServerChild.
+			if (child instanceof Channel) {
+				messageString = MessageComposer.compose("NAMES", child.getName());
 			} else {
 				userListComponent.clear();
-				userListComponent.addUser(channelOrUser.getName());
+				if (child != null) {
+					userListComponent.addUser(child.getName());
+				}
 				return;
 			}
 		} else {
 			messageString = MessageComposer.compose("NAMES");
 		}
 		composer.queueMessage(new Message(messageString));
-	}
-
-	private class ServerTreeSelectionListener implements TreeSelectionListener {
-		@Override public void valueChanged(final TreeSelectionEvent e) {
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode)e.getPath().getLastPathComponent();
-			Object userObject = node.getUserObject();
-			// If selection is not a channel or user, don't do anything.
-			if (!(userObject instanceof AbstractServerChild)) return;
-			AbstractServerChild selectedChild = (AbstractServerChild)userObject;
-			chatComponent.setSource(selectedChild);
-			DefaultMutableTreeNode parent = (DefaultMutableTreeNode)node.getParent();
-			// TODO can't switch server due to error here.
-			((Server)parent.getUserObject()).setActiveChild(selectedChild);
-			userListComponent.refresh();
-		}
-	}
-
-	private class UserDoubleClickListener extends MouseAdapter {
-		public void mouseClicked(MouseEvent event) {
-			JList list = (JList)event.getSource();
-			if (event.getClickCount() == 2) {
-				int index = list.locationToIndex(event.getPoint());
-				String name = (String)list.getModel().getElementAt(index);
-				User user = connectionHandler.getServer().getUser(name, true);
-				serverTreeComponent.updateStructure(connectionHandler.getServer().getNode(), user.getNode());
-				chatComponent.setSource(user);
-			}
-		}
 	}
 }

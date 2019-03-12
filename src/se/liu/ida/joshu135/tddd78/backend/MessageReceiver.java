@@ -25,9 +25,9 @@ public class MessageReceiver implements Runnable {
 	}
 
 	@Override public void run() {
-		String line;
+		// Infinite loop is intentional.
 		while (true) {
-			line = conHandler.readLine();
+			String line = conHandler.readLine();
 			if (line == null || line.equals("null")) {
 				LOGGER.warning("Received null line");
 				continue;

@@ -6,7 +6,6 @@ import java.util.Objects;
  * Keeps track of information regarding the application's user such as it's names and status.
  */
 public class AppUser {
-	private static final int USERNAME_MAX_LENGTH = 9;
 	private String nickname = null;
 	private String realname = null;
 	private String username = null;
@@ -29,17 +28,6 @@ public class AppUser {
 	}
 
 	public AppUser() {
-		this.mode = "0";
-	}
-
-	public AppUser(final String nickname, final String realname, final String username, final String mode)
-			throws IllegalArgumentException {
-		setNames(nickname, realname, username);
-		this.mode = mode;
-	}
-
-	public AppUser(final String nickname, final String realname, final String username) throws IllegalArgumentException {
-		setNames(nickname, realname, username);
 		this.mode = "0";
 	}
 

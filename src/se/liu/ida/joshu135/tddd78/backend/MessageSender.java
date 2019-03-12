@@ -28,7 +28,6 @@ public class MessageSender implements Runnable {
 	// TODO implement listener
 	@Override public void run() {
 		// Infinite loop is intentional. Could potentially be turned into an event listener.
-		//noinspection InfiniteLoopStatement
 		while (true) {
 			try {
 				Message msg = messageQueue.take();

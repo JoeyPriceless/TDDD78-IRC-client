@@ -12,7 +12,8 @@ public class Server {
 	private int port;
 	private DefaultMutableTreeNode node;
 	private AbstractServerChild activeChild;
-	private List<AbstractServerChild> children;
+	private Channel channel = null;
+	private List<User> users;
 
 	public String getHostname() {
 		return hostname;
@@ -30,22 +31,30 @@ public class Server {
 		this.activeChild = activeChild;
 	}
 
-	public Channel getActiveChannel() {
-		for (AbstractServerChild child : children) {
-			if (child instanceof Channel)
-				return (Channel)child;
-		}
-		return null;
+	public Channel getChannel() {
+		return channel;
+	}
+
+	public void setChannel(Channel channel, boolean setActive) {
+		if (channel.equals(this.channel)) return;
+		this.channel = channel;
+		addChild(channel, setActive);
+	}
+
+	private List<AbstractServerChild> getChildren() {
+		List<AbstractServerChild> children = new ArrayList<>(users);
+		children.add(channel);
+		return children;
 	}
 
 	public User getUser(String name, boolean setActive) {
-		for (AbstractServerChild child : children) {
-			if (child instanceof User && child.getName().equals(name))
-				return (User)child;
+		for (User user : users) {
+			if (user.getName().equals(name))
+				return user;
 		}
 		// If no such conversation exists, initialize it.
 		User newUser = new User(name, false);
-		addChild(newUser, setActive);
+		addUser(newUser, setActive);
 		return newUser;
 	}
 
@@ -53,52 +62,65 @@ public class Server {
 		this.hostname = hostname;
 		this.port = port;
 		node = new DefaultMutableTreeNode(this);
-		children = new ArrayList<>();
+		users = new ArrayList<>();
 	}
 
-	public void addChild(AbstractServerChild child, boolean setActive) {
+	public void addUser(User user, boolean setActive) {
+		if (users.contains(user)) return;
+		users.add(user);
+		addChild(user, setActive);
+	}
+
+	private void addChild(AbstractServerChild child, boolean setActive) {
 		if (setActive) {
 			activeChild = child;
 		}
-		if (children.contains(child)) {
-			return;
-		}
 		child.createNode();
 		node.add(child.getNode());
-		children.add(child);
 	}
 
-	public void killChild(AbstractServerChild child) {
-		children.remove(child);
-		if (children.size() == 0) {
-			activeChild = null;
-		} else if (activeChild.equals(child)) {
-			activeChild = children.get(children.size() - 1);
-		}
-		child.destroyNode();
+	public void killChannel() {
+		if (channel == null) return;
+		channel.destroyNode();
+		channel = null;
+		selectActiveChild();
 	}
 
-	// Simply gruesome.
-	public void killChildren() {
-		for (AbstractServerChild c : children) {
-			c.destroyNode();
+	public void killUser(User user) {
+		user.destroyNode();
+		users.remove(user);
+		selectActiveChild();
+	}
+
+	/**
+	 * If activeChild needs to be selected: set it to the channel. If there is not channel, choose the last private message
+	 * conversation.
+	 */
+	private void selectActiveChild() {
+		if (activeChild != null) return;
+		if (users.isEmpty() && channel == null) return;
+		activeChild = channel != null ? channel : users.get(users.size() - 1);
+	}
+
+	public void killUsers() {
+		for (User u : users) {
+			u.destroyNode();
 		}
-		children.clear();
-		activeChild = null;
+		users.clear();
+		selectActiveChild();
 	}
 
 	public void replaceChannel(Channel newChannel) {
-		if (children.contains(newChannel)) {
+		if (newChannel.equals(channel)) {
 			return;
 		}
-		if (activeChild instanceof Channel) {
-			killChild(activeChild);
-		}
-		addChild(newChannel, true);
+		killChannel();
+		setChannel(newChannel, true);
 	}
 
 	public void destroyNode() {
-		killChildren();
+		killChannel();
+		killUsers();
 		this.node.removeFromParent();
 		this.node = null;
 	}

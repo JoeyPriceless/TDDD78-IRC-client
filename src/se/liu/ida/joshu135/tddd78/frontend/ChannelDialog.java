@@ -16,28 +16,20 @@ import java.util.logging.Logger;
  * avoid blocking the receiving thread.
  */
 public class ChannelDialog extends JScrollPane implements Runnable {
-	private static final Logger LOGGER = LogUtil.getLogger(ChannelDialog.class.getSimpleName());
 	private static final Channel PLACEHOLDER_CHANNEL = new Channel("Loading... Please wait :)", false);
 	private static final int HEIGHT = 500;
 	private static final int WIDTH = 150;
 	private Server server;
 	private Channel selectedChannel = null;
-	private ConnectionHandler connectionHandler;
+	private ChatViewer chatViewer;
 	private MessageComposer composer;
-	private ChatComponent chatComponent;
-	private ServerTreeComponent serverTreeComponent;
-	private UserListComponent userListComponent;
 	private JList<Channel> channelList;
 	private DefaultListModel<Channel> channelListModel;
 
-	public ChannelDialog(ConnectionHandler connectionHandler, MessageComposer composer, ChatComponent chatComponent,
-						 ServerTreeComponent serverTreeComponent, UserListComponent userListComponent) {
+	public ChannelDialog(ConnectionHandler connectionHandler, MessageComposer composer, ChatViewer chatViewer) {
 		super();
-		this.connectionHandler = connectionHandler;
 		this.composer = composer;
-		this.chatComponent = chatComponent;
-		this.serverTreeComponent = serverTreeComponent;
-		this.userListComponent = userListComponent;
+		this.chatViewer = chatViewer;
 		this.server = connectionHandler.getServer();
 		channelListModel = new DefaultListModel<>();
 		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
@@ -59,11 +51,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 				if (selectedChannel.equals(server.getActiveChild())) return;
 				server.replaceChannel(selectedChannel);
 				composer.joinChannel(selectedChannel.getName());
-				// Updates the tree data model and shows the new channel.
-				serverTreeComponent.updateStructure(server.getNode(), selectedChannel.getNode());
-				serverTreeComponent.expandTree();
-				userListComponent.clear();
-				chatComponent.setSource(server.getActiveChild());
+				chatViewer.changeViewSource(selectedChannel);
 				isDone = true;
 			} else {
 				return;
@@ -77,7 +65,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 
 	public void endOfList() {
 		// Remove placeholder element and replace it with the finalized list.
-		if (channelListModel.getElementAt(0).equals(PLACEHOLDER_CHANNEL)) {
+		if (!channelListModel.isEmpty() && channelListModel.getElementAt(0).equals(PLACEHOLDER_CHANNEL)) {
 			channelListModel.removeElementAt(0);
 		}
 		channelList.setModel(channelListModel);

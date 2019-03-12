@@ -20,7 +20,7 @@ public class ServerTreeComponent extends JScrollPane {
 	private DefaultMutableTreeNode root;
 	private DefaultTreeModel model;
 
-	public ServerTreeComponent(TreeSelectionListener listener) {
+	public ServerTreeComponent(UserListComponent userListComponent, ChatComponent chatComponent) {
 		root = new DefaultMutableTreeNode("Servers");
 		model = new DefaultTreeModel(root);
 		serverTree = new JTree(model);
@@ -29,13 +29,12 @@ public class ServerTreeComponent extends JScrollPane {
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
 		serverTree.setRootVisible(false);
 		setPreferredSize(SIZE);
-		serverTree.addTreeSelectionListener(listener);
+		serverTree.addTreeSelectionListener(new SelectionListener(userListComponent, chatComponent));
 	}
 
 	public void addServerNode(Server server) {
 		root.add(server.getNode());
 		updateStructure(root);
-		expandTree();
 	}
 
 	public void removeServerNode(Server server) {
@@ -51,10 +50,40 @@ public class ServerTreeComponent extends JScrollPane {
 
 	public void updateStructure(DefaultMutableTreeNode atNode) {
 		model.nodeStructureChanged(atNode);
+		expandTree();
 	}
 
 	public void updateStructure(DefaultMutableTreeNode atNode, DefaultMutableTreeNode selectedNode) {
-		updateStructure(atNode);
 		serverTree.setSelectionPath(new TreePath(selectedNode.getPath()));
+		updateStructure(atNode);
+	}
+
+	private class SelectionListener implements TreeSelectionListener {
+		private UserListComponent userListComponent;
+		private ChatComponent chatComponent;
+
+		public SelectionListener(final UserListComponent userListComponent, final ChatComponent chatComponent) {
+			this.userListComponent = userListComponent;
+			this.chatComponent = chatComponent;
+		}
+
+		@Override public void valueChanged(final TreeSelectionEvent e) {
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)e.getPath().getLastPathComponent();
+			DefaultMutableTreeNode parent = (DefaultMutableTreeNode)node.getParent();
+			Object userObject = node.getUserObject();
+			// If selection is not a channel or user, don't do anything.
+			// Inspection: need to be able to differentiate between channels/users and server nodes since nothing is meant to
+			// 			   happen when you select a server node in the tree.
+			if (!(userObject instanceof AbstractServerChild)) {
+				return;
+			} else if (parent == null) {
+				userListComponent.clear();
+				return;
+			}
+			AbstractServerChild selectedChild = (AbstractServerChild)userObject;
+			chatComponent.setSource(selectedChild);
+			((Server)parent.getUserObject()).setActiveChild(selectedChild);
+			userListComponent.refresh();
+		}
 	}
 }

@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 /**
  * Static class that sets up a logger with custom formatting.
  */
-@SuppressWarnings("UtilityClassWithoutPrivateConstructor") // Adding a private constructor causes IllegalAccessException
+// Adding a private constructor causes IllegalAccessException since Run Configuration needs to access it.
 public final class LogUtil {
 
 	public static Logger getLogger(String name) {

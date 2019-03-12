@@ -36,7 +36,7 @@ public class ConnectionHandler {
 
 	// IOException is needed for socket, etc and contains UnknownHostException. I Don't see why I would add a redundant
 	// UnknownHostException onto a required IOException.
-	@SuppressWarnings("OverlyBroadThrowsClause") public void setServer(Server server, AppUser user) throws IOException {
+	public void setServer(Server server, AppUser user) throws IOException {
 		if (this.server != null && this.server.getHostname().equals(server.getHostname()) &&
 			this.server.getPort() != 0 && this.server.getPort() == server.getPort() &&
 			this.user.equals(user)) {

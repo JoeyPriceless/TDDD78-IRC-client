@@ -12,7 +12,7 @@ public class NamesHandler extends AbstractViewEditor implements ResponseHandler 
 	}
 
 	@Override public void handle(final Message message) {
-		 ArrayList<String> names = new ArrayList<>(Arrays.asList(message.splitTrailing()));
+		 Iterable<String> names = new ArrayList<>(Arrays.asList(message.splitTrailing()));
 		 chatViewer.getUserListComponent().addUsers(names);
 	}
 }

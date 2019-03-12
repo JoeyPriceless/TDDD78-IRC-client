@@ -68,7 +68,7 @@ public class MessageComposer {
 		}
 		messageBuilder.append(NEWLINE);
 		if (messageBuilder.length() > MAX_LENGTH) {
-			//noinspection AutoBoxing Not supporting Java pre-5.0
+			// Not supporting Java pre-5.0
 			LOGGER.log(Level.WARNING, String.format("Composed message length (%s) is longer than max length of 512" +
 														   "characters.", messageBuilder.length()));
 		}
@@ -78,8 +78,6 @@ public class MessageComposer {
 	public void queueMessage(Message msg) {
 		messageQueue.add(msg);
 	}
-
-	public void clearQueue() { messageQueue.clear(); }
 
 	/**
 	 * Register a connection with an IRC server. Send NICK & USER message.
@@ -138,15 +136,5 @@ public class MessageComposer {
 			length += s.length();
 		}
 		return maxLength - length;
-	}
-
-	/**
-	 * Takes a vararg of strings that have to be in the message and returns the max length of the variable parts of the message.
-	 * @param knownStrings All the strings that are required to be in the message.
-	 *
-	 * @return maxLength minus total length of knownStrings
-	 */
-	public static int lengthAllowance(String... knownStrings) {
-		return lengthAllowance(MAX_LENGTH, knownStrings);
 	}
 }

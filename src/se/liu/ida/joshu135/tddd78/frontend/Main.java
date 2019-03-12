@@ -18,28 +18,21 @@ import java.util.logging.Logger;
  * Initializes the application and its GUI.
  */
 public final class Main {
-	private static final Logger LOGGER = LogUtil.getLogger(Main.class.getSimpleName());
-
 	private Main() {}
 
+	// Inspection: Don't see any issue here?
 	public static void main(String[] args) {
-		try {
-			LinkedTransferQueue<Message> messageQueue = new LinkedTransferQueue<>();
-			MessageComposer composer = new MessageComposer(messageQueue);
-			AppUser user = new AppUser();
-			ConnectionHandler conHandler = new ConnectionHandler(composer, user);
-			ChatViewer chatViewer = new ChatViewer(conHandler, user, composer);
+		LinkedTransferQueue<Message> messageQueue = new LinkedTransferQueue<>();
+		MessageComposer composer = new MessageComposer(messageQueue);
+		AppUser user = new AppUser();
+		ConnectionHandler conHandler = new ConnectionHandler(composer, user);
+		ChatViewer chatViewer = new ChatViewer(conHandler, user, composer);
 
-			MessageSender messageSender = new MessageSender(messageQueue, conHandler);
-			MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer, chatViewer);
-			Thread sendThread = new Thread(messageSender, "SendT");
-			Thread responseThread = new Thread(messageReceiver, "ResponseT");
-			sendThread.start();
-			responseThread.start();
-		} catch (Exception ex) {
-			String stackTrace = ExceptionUtils.getStackTrace(ex);
-			LOGGER.log(Level.SEVERE, stackTrace);
-			JOptionPane.showMessageDialog(null, stackTrace, "Critical error", JOptionPane.ERROR_MESSAGE);
-		}
+		MessageSender messageSender = new MessageSender(messageQueue, conHandler);
+		MessageReceiver messageReceiver = new MessageReceiver(conHandler, composer, chatViewer);
+		Thread sendThread = new Thread(messageSender, "SendT");
+		Thread responseThread = new Thread(messageReceiver, "ResponseT");
+		sendThread.start();
+		responseThread.start();
 	}
 }

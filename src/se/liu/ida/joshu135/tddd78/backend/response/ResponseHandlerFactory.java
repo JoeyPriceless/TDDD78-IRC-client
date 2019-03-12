@@ -88,7 +88,7 @@ public class ResponseHandlerFactory {
 	 */
 	private void addMapRange(int start, int end, ResponseHandler action) {
 		for (int i = start; i <= end; i++) {
-			//noinspection AutoBoxing not supporting pre 5.0 environments.
+			// not supporting pre 5.0 environments.
 			String numeric = String.format("%03d" , i);
 			map.put(numeric, action);
 		}
@@ -101,7 +101,7 @@ public class ResponseHandlerFactory {
 	 */
 	private void addMapList(int[] command, ResponseHandler action) {
 		for (int i : command) {
-			//noinspection AutoBoxing not supporting pre 5.0 environments.
+			// not supporting pre 5.0 environments.
 			String numeric = String.format("%03d" , i);
 			map.put(numeric, action);
 		}

@@ -99,7 +99,7 @@ public class UserListComponent extends JPanel {
 					String name = (String)list.getModel().getElementAt(index);
 					Server server = mediator.getServer();
 					User user = server.getUser(name, true);
-					mediator.setViewSource(user);
+					mediator.setServerTreeNode(user);
 				}
 			}
 		}

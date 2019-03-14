@@ -27,7 +27,7 @@ public abstract class AbstractViewEditor {
 	}
 
 	protected void showChannelDialog() {
-		mediator.getUserListComponent().clear();
+		mediator.clearUserList();
 		mediator.showChannelDialog();
 	}
 }

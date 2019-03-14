@@ -22,16 +22,6 @@ public class ViewMediator {
 	private UserListComponent userListComponent = null;
 	private ChannelDialog channelDialog = null;
 
-	// TODO limit this access!!
-	public ChatComponent getChatComponent() {
-		return chatComponent;
-	}
-
-	// TODO limit this access!!
-	public UserListComponent getUserListComponent() {
-		return userListComponent;
-	}
-
 	public MessageComposer getComposer() {
 		return composer;
 	}
@@ -71,18 +61,24 @@ public class ViewMediator {
 		this.userListComponent = userListComponent;
 	}
 
-	public void setViewSource(AbstractServerChild selectedChild) {
+	public void setServerTreeNode(AbstractServerChild selectedChild) {
 		Server server = conHandler.getServer();
 		// Updates the tree data model and shows the new channel.
-		userListComponent.clear();
+		//userListComponent.clear();
 		server.setActiveChild(selectedChild);
 		serverTreeComponent.updateStructure(server.getNode(), selectedChild.getNode());
+	}
+
+	public void setViewSource(AbstractServerChild source) {
+		chatComponent.setSource(source);
+		conHandler.getServer().setActiveChild(source);
+		userListComponent.refreshIfNeeded();
 	}
 
 	public void changeChannel(Channel newChannel) {
 		conHandler.getServer().replaceChannel(newChannel);
 		composer.joinChannel(newChannel.getName());
-		setViewSource(newChannel);
+		setServerTreeNode(newChannel);
 	}
 
 	public void submitMessage(String text) {

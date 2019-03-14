@@ -78,6 +78,6 @@ public class AuthorComponent extends JPanel {
 	}
 
 	public boolean isValidMessage() {
-		return (!isTooLong() && !authorField.getText().isEmpty() && mediator.getServer().getActiveChild() != null);
+		return (!isTooLong() && !authorField.getText().isEmpty() && mediator.getServer().getActiveNode() != null);
 	}
 }

@@ -64,7 +64,7 @@ public class ServerDialog extends JPanel {
 		String defaultRealName = "";
 		String defaultNickname = "";
 		if (defaultServer != null) {
-			defaultHostname = defaultServer.getHostname();
+			defaultHostname = defaultServer.getName();
 			defaultPort = Integer.toString(defaultServer.getPort());
 		}
 		if (defaultUser != null) {

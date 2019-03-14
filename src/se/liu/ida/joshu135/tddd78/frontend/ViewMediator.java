@@ -2,7 +2,7 @@ package se.liu.ida.joshu135.tddd78.frontend;
 
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
-import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
+import se.liu.ida.joshu135.tddd78.models.AbstractChildNode;
 import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
@@ -41,7 +41,7 @@ public class ViewMediator {
 			serverTreeComponent.removeServerNode(currentServer);
 		}
 		conHandler.setServer(newServer, user);
-		chatComponent.setSource(null);
+		chatComponent.setSource(newServer);
 		serverTreeComponent.addServerNode(newServer);
 		chatViewer.resetAwayStatus();
 	}
@@ -62,17 +62,21 @@ public class ViewMediator {
 		this.userListComponent = userListComponent;
 	}
 
-	public void setServerTreeNode(AbstractServerChild selectedChild) {
+	public void setServerTreeNode(AbstractChildNode selectedChild) {
 		Server server = conHandler.getServer();
 		// Updates the tree data model and shows the new channel.
-		server.setActiveChild(selectedChild);
+		server.setActiveNode(selectedChild);
 		serverTreeComponent.updateStructure(server.getNode(), selectedChild.getNode());
 	}
 
-	public void setViewSource(AbstractServerChild source) {
+	public void setViewSource(AbstractChildNode source) {
 		chatComponent.setSource(source);
-		conHandler.getServer().setActiveChild(source);
+		conHandler.getServer().setActiveNode(source);
 		userListComponent.refreshIfNeeded();
+	}
+
+	public AbstractChildNode getViewSource() {
+		return conHandler.getServer().getActiveNode();
 	}
 
 	public void changeChannel(Channel newChannel) {
@@ -82,7 +86,7 @@ public class ViewMediator {
 	}
 
 	public void submitMessage(String text) {
-		String target = conHandler.getServer().getActiveChild().getName();
+		String target = conHandler.getServer().getActiveNode().getName();
 		String userName = user.getNickname();
 		composer.sendPrivMsg(target, text);
 		if (!target.startsWith("#")) {
@@ -103,7 +107,7 @@ public class ViewMediator {
 	}
 
 	public void appendToActive(String text) {
-		AbstractServerChild active = conHandler.getServer().getActiveChild();
+		AbstractChildNode active = conHandler.getServer().getActiveNode();
 		String message = Message.formatMessage(null, text);
 		if (active == null) {
 			chatComponent.appendText(message);
@@ -156,7 +160,7 @@ public class ViewMediator {
 		// recipient.
 		if (scope == Scope.SERVERCHILD) {
 			Server server = conHandler.getServer();
-			AbstractServerChild child = server.getActiveChild();
+			AbstractChildNode child = server.getActiveNode();
 			if (child == null) {
 				return;
 			}

@@ -4,11 +4,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.Objects;
 
 /**
- * Abstract class which is extended by classes that are meant to be placed under a server in the ServerTree hierarchy. Manages
+ * Abstract class which is extended by classes that are meant to be placed in the ServerTree hierarchy. Manages
  * it's node as well as name and chat history.
  */
-public abstract class AbstractServerChild {
-	private DefaultMutableTreeNode node = null;
+public abstract class AbstractChildNode {
+	protected DefaultMutableTreeNode node = null;
 	protected String name;
 	protected String history;
 
@@ -24,7 +24,7 @@ public abstract class AbstractServerChild {
 		return history;
 	}
 
-	protected AbstractServerChild(final String name, boolean shouldCreateNode) {
+	protected AbstractChildNode(final String name, boolean shouldCreateNode) {
 		this.name = name;
 		this.history = "";
 		if (shouldCreateNode) {
@@ -52,7 +52,7 @@ public abstract class AbstractServerChild {
 	@Override public boolean equals(final Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		final AbstractServerChild that = (AbstractServerChild) o;
+		final AbstractChildNode that = (AbstractChildNode) o;
 		return Objects.equals(name, that.name);
 	}
 

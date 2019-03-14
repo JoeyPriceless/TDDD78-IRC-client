@@ -1,6 +1,5 @@
 package se.liu.ida.joshu135.tddd78.models;
 
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,28 +7,22 @@ import java.util.List;
  * A server with a hostname, port and JTree node used for displaying it. Also keeps track of all the node's children. These can
  * be either Channels or Users.
  */
-public class Server {
-	private String hostname;
+public class Server extends AbstractChildNode{
 	private int port;
-	private DefaultMutableTreeNode node;
-	private AbstractServerChild activeChild = null;
+	private AbstractChildNode activeNode;
 	private Channel channel = null;
 	private List<User> users;
-
-	public String getHostname() {
-		return hostname;
-	}
 
 	public int getPort() {
 		return port;
 	}
 
-	public AbstractServerChild getActiveChild() {
-		return activeChild;
+	public AbstractChildNode getActiveNode() {
+		return activeNode;
 	}
 
-	public void setActiveChild(final AbstractServerChild activeChild) {
-		this.activeChild = activeChild;
+	public void setActiveNode(final AbstractChildNode activeNode) {
+		this.activeNode = activeNode;
 	}
 
 	public Channel getChannel() {
@@ -60,9 +53,9 @@ public class Server {
 	}
 
 	public Server(final String hostname, final int port) {
-		this.hostname = hostname;
+		super(hostname, true);
+		activeNode = this;
 		this.port = port;
-		node = new DefaultMutableTreeNode(this);
 		users = new ArrayList<>();
 	}
 
@@ -72,9 +65,9 @@ public class Server {
 		addChild(user, setActive);
 	}
 
-	private void addChild(AbstractServerChild child, boolean setActive) {
+	private void addChild(AbstractChildNode child, boolean setActive) {
 		if (setActive) {
-			activeChild = child;
+			activeNode = child;
 		}
 		child.createNode();
 		node.add(child.getNode());
@@ -90,13 +83,13 @@ public class Server {
 	}
 
 	/**
-	 * If activeChild needs to be selected: set it to the channel. If there is not channel, choose the last private message
+	 * If activeNode needs to be selected: set it to the channel. If there is not channel, choose the last private message
 	 * conversation.
 	 */
 	private void selectActiveChild() {
-		if (activeChild != null) return;
+		if (activeNode != null) return;
 		if (users.isEmpty() && channel == null) return;
-		activeChild = channel != null ? channel : users.get(users.size() - 1);
+		activeNode = channel != null ? channel : users.get(users.size() - 1);
 	}
 
 	public void killUsers() {
@@ -122,13 +115,5 @@ public class Server {
 		killChannel();
 		killUsers();
 		this.node.removeFromParent();
-	}
-
-	public DefaultMutableTreeNode getNode() {
-		return node;
-	}
-
-	@Override public String toString() {
-		return hostname;
 	}
 }

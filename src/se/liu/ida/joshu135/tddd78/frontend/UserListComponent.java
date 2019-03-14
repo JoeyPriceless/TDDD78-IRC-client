@@ -85,6 +85,8 @@ public class UserListComponent extends JPanel {
 	public void forceRefresh() {
 		Scope newScope = (Scope)scopeBox.getSelectedItem();
 		userListModel.clear();
+		// Do not show Server as a user in the list.
+		if (mediator.getViewSource().equals(mediator.getServer())) return;
 		if (newScope == null) return;
 		selectedScope = newScope;
 

@@ -1,6 +1,6 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
-import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
+import se.liu.ida.joshu135.tddd78.models.AbstractChildNode;
 import se.liu.ida.joshu135.tddd78.models.Server;
 
 import javax.swing.*;
@@ -68,12 +68,11 @@ public class ServerTreeComponent extends JScrollPane {
 			// If selection is not a channel or user, don't do anything.
 			// Inspection: need to be able to differentiate between channels/users and server nodes since nothing is meant to
 			// happen when you select a server node in the tree.
-			if (!(userObject instanceof AbstractServerChild)) return;
 			if (parent == null) {
 				mediator.clearUserList();
 				return;
 			}
-			AbstractServerChild selectedChild = (AbstractServerChild)userObject;
+			AbstractChildNode selectedChild = (AbstractChildNode)userObject;
 			mediator.setViewSource(selectedChild);
 		}
 	}

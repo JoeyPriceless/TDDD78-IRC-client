@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public enum Scope {
 	/**
-	 * An instance of AbstractServerChild
+	 * An instance of AbstractChildNode
 	 */
 	SERVERCHILD,
 	/**

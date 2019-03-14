@@ -1,6 +1,6 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
-import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
+import se.liu.ida.joshu135.tddd78.models.AbstractChildNode;
 
 import javax.swing.*;
 import java.awt.event.AdjustmentEvent;
@@ -13,7 +13,7 @@ import java.awt.event.MouseWheelListener;
  * what's displayed in that chat.
  */
 public class ChatComponent extends JScrollPane {
-	private AbstractServerChild source = null;
+	private AbstractChildNode source = null;
 	private JTextArea messageArea;
 	private boolean doAutoScroll = true;
 
@@ -26,7 +26,7 @@ public class ChatComponent extends JScrollPane {
 		messageArea.setWrapStyleWord(true);
 	}
 
-	public void setSource(final AbstractServerChild source) {
+	public void setSource(final AbstractChildNode source) {
 		clearChat();
 		this.source = source;
 		update();

@@ -41,7 +41,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 			int result = JOptionPane.showConfirmDialog(parentComponent, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 			if (result == JOptionPane.OK_OPTION) {
 				if (selectedChannel == null) continue;
-				if (selectedChannel.equals(mediator.getServer().getActiveChild())) return;
+				if (selectedChannel.equals(mediator.getServer().getActiveNode())) return;
 				mediator.changeChannel(selectedChannel);
 				isDone = true;
 			} else {

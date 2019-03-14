@@ -1,6 +1,5 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
-import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
@@ -12,6 +11,6 @@ public class NumParamHandler extends AbstractViewEditor implements ResponseHandl
 	@Override public void handle(final Message message)
 	{
 		// Discard the first parameter that is the user's name.
-		displayServerMessage(String.format("%s %s", message.splitParams()[1], message.getTrailing()));
+		displayChannelInfoMessage(String.format("%s %s", message.splitParams()[1], message.getTrailing()));
 	}
 }

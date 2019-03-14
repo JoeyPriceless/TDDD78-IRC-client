@@ -1,6 +1,7 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
 import net.miginfocom.swing.MigLayout;
+import se.liu.ida.joshu135.tddd78.models.Scope;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 
@@ -10,18 +11,26 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class UserListComponent extends JPanel {
-	private static final String[] SCOPE_OPTIONS = new String[] { "Channel", "Server" };
+	private static final Scope[] SCOPE_OPTIONS = new Scope[] { Scope.CHANNEL, Scope.SERVER };
 	private static final Dimension SIZE = new Dimension(170, 0);
-	private JComboBox<String> scopeBox;
+	private JComboBox<Scope> scopeBox;
+	private Scope selectedScope;
 	private JList<String> userList;
 	private DefaultListModel<String> userListModel;
 	private ViewMediator mediator;
+
+	public void setScope(final Scope selectedScope) {
+		this.selectedScope = selectedScope;
+		scopeBox.setSelectedItem(selectedScope);
+	}
 
 	public UserListComponent(ViewMediator mediator) {
 		this.mediator = mediator;
 		this.setLayout(new MigLayout());
 		scopeBox = new JComboBox<>(SCOPE_OPTIONS);
-		scopeBox.addActionListener(e -> refresh());
+		selectedScope = Scope.CHANNEL;
+		scopeBox.setSelectedItem(selectedScope);
+		scopeBox.addActionListener(e -> forceRefresh());
 		userListModel = new DefaultListModel<>();
 		userList = new JList<>();
 		userList.addMouseListener(new DoubleClickListener());
@@ -54,7 +63,8 @@ public class UserListComponent extends JPanel {
 		userListModel.clear();
 		// Temporarily disable scopeBox to avoid unwanted calls to the ActionListener
 		scopeBox.setEnabled(false);
-		scopeBox.setSelectedIndex(0);
+		selectedScope = Scope.CHANNEL;
+		scopeBox.setSelectedItem(selectedScope);
 		scopeBox.setEnabled(true);
 	}
 
@@ -63,16 +73,22 @@ public class UserListComponent extends JPanel {
 		userList.setModel(userListModel);
 	}
 
-	public void refresh() {
-		String newScope = (String)scopeBox.getSelectedItem();
+	/**
+	 * Checks that the UserList scope isn't set to "Server" before resetting as it isn't neccesary then.
+	 */
+	public void refreshIfNeeded() {
+		Scope newScope = (Scope)scopeBox.getSelectedItem();
+		if (selectedScope == Scope.SERVER && newScope == selectedScope) return;
+		forceRefresh();
+	}
+
+	public void forceRefresh() {
+		Scope newScope = (Scope)scopeBox.getSelectedItem();
+		selectedScope = newScope;
+		userListModel.clear();
 		if (newScope == null) return;
 
-		userListModel.clear();
-		if (newScope.equals(SCOPE_OPTIONS[0])) { // Channel/User
-			mediator.requestNames(true);
-		} else if (newScope.equals(SCOPE_OPTIONS[1])) { // Server
-			mediator.requestNames(false);
-		}
+		mediator.requestNames(newScope);
 	}
 
 	private class DoubleClickListener extends MouseAdapter {

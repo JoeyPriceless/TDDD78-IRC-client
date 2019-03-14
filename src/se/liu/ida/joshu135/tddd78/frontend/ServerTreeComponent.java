@@ -67,7 +67,7 @@ public class ServerTreeComponent extends JScrollPane {
 			Object userObject = node.getUserObject();
 			// If selection is not a channel or user, don't do anything.
 			// Inspection: need to be able to differentiate between channels/users and server nodes since nothing is meant to
-			// 			   happen when you select a server node in the tree.
+			// happen when you select a server node in the tree.
 			if (!(userObject instanceof AbstractServerChild)) {
 				return;
 			} else if (parent == null) {
@@ -78,7 +78,7 @@ public class ServerTreeComponent extends JScrollPane {
 //			mediator.changeViewSource(selectedChild);
 			mediator.getChatComponent().setSource(selectedChild);
 			((Server)parent.getUserObject()).setActiveChild(selectedChild);
-			mediator.getUserListComponent().refresh();
+			mediator.getUserListComponent().refreshIfNeeded();
 		}
 	}
 }

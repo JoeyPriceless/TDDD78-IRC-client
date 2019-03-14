@@ -1,6 +1,5 @@
 package se.liu.ida.joshu135.tddd78.backend.response;
 
-import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
@@ -25,7 +24,7 @@ public class QuitHandler extends AbstractViewEditor implements ResponseHandler {
 
 			messageText = String.format("%s (%s) has quit IRC%s", nickname, host, trail);
 		}
-		displayServerMessage(messageText);
+		displayChannelInfoMessage(messageText);
 		mediator.removeUserFromList(nickname);
 	}
 }

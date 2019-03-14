@@ -6,6 +6,7 @@ import se.liu.ida.joshu135.tddd78.models.AbstractServerChild;
 import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.models.Channel;
 import se.liu.ida.joshu135.tddd78.models.Message;
+import se.liu.ida.joshu135.tddd78.models.Scope;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 
@@ -94,12 +95,25 @@ public class ViewMediator {
 		}
 	}
 
-	public void appendPrivMsg(String sender, String text) {
-		 if (!sender.startsWith("#")) {
-		 	appendToUser(sender, sender, text);
-		 } else {
-		 	appendToChannel(sender, text);
-		 }
+	public void appendMessage(String sender, String text) {
+		if (sender == null) {
+			appendToActive(text);
+		} else if (!sender.startsWith("#")) {
+			appendToUser(sender, sender, text);
+		} else {
+			appendToChannel(sender, text);
+		}
+	}
+
+	public void appendToActive(String text) {
+		AbstractServerChild active = conHandler.getServer().getActiveChild();
+		String message = Message.formatMessage(null, text);
+		if (active == null) {
+			chatComponent.appendText(message);
+		} else {
+			active.appendText(message);
+		}
+		chatComponent.update();
 	}
 
 	public void appendToChannel(String sender, String text) {
@@ -138,12 +152,12 @@ public class ViewMediator {
 		userListComponent.clear();
 	}
 
-	public void requestNames(boolean onlyChannel) {
+	public void requestNames(Scope scope) {
 		String messageString;
 		// If user selects all names on server, it is always granted. If the user is an a channel and selects channel names,
 		// request all names in channel. If the user is in a private conversation, simply set the UserList to the name of the
 		// recipient.
-		if (onlyChannel) {
+		if (scope == Scope.CHANNEL) {
 			AbstractServerChild child = conHandler.getServer().getActiveChild();
 			// Inspection: this is a clear case where different actions need to happen depending on if the child is a user or
 			// channel. Can't simply abstract this away in AbstractServerChild.
@@ -177,6 +191,7 @@ public class ViewMediator {
 
 	public void endOfList() {
 		channelDialog.endOfList();
+		userListComponent.forceRefresh();
 	}
 
 	public void endOfName() {

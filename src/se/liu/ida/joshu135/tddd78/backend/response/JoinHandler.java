@@ -13,8 +13,8 @@ public class JoinHandler extends AbstractViewEditor implements ResponseHandler {
 		// Varies between servers whether channel name is in params or trailing...
 		String nickname = message.getNickname();
 		String channelName = message.getParams().isEmpty() ? message.getTrailing() : message.getParams();
-		displayServerMessage(String.format("%s (%s) joins %s", nickname, message.getUserHost(),
-										   channelName));
+		displayChannelInfoMessage(String.format("%s (%s) joins %s", nickname, message.getUserHost(),
+												channelName));
 		mediator.addUserToList(nickname);
 	}
 }

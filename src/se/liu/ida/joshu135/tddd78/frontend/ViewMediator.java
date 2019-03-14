@@ -51,6 +51,7 @@ public class ViewMediator {
 			serverTreeComponent.removeServerNode(currentServer);
 		}
 		conHandler.setServer(newServer, user);
+		chatComponent.setSource(null);
 		serverTreeComponent.addServerNode(newServer);
 	}
 
@@ -70,7 +71,7 @@ public class ViewMediator {
 		this.userListComponent = userListComponent;
 	}
 
-	public void changeViewSource(AbstractServerChild selectedChild) {
+	public void setViewSource(AbstractServerChild selectedChild) {
 		Server server = conHandler.getServer();
 		// Updates the tree data model and shows the new channel.
 		userListComponent.clear();
@@ -81,7 +82,7 @@ public class ViewMediator {
 	public void changeChannel(Channel newChannel) {
 		conHandler.getServer().replaceChannel(newChannel);
 		composer.joinChannel(newChannel.getName());
-		changeViewSource(newChannel);
+		setViewSource(newChannel);
 	}
 
 	public void submitMessage(String text) {

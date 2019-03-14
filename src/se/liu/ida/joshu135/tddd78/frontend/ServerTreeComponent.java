@@ -75,7 +75,7 @@ public class ServerTreeComponent extends JScrollPane {
 				return;
 			}
 			AbstractServerChild selectedChild = (AbstractServerChild)userObject;
-//			mediator.changeViewSource(selectedChild);
+//			mediator.setViewSource(selectedChild);
 			mediator.getChatComponent().setSource(selectedChild);
 			((Server)parent.getUserObject()).setActiveChild(selectedChild);
 			mediator.getUserListComponent().refreshIfNeeded();

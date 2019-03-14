@@ -10,8 +10,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Swing component that contains the list of users in either the selected conversation or the entire server. To fill the list,
+ * the client has to request the names from the server. If there are too many names to fit in one response, they are divided
+ * into several responses.
+ */
 public class UserListComponent extends JPanel {
-	private static final Scope[] SCOPE_OPTIONS = new Scope[] { Scope.CHANNEL, Scope.SERVER };
+	private static final Scope[] SCOPE_OPTIONS = new Scope[] { Scope.SERVERCHILD, Scope.SERVER };
 	private static final Dimension SIZE = new Dimension(170, 0);
 	private JComboBox<Scope> scopeBox;
 	private Scope selectedScope;
@@ -19,16 +24,11 @@ public class UserListComponent extends JPanel {
 	private DefaultListModel<String> userListModel;
 	private ViewMediator mediator;
 
-	public void setScope(final Scope selectedScope) {
-		this.selectedScope = selectedScope;
-		scopeBox.setSelectedItem(selectedScope);
-	}
-
 	public UserListComponent(ViewMediator mediator) {
 		this.mediator = mediator;
 		this.setLayout(new MigLayout());
 		scopeBox = new JComboBox<>(SCOPE_OPTIONS);
-		selectedScope = Scope.CHANNEL;
+		selectedScope = Scope.SERVERCHILD;
 		scopeBox.setSelectedItem(selectedScope);
 		scopeBox.addActionListener(e -> forceRefresh());
 		userListModel = new DefaultListModel<>();
@@ -63,7 +63,7 @@ public class UserListComponent extends JPanel {
 		userListModel.clear();
 		// Temporarily disable scopeBox to avoid unwanted calls to the ActionListener
 		scopeBox.setEnabled(false);
-		selectedScope = Scope.CHANNEL;
+		selectedScope = Scope.SERVERCHILD;
 		scopeBox.setSelectedItem(selectedScope);
 		scopeBox.setEnabled(true);
 	}
@@ -84,23 +84,22 @@ public class UserListComponent extends JPanel {
 
 	public void forceRefresh() {
 		Scope newScope = (Scope)scopeBox.getSelectedItem();
-		selectedScope = newScope;
 		userListModel.clear();
 		if (newScope == null) return;
+		selectedScope = newScope;
 
 		mediator.requestNames(newScope);
 	}
 
 	private class DoubleClickListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent event) {
-				JList list = (JList)event.getSource();
-				if (event.getClickCount() == 2) {
-					int index = list.locationToIndex(event.getPoint());
-					String name = (String)list.getModel().getElementAt(index);
-					Server server = mediator.getServer();
-					User user = server.getUser(name, true);
-					mediator.setServerTreeNode(user);
-				}
+			if (event.getClickCount() == 2) {
+				int index = userList.locationToIndex(event.getPoint());
+				String name = userList.getModel().getElementAt(index);
+				Server server = mediator.getServer();
+				User user = server.getUser(name, true);
+				mediator.setServerTreeNode(user);
 			}
 		}
+	}
 }

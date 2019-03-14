@@ -1,14 +1,9 @@
 package se.liu.ida.joshu135.tddd78.frontend;
 
-import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
-import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.Channel;
-import se.liu.ida.joshu135.tddd78.models.Server;
-import se.liu.ida.joshu135.tddd78.util.LogUtil;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.logging.Logger;
 
 /**
  * Dialog that opens a channel browser. The object is created and continually supplied with channel names by LIST responses.
@@ -23,10 +18,12 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 	private JList<Channel> channelList;
 	private DefaultListModel<Channel> channelListModel;
 	private ViewMediator mediator;
+	private Component parentComponent;
 
-	public ChannelDialog(ViewMediator mediator) {
+	public ChannelDialog(ViewMediator mediator, Component parentComponent) {
 		super();
 		this.mediator = mediator;
+		this.parentComponent = parentComponent;
 		channelListModel = new DefaultListModel<>();
 		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
 		placeholderModel.addElement(PLACEHOLDER_CHANNEL);
@@ -41,7 +38,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 		// Loop re-opens dialog if no channel was selected.
 		boolean isDone = false;
 		while (!isDone) {
-			int result = JOptionPane.showConfirmDialog(null, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+			int result = JOptionPane.showConfirmDialog(parentComponent, this, "Channel browser", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 			if (result == JOptionPane.OK_OPTION) {
 				if (selectedChannel == null) continue;
 				if (selectedChannel.equals(mediator.getServer().getActiveChild())) return;

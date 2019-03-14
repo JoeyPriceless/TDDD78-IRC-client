@@ -68,9 +68,8 @@ public class MessageComposer {
 		}
 		messageBuilder.append(NEWLINE);
 		if (messageBuilder.length() > MAX_LENGTH) {
-			// Not supporting Java pre-5.0
 			LOGGER.log(Level.WARNING, String.format("Composed message length (%s) is longer than max length of 512" +
-														   "characters.", messageBuilder.length()));
+														   "characters.", Integer.valueOf(messageBuilder.length())));
 		}
 		return messageBuilder.toString();
 	}

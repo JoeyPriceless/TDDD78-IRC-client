@@ -4,6 +4,7 @@ import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.AppUser;
+import se.liu.ida.joshu135.tddd78.models.Server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +17,16 @@ public class ChatViewer {
 	private static final int DEFAULT_WIDTH = 1400;
 	private static final int DEFAULT_HEIGHT = 700;
 	private JFrame frame;
+	private JMenuItem awayMenuBarItem;
+	private static final String DEFAULT_AWAY_LABEL = "Set Away status";
 	private ViewMediator mediator;
 
 	public ViewMediator getMediator() {
 		return mediator;
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 
 	public ChatViewer(ConnectionHandler connectionHandler, AppUser user, MessageComposer composer) {
@@ -42,7 +49,7 @@ public class ChatViewer {
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Centralize on screen
 		frame.setVisible(true);
-		showServerDialog(true);
+		ServerDialog.show(frame, mediator, true);
 	}
 
 	/**
@@ -52,40 +59,39 @@ public class ChatViewer {
 		final JMenuBar menuBar = new JMenuBar();
 		JMenu connectionMenu = new JMenu("Connection");
 		menuBar.add(connectionMenu);
-		JMenuItem serverConfig = new JMenuItem("Server configuration");
-		serverConfig.addActionListener(e -> showServerDialog(false));
+		JMenuItem serverConfigMenuBarItem = new JMenuItem("Server configuration");
+		serverConfigMenuBarItem.addActionListener(e -> mediator.showServerDialog(false, null));
 		JMenuItem channelConfig = new JMenuItem("Channel browser");
 		channelConfig.addActionListener(e -> mediator.showChannelDialog());
-		connectionMenu.add(serverConfig);
+		connectionMenu.add(serverConfigMenuBarItem);
 		connectionMenu.add(channelConfig);
 
 		JMenu statusMenu = new JMenu("Status");
 		menuBar.add(statusMenu);
-		String defaultAway = "Set Away status";
-		JMenuItem awayStatus = new JMenuItem(defaultAway);
-		awayStatus.addActionListener(e -> {
+		awayMenuBarItem = new JMenuItem(DEFAULT_AWAY_LABEL);
+		awayMenuBarItem.addActionListener(e -> {
 			MessageComposer composer = mediator.getComposer();
-			if (awayStatus.getText().equals(defaultAway)) {
+			if (awayMenuBarItem.getText().equals(DEFAULT_AWAY_LABEL)) {
 				String input = JOptionPane.showInputDialog(frame, "Away message:");
 				// Default message is "Away"
 				String awayMessage = input.isEmpty() ? "Away" : input;
-				awayStatus.setText("Remove Away status");
+				awayMenuBarItem.setText("Remove Away status");
 				composer.setAway(awayMessage);
 			} else {
-				awayStatus.setText(defaultAway);
+				awayMenuBarItem.setText(DEFAULT_AWAY_LABEL);
 				composer.removeAway();
 			}
 		});
-		statusMenu.add(awayStatus);
+		statusMenu.add(awayMenuBarItem);
 
 		frame.setJMenuBar(menuBar);
 	}
 
-	public void showServerDialog(boolean inputRequired, String errorMessage) {
-		ServerDialog.show(frame, mediator, inputRequired, errorMessage);
+	public void resetAwayStatus() {
+		awayMenuBarItem.setText(DEFAULT_AWAY_LABEL);
 	}
 
-	public void showServerDialog(boolean inputRequired) {
-		ServerDialog.show(frame, mediator, inputRequired);
+	public void showServerDialog(boolean inputRequired, String errorMessage, AppUser defaultUser, Server defaultServer) {
+		ServerDialog.show(frame, mediator, inputRequired, errorMessage, defaultUser, defaultServer);
 	}
 }

@@ -3,6 +3,9 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
+/**
+ * Notifies of a message sent either in a channel or private conversation.
+ */
 public class PrivMsgHandler extends AbstractViewEditor implements ResponseHandler {
 	public PrivMsgHandler(final ViewMediator mediator) {
 		super(mediator);

@@ -46,6 +46,8 @@ public class AppUser {
 	}
 
 	@Override public int hashCode() {
-		return Objects.hash(nickname, realname, username);
+		// Code inspection complained on returning "Objects.hash(nickname, realname, username)" due to performance.
+		// I therefore refered to this: https://stackoverflow.com/questions/16824721/generating-hashcode-from-multiple-fields
+		return 31 * (nickname.hashCode() + realname.hashCode() + username.hashCode());
 	}
 }

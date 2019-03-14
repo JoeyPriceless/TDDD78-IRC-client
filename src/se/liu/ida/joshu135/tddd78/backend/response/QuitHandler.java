@@ -3,6 +3,9 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
+/**
+ * Notifies that a user has quit the channel
+ */
 public class QuitHandler extends AbstractViewEditor implements ResponseHandler {
 	public QuitHandler(final ViewMediator mediator) {
 		super(mediator);

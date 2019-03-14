@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A server with a hostname, port and JTree node used for displaying it.
+ * A server with a hostname, port and JTree node used for displaying it. Also keeps track of all the node's children. These can
+ * be either Channels or Users.
  */
 public class Server {
 	private String hostname;
 	private int port;
 	private DefaultMutableTreeNode node;
-	private AbstractServerChild activeChild;
+	private AbstractServerChild activeChild = null;
 	private Channel channel = null;
 	private List<User> users;
 
@@ -41,12 +42,12 @@ public class Server {
 		addChild(channel, setActive);
 	}
 
-	private List<AbstractServerChild> getChildren() {
-		List<AbstractServerChild> children = new ArrayList<>(users);
-		children.add(channel);
-		return children;
-	}
-
+	/**
+	 * @param name Name of the user
+	 * @param setActive True if the user should be set to be the active child
+	 *
+	 * @return The requested user. If it does not exist it will be created.
+	 */
 	public User getUser(String name, boolean setActive) {
 		for (User user : users) {
 			if (user.getName().equals(name))
@@ -79,16 +80,12 @@ public class Server {
 		node.add(child.getNode());
 	}
 
+	/**
+	 * Resets the current channel and destroys it's node.
+	 */
 	public void killChannel() {
 		if (channel == null) return;
 		channel.destroyNode();
-		channel = null;
-		selectActiveChild();
-	}
-
-	public void killUser(User user) {
-		user.destroyNode();
-		users.remove(user);
 		selectActiveChild();
 	}
 
@@ -118,11 +115,13 @@ public class Server {
 		setChannel(newChannel, true);
 	}
 
+	/**
+	 * Destroy the server node itself, killing the channel and all users.
+	 */
 	public void destroyNode() {
 		killChannel();
 		killUsers();
 		this.node.removeFromParent();
-		this.node = null;
 	}
 
 	public DefaultMutableTreeNode getNode() {

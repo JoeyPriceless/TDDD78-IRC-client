@@ -24,7 +24,7 @@ public abstract class AbstractServerChild {
 		return history;
 	}
 
-	public AbstractServerChild(final String name, boolean shouldCreateNode) {
+	protected AbstractServerChild(final String name, boolean shouldCreateNode) {
 		this.name = name;
 		this.history = "";
 		if (shouldCreateNode) {
@@ -43,7 +43,6 @@ public abstract class AbstractServerChild {
 
 	public void destroyNode() {
 		node.removeFromParent();
-		node = null;
 	}
 
 	@Override public String toString() {
@@ -58,6 +57,6 @@ public abstract class AbstractServerChild {
 	}
 
 	@Override public int hashCode() {
-		return Objects.hash(name);
+		return name.hashCode();
 	}
 }

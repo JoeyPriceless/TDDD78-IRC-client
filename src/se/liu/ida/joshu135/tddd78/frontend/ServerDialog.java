@@ -2,7 +2,6 @@ package se.liu.ida.joshu135.tddd78.frontend;
 
 import net.miginfocom.swing.MigLayout;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.models.AppUser;
 import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
@@ -21,12 +20,6 @@ public class ServerDialog extends JPanel {
 	private static final int FIELD_WIDTH = 10;
 	private static final int SHORT_FIELD_WIDTH = 4;
 	private static final int ERROR_WIDTH = 18;
-	// TODO Fetch last login if available
-	private static String defaultHostname = "irc.mibbit.net";
-	private static String defaultPort = "6667";
-	private static String defaultUsername = "LiULouie";
-	private static String defaultRealName = "Louis from LiU";
-	private static String defaultNickname = "LiULou";
 
 	private JTextField serverField;
 	private JTextField portField;
@@ -61,6 +54,25 @@ public class ServerDialog extends JPanel {
 	}
 
 	public ServerDialog() {
+		this(null, null);
+	}
+
+	public ServerDialog(AppUser defaultUser, Server defaultServer) {
+		String defaultHostname = "";
+		String defaultPort = "6667";
+		String defaultUsername = "";
+		String defaultRealName = "";
+		String defaultNickname = "";
+		if (defaultServer != null) {
+			defaultHostname = defaultServer.getHostname();
+			defaultPort = Integer.toString(defaultServer.getPort());
+		}
+		if (defaultUser != null) {
+			defaultUsername = defaultUser.getUsername();
+			defaultRealName = defaultUser.getRealname();
+			defaultNickname = defaultUser.getNickname();
+		}
+
 		setLayout(new MigLayout());
 		serverField = new JTextField(defaultHostname, FIELD_WIDTH);
 		portField = new JTextField(defaultPort, SHORT_FIELD_WIDTH);
@@ -73,7 +85,7 @@ public class ServerDialog extends JPanel {
 		userNameField = new JTextField(defaultUsername, FIELD_WIDTH);
 		realNameField = new JTextField(defaultRealName, FIELD_WIDTH);
 		nickNameField = new JTextField(defaultNickname, FIELD_WIDTH);
-		add(new JLabel("AppUser configuration"), "cell 0 3, span, align center");
+		add(new JLabel("User configuration"), "cell 0 3, span, align center");
 		add(new JLabel("Username :"), "cell 0 4, align right");
 		add((userNameField), "cell 1 4");
 		add(new JLabel("Real Name :"), "cell 0 5, align right");
@@ -94,10 +106,11 @@ public class ServerDialog extends JPanel {
 
 	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired)
 	{
-		show(parentComponent, mediator, inputRequired, null);
+		show(parentComponent, mediator, inputRequired, null, null, null);
 	}
-	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired, String errorMessage) {
-		ServerDialog serverDialog = new ServerDialog();
+	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired, String errorMessage,
+							AppUser defaultUser, Server defaultServer) {
+		ServerDialog serverDialog = new ServerDialog(defaultUser, defaultServer);
 		boolean isDone = false;
 		while (!isDone) {
 			if (errorMessage != null) {

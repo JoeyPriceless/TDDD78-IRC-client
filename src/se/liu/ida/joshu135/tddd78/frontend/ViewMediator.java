@@ -12,6 +12,10 @@ import se.liu.ida.joshu135.tddd78.models.User;
 
 import java.io.IOException;
 
+/**
+ * A mediator class that acts as the interface for component-component interaction as well as backend-frontend interaction.
+ * This is done to limit the dependencies between the different parts of the program and streamline certain processes.
+ */
 public class ViewMediator {
 	private ChatViewer chatViewer;
 	private ConnectionHandler conHandler;
@@ -24,10 +28,6 @@ public class ViewMediator {
 
 	public MessageComposer getComposer() {
 		return composer;
-	}
-
-	public AppUser getUser() {
-		return user;
 	}
 
 	public Server getServer() {
@@ -43,6 +43,7 @@ public class ViewMediator {
 		conHandler.setServer(newServer, user);
 		chatComponent.setSource(null);
 		serverTreeComponent.addServerNode(newServer);
+		chatViewer.resetAwayStatus();
 	}
 
 	public ViewMediator(final ChatViewer chatViewer, final ConnectionHandler conHandler, final MessageComposer composer,
@@ -64,7 +65,6 @@ public class ViewMediator {
 	public void setServerTreeNode(AbstractServerChild selectedChild) {
 		Server server = conHandler.getServer();
 		// Updates the tree data model and shows the new channel.
-		//userListComponent.clear();
 		server.setActiveChild(selectedChild);
 		serverTreeComponent.updateStructure(server.getNode(), selectedChild.getNode());
 	}
@@ -154,17 +154,17 @@ public class ViewMediator {
 		// If user selects all names on server, it is always granted. If the user is an a channel and selects channel names,
 		// request all names in channel. If the user is in a private conversation, simply set the UserList to the name of the
 		// recipient.
-		if (scope == Scope.CHANNEL) {
-			AbstractServerChild child = conHandler.getServer().getActiveChild();
-			// Inspection: this is a clear case where different actions need to happen depending on if the child is a user or
-			// channel. Can't simply abstract this away in AbstractServerChild.
-			if (child instanceof Channel) {
+		if (scope == Scope.SERVERCHILD) {
+			Server server = conHandler.getServer();
+			AbstractServerChild child = server.getActiveChild();
+			if (child == null) {
+				return;
+			}
+			else if (child.equals(server.getChannel())) {
 				messageString = MessageComposer.compose("NAMES", child.getName());
 			} else {
 				userListComponent.clear();
-				if (child != null) {
-					userListComponent.addUser(child.getName());
-				}
+				userListComponent.addUser(child.getName());
 				return;
 			}
 		} else {
@@ -174,7 +174,7 @@ public class ViewMediator {
 	}
 
 	public void showChannelDialog() {
-		channelDialog = new ChannelDialog(this);
+		channelDialog = new ChannelDialog(this, chatViewer.getFrame());
 		composer.listChannels();
 		// Since this command is called on MessageReceiver's thread (SenderT), the dialog has to be opened on another thread
 		// in order to not incoming server messages.
@@ -196,10 +196,6 @@ public class ViewMediator {
 	}
 
 	public void showServerDialog(boolean inputRequired, String errorMessage) {
-		chatViewer.showServerDialog(inputRequired, errorMessage);
-	}
-
-	public void showServerDialog(boolean inputRequired) {
-		chatViewer.showServerDialog(inputRequired);
+		chatViewer.showServerDialog(inputRequired, errorMessage, user, getServer());
 	}
 }

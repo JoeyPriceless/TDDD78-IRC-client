@@ -3,7 +3,6 @@ package se.liu.ida.joshu135.tddd78.backend;
 import se.liu.ida.joshu135.tddd78.backend.response.Correspondent;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler;
 import se.liu.ida.joshu135.tddd78.backend.response.ResponseHandlerFactory;
-import se.liu.ida.joshu135.tddd78.frontend.ChatViewer;
 import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 import se.liu.ida.joshu135.tddd78.util.LogUtil;
@@ -35,7 +34,7 @@ public class MessageReceiver implements Runnable {
 			}
 			Message message = new Message(line);
 			ResponseHandler action = factory.getAction(message.getCommand());
-			// If action instance implements Correspondent, it needs a MessageComposer in order to response to messages.
+			// If action instance implements Correspondent, it needs a MessageComposer in order to responsd to the message.
 			if (action instanceof Correspondent) {
 				((Correspondent) action).handle(composer, message);
 			} else {

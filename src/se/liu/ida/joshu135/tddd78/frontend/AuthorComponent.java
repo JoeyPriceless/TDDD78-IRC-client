@@ -16,7 +16,6 @@ public class AuthorComponent extends JPanel {
 	private ViewMediator mediator;
 	private static final int HEIGHT = 1;
 
-	// TODO block text submit before connection to server/channel.
 	public AuthorComponent(ViewMediator mediator) {
 		this.mediator = mediator;
 		this.setLayout(new MigLayout());
@@ -50,7 +49,7 @@ public class AuthorComponent extends JPanel {
 		ActionMap actionMap = authorField.getActionMap();
 		actionMap.put(textSubmit, new AbstractAction() {
 			@Override public void actionPerformed(final ActionEvent e) {
-				submitMessage();
+				if (isValidMessage()) submitMessage();
 			}
 		});
 
@@ -79,6 +78,6 @@ public class AuthorComponent extends JPanel {
 	}
 
 	public boolean isValidMessage() {
-		return (!isTooLong() && !authorField.getText().isEmpty());
+		return (!isTooLong() && !authorField.getText().isEmpty() && mediator.getServer().getActiveChild() != null);
 	}
 }

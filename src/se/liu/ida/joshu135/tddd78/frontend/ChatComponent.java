@@ -13,7 +13,7 @@ import java.awt.event.MouseWheelListener;
  * what's displayed in that chat.
  */
 public class ChatComponent extends JScrollPane {
-	private AbstractServerChild source;
+	private AbstractServerChild source = null;
 	private JTextArea messageArea;
 	private boolean doAutoScroll = true;
 

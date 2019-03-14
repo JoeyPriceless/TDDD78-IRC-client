@@ -8,7 +8,8 @@ import java.util.Map;
 
 /**
  * Factory class for dynamically creating ResponseHandler objects depending on the recieved command.
- * Contains a mapping between commands (Strings/3-letter numerics) and ResponseActions
+ * Contains a mapping between commands (Strings/3-letter numerics) and ResponseHandlers.
+ * ReponseHandlers merely act on responses, Correspondents also send a reponse back.
  */
 public class ResponseHandlerFactory {
 	private ViewMediator mediator;
@@ -23,7 +24,8 @@ public class ResponseHandlerFactory {
 	 * Gets an action depending on the given command. If the command cannot be found, a default action will be return.
 	 * @param command An IRC command (UPPER CASE or 3-letter numeric). See https://tools.ietf.org/html/rfc2812 for the full list
 	 *
-	 * @return The ResponseHandler corresponding the command, or if there is no corresponing command, a DefaultHandler object.
+	 * @return The ResponseHandler corresponding the command, or if there is no corresponing command, an instance of the default
+	 * handler.
 	 */
 	public ResponseHandler getAction(String command) {
 		return map.getOrDefault(command, new DisplayHandler(mediator));
@@ -88,21 +90,7 @@ public class ResponseHandlerFactory {
 	 */
 	private void addMapRange(int start, int end, ResponseHandler action) {
 		for (int i = start; i <= end; i++) {
-			// not supporting pre 5.0 environments.
-			String numeric = String.format("%03d" , i);
-			map.put(numeric, action);
-		}
-	}
-
-	/**
-	 * Maps a response to all numerics within an array
-	 * @param command A list of commands to be mapped.
-	 * @param action The action to be mapped
-	 */
-	private void addMapList(int[] command, ResponseHandler action) {
-		for (int i : command) {
-			// not supporting pre 5.0 environments.
-			String numeric = String.format("%03d" , i);
+			String numeric = String.format("%03d" , Integer.valueOf(i));
 			map.put(numeric, action);
 		}
 	}

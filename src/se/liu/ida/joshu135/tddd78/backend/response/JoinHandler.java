@@ -3,6 +3,9 @@ package se.liu.ida.joshu135.tddd78.backend.response;
 import se.liu.ida.joshu135.tddd78.frontend.ViewMediator;
 import se.liu.ida.joshu135.tddd78.models.Message;
 
+/**
+ * Notifies that a user has joined the channel.
+ */
 public class JoinHandler extends AbstractViewEditor implements ResponseHandler {
 	public JoinHandler(final ViewMediator mediator) {
 		super(mediator);

@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 public class Message {
 	private static final Logger LOGGER = LogUtil.getLogger(Message.class.getSimpleName());
 	private String message;
-	private String prefix = null;
 	private String nickname = null;
 	private String userHost = null;
 	private String command = null;
@@ -24,11 +23,6 @@ public class Message {
 
 	public String getMessage() {
 		return message;
-	}
-
-	// Useful getter to have.
-	public String getPrefix() {
-		return prefix;
 	}
 
 	public String getNickname() {
@@ -65,7 +59,7 @@ public class Message {
 		Pattern pGeneral = Pattern.compile("(:\\S*)?\\s?([a-zA-Z]+|\\d{3})\\s([^:]*):?([^\\n\\r]*)");
 		Matcher mGeneral = pGeneral.matcher(message);
 		if (mGeneral.find()) {
-			prefix = mGeneral.group(1);
+			final String prefix = mGeneral.group(1);
 			// Check if message has been sent from a user. If so, split the nickname from the hostname.
 			if (prefix != null) {
 				Pattern pUser = Pattern.compile(":(\\S*)?!~?(\\S*)");
@@ -110,17 +104,6 @@ public class Message {
 	 */
 	public String[] splitTrailing() {
 		return splitSpace(trailing);
-	}
-
-	/**
-	 * Get a trailing parameter at a certain index.
-	 * @param index Zero-based index of trailing param.
-	 *
-	 * @return A string containing the trailing param at index i.
-	 */
-	// Useful method to have.
-	public String getTrailingAt(int index) {
-		return splitTrailing()[index];
 	}
 
 	private String[] splitSpace(String text) {

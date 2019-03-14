@@ -20,18 +20,15 @@ import java.util.logging.Logger;
 public class ConnectionHandler {
 	private static final Logger LOGGER = LogUtil.getLogger(ConnectionHandler.class.getSimpleName());
 	private Socket socket = null;
-	private BufferedWriter writer;
-	private BufferedReader reader;
+	private BufferedWriter writer = null;
+	private BufferedReader reader = null;
 	private MessageComposer composer;
-	private Server server;
+	private Server server = null;
 	private AppUser user;
 
 	public ConnectionHandler(MessageComposer composer, AppUser user) {
 		this.composer = composer;
 		this.user = user;
-		this.server = null;
-		this.writer = null;
-		this.reader = null;
 	}
 
 	// IOException is needed for socket, etc and contains UnknownHostException. I Don't see why I would add a redundant

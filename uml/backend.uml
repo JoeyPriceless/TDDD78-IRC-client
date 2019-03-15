@@ -3,141 +3,222 @@
   <ID>JAVA</ID>
   <OriginalElement>se.liu.ida.joshu135.tddd78.backend</OriginalElement>
   <nodes>
-    <node x="313.1541564291565" y="0.0">se.liu.ida.joshu135.tddd78.util.Time</node>
-    <node x="107.48748976248976" y="277.0">se.liu.ida.joshu135.tddd78.backend.ConnectionHandler</node>
-    <node x="157.05711506961512" y="505.0">se.liu.ida.joshu135.tddd78.frontend.Main</node>
-    <node x="344.7641994266994" y="386.0">se.liu.ida.joshu135.tddd78.backend.MessageReceiver</node>
-    <node x="138.90415642915647" y="198.0">se.liu.ida.joshu135.tddd78.models.Server</node>
-    <node x="379.28409090909093" y="277.0">se.liu.ida.joshu135.tddd78.backend.response</node>
-    <node x="52.88949631449643" y="79.0">se.liu.ida.joshu135.tddd78.models.AppUser</node>
-    <node x="303.6541564291565" y="79.0">se.liu.ida.joshu135.tddd78.models.Message</node>
-    <node x="238.9041564291565" y="198.0">se.liu.ida.joshu135.tddd78.backend.MessageComposer</node>
-    <node x="39.279156429156416" y="386.0">se.liu.ida.joshu135.tddd78.backend.MessageSender</node>
+    <node x="289.0657663258726" y="0.0">se.liu.ida.joshu135.tddd78.util.Time</node>
+    <node x="739.4256148107211" y="0.0">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
+    <node x="552.8707239568942" y="287.0">se.liu.ida.joshu135.tddd78.backend.ConnectionHandler</node>
+    <node x="482.05005526388493" y="535.0">se.liu.ida.joshu135.tddd78.frontend.Main</node>
+    <node x="767.1439946578245" y="198.0">se.liu.ida.joshu135.tddd78.models.Server</node>
+    <node x="182.89128903011874" y="416.0">se.liu.ida.joshu135.tddd78.backend.MessageReceiver</node>
+    <node x="844.0731279358938" y="89.0">se.liu.ida.joshu135.tddd78.models.User</node>
+    <node x="244.9" y="287.0">se.liu.ida.joshu135.tddd78.backend.response.Correspondent</node>
+    <node x="45.89999999999998" y="287.0">se.liu.ida.joshu135.tddd78.backend.response.ResponseHandlerFactory</node>
+    <node x="594.1831905682968" y="89.0">se.liu.ida.joshu135.tddd78.models.AppUser</node>
+    <node x="279.5657663258726" y="89.0">se.liu.ida.joshu135.tddd78.models.Message</node>
+    <node x="62.89128903011874" y="198.0">se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler</node>
+    <node x="731.0731279358938" y="89.0">se.liu.ida.joshu135.tddd78.models.Channel</node>
+    <node x="455.50329971446985" y="198.0">se.liu.ida.joshu135.tddd78.backend.MessageComposer</node>
+    <node x="392.87829971446985" y="416.0">se.liu.ida.joshu135.tddd78.backend.MessageSender</node>
   </nodes>
   <notes />
   <edges>
+    <edge source="se.liu.ida.joshu135.tddd78.models.User" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+      <point x="17.75" y="-14.5" />
+      <point x="897.3231279358938" y="69.0" />
+      <point x="877.782757667864" y="69.0" />
+      <point x="63.85714285714289" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.response.ResponseHandlerFactory">
+      <point x="-6.899999999999977" y="-14.5" />
+      <point x="244.99128903011876" y="356.0" />
+      <point x="180.14999999999998" y="356.0" />
+      <point x="44.75" y="14.5" />
+    </edge>
     <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.backend.MessageReceiver">
-      <point x="27.27272727272728" y="-14.5" />
-      <point x="221.82984234234237" y="475.0" />
-      <point x="448.2641994266994" y="475.0" />
-      <point x="34.5" y="14.5" />
+      <point x="-27.272727272727252" y="-14.5" />
+      <point x="492.2773279911577" y="505.0" />
+      <point x="217.39128903011874" y="505.0" />
+      <point x="-34.5" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler">
+      <point x="62.10000000000002" y="-14.5" />
+      <point x="313.99128903011876" y="376.0" />
+      <point x="590.8707239568942" y="376.0" />
+      <point x="-38.0" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.response.Correspondent" target="se.liu.ida.joshu135.tddd78.models.Message">
+      <point x="0.0" y="-14.5" />
+      <point x="308.4" y="178.0" />
+      <point x="321.86576632587264" y="178.0" />
+      <point x="-4.699999999999932" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.backend.MessageComposer" target="se.liu.ida.joshu135.tddd78.models.AppUser">
-      <point x="-55.875" y="-14.5" />
-      <point x="257.5291564291565" y="138.0" />
-      <point x="136.58949631449642" y="138.0" />
-      <point x="37.19999999999999" y="14.5" />
+      <point x="55.87500000000006" y="-14.5" />
+      <point x="585.8782997144699" y="178.0" />
+      <point x="603.4831905682969" y="178.0" />
+      <point x="-37.19999999999999" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageComposer" target="se.liu.ida.joshu135.tddd78.models.Message">
+      <point x="-18.624999999999943" y="-14.5" />
+      <point x="511.3782997144699" y="148.0" />
+      <point x="359.46576632587255" y="148.0" />
+      <point x="32.89999999999998" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.response.Correspondent" target="se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler">
+      <point x="-42.33333333333337" y="-14.5" />
+      <point x="266.0666666666666" y="267.0" />
+      <point x="185.39128903011874" y="267.0" />
+      <point x="52.5" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.User">
+      <point x="15.0" y="-14.5" />
+      <point x="822.1439946578245" y="158.0" />
+      <point x="855.9064612692272" y="158.0" />
+      <point x="-23.666666666666657" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler" target="se.liu.ida.joshu135.tddd78.models.Message">
+      <point x="0.0" y="-14.5" />
+      <point x="132.89128903011874" y="168.0" />
+      <point x="312.46576632587255" y="168.0" />
+      <point x="-14.100000000000023" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.response.ResponseHandlerFactory" target="se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler">
+      <point x="44.75" y="-14.5" />
+      <point x="180.14999999999998" y="267.0" />
+      <point x="150.39128903011874" y="267.0" />
+      <point x="17.5" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler" target="se.liu.ida.joshu135.tddd78.models.AppUser">
-      <point x="-37.99999999999997" y="-14.5" />
-      <point x="145.4874897624898" y="247.0" />
-      <point x="123.80218058968069" y="247.0" />
-      <point x="123.80218058968069" y="138.0" />
-      <point x="117.98949631449642" y="138.0" />
-      <point x="18.599999999999994" y="14.5" />
+      <point x="-12.666666666666629" y="-14.5" />
+      <point x="616.2040572902274" y="178.0" />
+      <point x="622.0831905682968" y="178.0" />
+      <point x="-18.600000000000023" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.MessageComposer">
+      <point x="20.700000000000045" y="-14.5" />
+      <point x="272.5912890301188" y="346.0" />
+      <point x="457.59258542875557" y="346.0" />
+      <point x="457.59258542875557" y="257.0" />
+      <point x="487.4318711430413" y="257.0" />
+      <point x="-42.571428571428555" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.models.Message">
+      <point x="-62.10000000000002" y="-14.5" />
+      <point x="189.79128903011872" y="396.0" />
+      <point x="12.516289030118742" y="396.0" />
+      <point x="12.516289030118742" y="148.0" />
+      <point x="293.6657663258726" y="148.0" />
+      <point x="-32.89999999999998" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.models.Message" target="se.liu.ida.joshu135.tddd78.util.Time">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.backend.MessageSender">
-      <point x="-13.636363636363626" y="-14.5" />
-      <point x="180.9207514332515" y="455.0" />
-      <point x="136.77915642915642" y="455.0" />
+      <point x="-6.818181818181813" y="-14.5" />
+      <point x="512.7318734457032" y="475.0" />
+      <point x="490.37829971446985" y="475.0" />
       <point x="32.5" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.response.Correspondent" target="se.liu.ida.joshu135.tddd78.backend.MessageComposer">
+      <point x="42.33333333333337" y="-14.5" />
+      <point x="350.73333333333335" y="247.0" />
+      <point x="466.146156857327" y="247.0" />
+      <point x="-63.85714285714283" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.backend.MessageSender" target="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler">
       <point x="16.25" y="-14.5" />
-      <point x="-63.33333333333333" y="14.5" />
+      <point x="474.12829971446985" y="386.0" />
+      <point x="616.2040572902274" y="386.0" />
+      <point x="-12.666666666666686" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.Channel">
+      <point x="-15.0" y="-14.5" />
+      <point x="792.1439946578245" y="138.0" />
+      <point x="754.0731279358938" y="138.0" />
+      <point x="-23.0" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler" target="se.liu.ida.joshu135.tddd78.backend.MessageComposer">
-      <point x="63.33333333333334" y="-14.5" />
-      <point x="246.8208230958231" y="257.0" />
-      <point x="276.1541564291565" y="257.0" />
-      <point x="-37.25" y="14.5" />
+      <point x="-63.333333333333314" y="-14.5" />
+      <point x="565.5373906235608" y="267.0" />
+      <point x="572.5747282858985" y="267.0" />
+      <point x="42.57142857142861" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.models.Channel" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+      <point x="23.0" y="-14.5" />
+      <point x="800.0731279358938" y="69.0" />
+      <point x="813.9256148107211" y="69.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler">
+      <point x="13.636363636363626" y="-14.5" />
+      <point x="533.1864189002486" y="485.0" />
+      <point x="660.1258128396425" y="485.0" />
+      <point x="660.1258128396425" y="386.0" />
+      <point x="666.8707239568942" y="386.0" />
+      <point x="38.0" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+      <point x="5.0" y="-14.5" />
+      <point x="812.1439946578245" y="148.0" />
+      <point x="833.5731279358938" y="148.0" />
+      <point x="833.5731279358938" y="69.0" />
+      <point x="835.2113290964354" y="69.0" />
+      <point x="21.285714285714334" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.backend.MessageComposer">
+      <point x="6.818181818181813" y="-14.5" />
+      <point x="526.3682370820668" y="475.0" />
+      <point x="540.1964815326517" y="475.0" />
+      <point x="540.1964815326517" y="267.0" />
+      <point x="551.2890140001841" y="267.0" />
+      <point x="21.285714285714278" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.response.ResponseHandler">
+      <point x="-34.5" y="-14.5" />
+      <point x="217.39128903011874" y="376.0" />
+      <point x="35.39999999999998" y="376.0" />
+      <point x="35.39999999999998" y="267.0" />
+      <point x="80.39128903011874" y="267.0" />
+      <point x="-52.5" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.backend.MessageSender" target="se.liu.ida.joshu135.tddd78.models.Message">
       <point x="-48.75" y="-14.5" />
-      <point x="55.529156429156416" y="366.0" />
-      <point x="74.5228296478297" y="366.0" />
-      <point x="74.5228296478297" y="148.0" />
-      <point x="309.5291564291565" y="148.0" />
-      <point x="-41.125" y="14.5" />
+      <point x="409.12829971446985" y="336.0" />
+      <point x="405.32500000000005" y="336.0" />
+      <point x="405.32500000000005" y="178.0" />
+      <point x="331.2657663258726" y="178.0" />
+      <point x="4.7000000000000455" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.models.AppUser">
-      <point x="-34.09090909090909" y="-14.5" />
-      <point x="160.466205978706" y="485.0" />
-      <point x="19.181818181818187" y="485.0" />
-      <point x="19.181818181818187" y="128.0" />
-      <point x="62.18949631449641" y="128.0" />
-      <point x="-37.20000000000002" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler" target="se.liu.ida.joshu135.tddd78.models.Server">
-      <point x="-12.666666666666629" y="-14.5" />
-      <point x="170.82082309582313" y="257.0" />
-      <point x="158.90415642915647" y="257.0" />
-      <point x="-20.0" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.response">
-      <point x="0.0" y="-14.5" />
-      <point x="413.7641994266994" y="326.0" />
-      <point x="400.28409090909093" y="326.0" />
-      <point x="-42.0" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler">
-      <point x="-46.00000000000006" y="-14.5" />
-      <point x="367.7641994266994" y="356.0" />
-      <point x="246.82082309582307" y="356.0" />
-      <point x="63.333333333333314" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageComposer" target="se.liu.ida.joshu135.tddd78.models.Message">
-      <point x="55.875" y="-14.5" />
-      <point x="369.2791564291565" y="178.0" />
-      <point x="356.5291564291565" y="178.0" />
-      <point x="5.875" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.MessageComposer">
-      <point x="-30.666666666666686" y="-14.5" />
-      <point x="383.0975327600328" y="346.0" />
-      <point x="353.89044840294844" y="346.0" />
-      <point x="353.89044840294844" y="257.0" />
-      <point x="350.6541564291565" y="257.0" />
-      <point x="37.25" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.models.Message">
-      <point x="61.333333333333314" y="-14.5" />
-      <point x="475.0975327600328" y="366.0" />
-      <point x="526.784090909091" y="366.0" />
-      <point x="526.784090909091" y="158.0" />
-      <point x="380.0291564291565" y="158.0" />
-      <point x="29.375" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler">
-      <point x="0.0" y="-14.5" />
-      <point x="194.55711506961512" y="435.0" />
-      <point x="186.89658067158067" y="435.0" />
-      <point x="186.89658067158067" y="366.0" />
-      <point x="196.15415642915642" y="366.0" />
-      <point x="12.666666666666657" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.backend.MessageComposer">
-      <point x="13.636363636363626" y="-14.5" />
-      <point x="208.19347870597875" y="455.0" />
-      <point x="316.8132473382474" y="455.0" />
-      <point x="316.8132473382474" y="257.0" />
-      <point x="325.82082309582313" y="257.0" />
-      <point x="12.416666666666629" y="14.5" />
+      <point x="27.272727272727252" y="-14.5" />
+      <point x="546.8227825366122" y="505.0" />
+      <point x="715.3707239568942" y="505.0" />
+      <point x="715.3707239568942" y="178.0" />
+      <point x="659.2831905682968" y="178.0" />
+      <point x="18.600000000000023" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.models.Message">
-      <point x="34.09090909090909" y="-14.5" />
-      <point x="228.6480241605242" y="485.0" />
-      <point x="537.784090909091" y="485.0" />
-      <point x="537.784090909091" y="148.0" />
-      <point x="391.7791564291565" y="148.0" />
-      <point x="41.125" y="14.5" />
+      <point x="-34.09090909090912" y="-14.5" />
+      <point x="485.4591461729758" y="515.0" />
+      <point x="0.0" y="515.0" />
+      <point x="0.0" y="138.0" />
+      <point x="284.2657663258725" y="138.0" />
+      <point x="-42.30000000000001" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler" target="se.liu.ida.joshu135.tddd78.models.Server">
+      <point x="63.333333333333314" y="-14.5" />
+      <point x="692.2040572902274" y="267.0" />
+      <point x="827.1439946578245" y="267.0" />
+      <point x="20.0" y="14.5" />
+    </edge>
+    <edge source="se.liu.ida.joshu135.tddd78.backend.MessageReceiver" target="se.liu.ida.joshu135.tddd78.backend.response.Correspondent">
+      <point x="6.899999999999977" y="-14.5" />
+      <point x="258.7912890301187" y="336.0" />
+      <point x="308.4" y="336.0" />
+      <point x="0.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="237.5" y="146.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="284.5" y="292.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>

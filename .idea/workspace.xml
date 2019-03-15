@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9ea5da4-b8c5-4748-96cb-103f08006017" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/borrowedcode/BriefLogFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/borrowedcode/BriefLogFormatter.java" afterDir="false" />
-    </list>
+    <list default="true" id="b9ea5da4-b8c5-4748-96cb-103f08006017" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,15 +19,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/AuthorComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/Time.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
+            <state relative-caret-position="1008">
               <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
@@ -95,11 +82,256 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseHandlerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-414">
+            <state relative-caret-position="18">
               <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/uml/frontend.uml">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>se.liu.ida.joshu135.tddd78.frontend</OriginalElement>
+              <nodes>
+                <node x="297.5061858076564" y="674.0">se.liu.ida.joshu135.tddd78.frontend.ChatViewer</node>
+                <node x="113.55608076563968" y="535.0">se.liu.ida.joshu135.tddd78.frontend.AuthorComponent</node>
+                <node x="283.55608076563965" y="535.0">se.liu.ida.joshu135.tddd78.frontend.UserListComponent</node>
+                <node x="539.5979808590105" y="535.0">se.liu.ida.joshu135.tddd78.frontend.ServerDialog</node>
+                <node x="359.2013188608778" y="0.0">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
+                <node x="0.0" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ChatComponent</node>
+                <node x="314.0061858076564" y="753.0">se.liu.ida.joshu135.tddd78.frontend.Main</node>
+                <node x="538.0733426704016" y="109.0">se.liu.ida.joshu135.tddd78.models.User</node>
+                <node x="552.1358426704016" y="208.0">se.liu.ida.joshu135.tddd78.models.Server</node>
+                <node x="253.05631419234368" y="416.0">se.liu.ida.joshu135.tddd78.frontend.ViewMediator</node>
+                <node x="186.42285247432307" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ChannelDialog</node>
+                <node x="397.55631419234373" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</node>
+                <node x="248.59774743230633" y="109.0">se.liu.ida.joshu135.tddd78.models.Channel</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="se.liu.ida.joshu135.tddd78.models.User" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+                  <point x="17.75" y="-14.5" />
+                  <point x="591.3233426704016" y="79.0" />
+                  <point x="456.0513188608778" y="79.0" />
+                  <point x="22.350000000000023" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+                  <point x="-13.916666666666686" y="14.5" />
+                  <point x="467.13964752567705" y="386.0" />
+                  <point x="361.09202847805795" y="386.0" />
+                  <point x="47.53571428571428" y="-14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatComponent" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+                  <point x="-34.25" y="-14.5" />
+                  <point x="34.25" y="267.0" />
+                  <point x="55.535480859010306" y="267.0" />
+                  <point x="55.535480859010306" y="49.0" />
+                  <point x="366.6513188608778" y="49.0" />
+                  <point x="-67.05000000000001" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.UserListComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+                  <point x="-57.375" y="-14.5" />
+                  <point x="302.68108076563965" y="515.0" />
+                  <point x="308.51464752567705" y="515.0" />
+                  <point x="-5.041666666666629" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.frontend.ChatViewer">
+                  <point x="18.75" y="-14.5" />
+                  <point x="370.2561858076564" y="728.0" />
+                  <point x="378.5061858076564" y="728.0" />
+                  <point x="27.0" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerDialog" target="se.liu.ida.joshu135.tddd78.models.Server">
+                  <point x="38.0" y="-14.5" />
+                  <point x="634.5979808590105" y="515.0" />
+                  <point x="630.3479808590105" y="515.0" />
+                  <point x="630.3479808590105" y="267.0" />
+                  <point x="608.1358426704016" y="267.0" />
+                  <point x="15.999999999999972" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog" target="se.liu.ida.joshu135.tddd78.models.Channel">
+                  <point x="0.0" y="-14.5" />
+                  <point x="249.42285247432307" y="267.0" />
+                  <point x="257.90189075630263" y="267.0" />
+                  <point x="257.90189075630263" y="188.0" />
+                  <point x="271.59774743230633" y="188.0" />
+                  <point x="-23.0" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.User">
+                  <point x="-15.0" y="-14.5" />
+                  <point x="577.1358426704016" y="158.0" />
+                  <point x="564.6983426704016" y="158.0" />
+                  <point x="-8.875" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.AuthorComponent">
+                  <point x="-14.399999999999977" y="-14.5" />
+                  <point x="337.1061858076564" y="604.0" />
+                  <point x="225.30608076563968" y="604.0" />
+                  <point x="37.25" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ChatComponent">
+                  <point x="-50.39999999999998" y="-14.5" />
+                  <point x="301.1061858076564" y="654.0" />
+                  <point x="30.649999999999977" y="654.0" />
+                  <point x="30.649999999999977" y="396.0" />
+                  <point x="17.125" y="396.0" />
+                  <point x="-51.375" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.models.Server">
+                  <point x="50.400000000000034" y="-14.5" />
+                  <point x="401.9061858076564" y="654.0" />
+                  <point x="664.0979808590105" y="654.0" />
+                  <point x="664.0979808590105" y="257.0" />
+                  <point x="624.1358426704016" y="257.0" />
+                  <point x="31.99999999999997" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.Channel">
+                  <point x="4.321428571428555" y="-14.5" />
+                  <point x="317.87774276377223" y="336.0" />
+                  <point x="322.92285247432307" y="336.0" />
+                  <point x="322.92285247432307" y="188.0" />
+                  <point x="302.264414098973" y="188.0" />
+                  <point x="7.666666666666686" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+                  <point x="15.75" y="14.5" />
+                  <point x="265.17285247432307" y="346.0" />
+                  <point x="300.592028478058" y="346.0" />
+                  <point x="-12.964285714285666" y="-14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+                  <point x="-35.99999999999994" y="-14.5" />
+                  <point x="315.50618580765644" y="634.0" />
+                  <point x="95.85608076563966" y="634.0" />
+                  <point x="95.85608076563966" y="465.0" />
+                  <point x="258.09798085901036" y="465.0" />
+                  <point x="-55.458333333333314" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+                  <point x="-38.89285714285711" y="-14.5" />
+                  <point x="274.66345704948657" y="376.0" />
+                  <point x="175.92285247432307" y="376.0" />
+                  <point x="175.92285247432307" y="69.0" />
+                  <point x="396.4513188608778" y="69.0" />
+                  <point x="-37.25" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChatComponent">
+                  <point x="-56.17857142857139" y="-14.5" />
+                  <point x="257.3777427637723" y="396.0" />
+                  <point x="85.625" y="396.0" />
+                  <point x="17.125" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChatViewer">
+                  <point x="35.29166666666674" y="14.5" />
+                  <point x="348.8479808590104" y="485.0" />
+                  <point x="447.05608076563965" y="485.0" />
+                  <point x="447.05608076563965" y="604.0" />
+                  <point x="365.9061858076564" y="604.0" />
+                  <point x="14.400000000000034" y="-14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
+                  <point x="30.25" y="-14.5" />
+                  <point x="343.8063141923437" y="366.0" />
+                  <point x="411.4729808590104" y="366.0" />
+                  <point x="-69.58333333333333" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.Channel">
+                  <point x="-25.0" y="-14.5" />
+                  <point x="567.1358426704016" y="168.0" />
+                  <point x="332.9310807656397" y="168.0" />
+                  <point x="38.33333333333337" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.Server">
+                  <point x="21.60714285714289" y="-14.5" />
+                  <point x="335.16345704948657" y="356.0" />
+                  <point x="345.13713818860884" y="356.0" />
+                  <point x="345.13713818860884" y="257.0" />
+                  <point x="560.1358426704016" y="257.0" />
+                  <point x="-32.0" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.UserListComponent">
+                  <point x="15.125" y="14.5" />
+                  <point x="328.6813141923437" y="505.0" />
+                  <point x="379.18108076563965" y="505.0" />
+                  <point x="19.125" y="-14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.models.Channel" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+                  <point x="23.0" y="-14.5" />
+                  <point x="317.59774743230633" y="89.0" />
+                  <point x="426.2513188608778" y="89.0" />
+                  <point x="-7.449999999999989" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog">
+                  <point x="-21.607142857142833" y="-14.5" />
+                  <point x="291.94917133520084" y="356.0" />
+                  <point x="233.67285247432307" y="356.0" />
+                  <point x="-15.75" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerDialog" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+                  <point x="-38.0" y="-14.5" />
+                  <point x="558.5979808590105" y="465.0" />
+                  <point x="369.01464752567705" y="465.0" />
+                  <point x="55.45833333333337" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.User">
+                  <point x="12.964285714285722" y="-14.5" />
+                  <point x="326.5205999066294" y="346.0" />
+                  <point x="331.56570961718023" y="346.0" />
+                  <point x="331.56570961718023" y="188.0" />
+                  <point x="546.9483426704016" y="188.0" />
+                  <point x="-26.625" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ServerDialog">
+                  <point x="43.200000000000045" y="-14.5" />
+                  <point x="394.7061858076564" y="644.0" />
+                  <point x="596.5979808590105" y="644.0" />
+                  <point x="0.0" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+                  <point x="14.999999999999972" y="-14.5" />
+                  <point x="607.1358426704016" y="168.0" />
+                  <point x="619.5733426704016" y="168.0" />
+                  <point x="619.5733426704016" y="69.0" />
+                  <point x="470.95131886087785" y="69.0" />
+                  <point x="37.25000000000006" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.AuthorComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+                  <point x="-37.25" y="-14.5" />
+                  <point x="150.80608076563968" y="485.0" />
+                  <point x="278.264647525677" y="485.0" />
+                  <point x="-35.291666666666686" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.models.Server">
+                  <point x="0.0" y="-14.5" />
+                  <point x="481.05631419234373" y="267.0" />
+                  <point x="576.1358426704016" y="267.0" />
+                  <point x="-16.0" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.UserListComponent">
+                  <point x="7.2000000000000455" y="-14.5" />
+                  <point x="358.7061858076564" y="594.0" />
+                  <point x="398.30608076563965" y="594.0" />
+                  <point x="38.25" y="14.5" />
+                </edge>
+                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
+                  <point x="36.00000000000006" y="-14.5" />
+                  <point x="387.50618580765644" y="634.0" />
+                  <point x="507.2316526610646" y="634.0" />
+                  <point x="507.2316526610646" y="396.0" />
+                  <point x="550.639647525677" y="396.0" />
+                  <point x="69.58333333333331" y="14.5" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="332.5" y="184.5" />
+              <SelectedNodes />
+              <Categories />
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
@@ -239,7 +471,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -307,6 +538,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -397,6 +629,7 @@
       <workItem from="1552606478313" duration="659000" />
       <workItem from="1552607269209" duration="3995000" />
       <workItem from="1552651836513" duration="1198000" />
+      <workItem from="1552658211636" duration="780000" />
     </task>
     <servers />
   </component>
@@ -406,7 +639,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5852000" />
+    <option name="totallyTimeSpent" value="6632000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -419,7 +652,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24966443" />
       <window_info id="Designer" order="1" />
@@ -433,14 +665,14 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32719395" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.44745395" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.44745395" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50319827" side_tool="true" weight="0.29577464" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32719395" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.34236187" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" sideWeight="0.4951246" visible="true" weight="0.24466951" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" sideWeight="0.4951246" visible="true" weight="0.24733475" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -1442,36 +1674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uml/frontend.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>se.liu.ida.joshu135.tddd78.frontend</OriginalElement>
-          <nodes>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.ChatViewer</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.AuthorComponent</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.UserListComponent</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.ServerDialog</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.Main</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.ChatComponent</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.models.Server</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.models.User</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.ViewMediator</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.ChannelDialog</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</node>
-            <node x="" y="">se.liu.ida.joshu135.tddd78.models.Channel</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="355.0" y="367.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://JAVA/se.liu.ida.joshu135.tddd78.backend.MessageSender">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1559,6 +1761,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1580,17 +1789,253 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java">
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="18">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseHandlerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+    <entry file="file://$PROJECT_DIR$/uml/frontend.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>se.liu.ida.joshu135.tddd78.frontend</OriginalElement>
+          <nodes>
+            <node x="297.5061858076564" y="674.0">se.liu.ida.joshu135.tddd78.frontend.ChatViewer</node>
+            <node x="113.55608076563968" y="535.0">se.liu.ida.joshu135.tddd78.frontend.AuthorComponent</node>
+            <node x="283.55608076563965" y="535.0">se.liu.ida.joshu135.tddd78.frontend.UserListComponent</node>
+            <node x="539.5979808590105" y="535.0">se.liu.ida.joshu135.tddd78.frontend.ServerDialog</node>
+            <node x="359.2013188608778" y="0.0">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
+            <node x="0.0" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ChatComponent</node>
+            <node x="314.0061858076564" y="753.0">se.liu.ida.joshu135.tddd78.frontend.Main</node>
+            <node x="538.0733426704016" y="109.0">se.liu.ida.joshu135.tddd78.models.User</node>
+            <node x="552.1358426704016" y="208.0">se.liu.ida.joshu135.tddd78.models.Server</node>
+            <node x="253.05631419234368" y="416.0">se.liu.ida.joshu135.tddd78.frontend.ViewMediator</node>
+            <node x="186.42285247432307" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ChannelDialog</node>
+            <node x="397.55631419234373" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</node>
+            <node x="248.59774743230633" y="109.0">se.liu.ida.joshu135.tddd78.models.Channel</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="se.liu.ida.joshu135.tddd78.models.User" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+              <point x="17.75" y="-14.5" />
+              <point x="591.3233426704016" y="79.0" />
+              <point x="456.0513188608778" y="79.0" />
+              <point x="22.350000000000023" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+              <point x="-13.916666666666686" y="14.5" />
+              <point x="467.13964752567705" y="386.0" />
+              <point x="361.09202847805795" y="386.0" />
+              <point x="47.53571428571428" y="-14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatComponent" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+              <point x="-34.25" y="-14.5" />
+              <point x="34.25" y="267.0" />
+              <point x="55.535480859010306" y="267.0" />
+              <point x="55.535480859010306" y="49.0" />
+              <point x="366.6513188608778" y="49.0" />
+              <point x="-67.05000000000001" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.UserListComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+              <point x="-57.375" y="-14.5" />
+              <point x="302.68108076563965" y="515.0" />
+              <point x="308.51464752567705" y="515.0" />
+              <point x="-5.041666666666629" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.frontend.ChatViewer">
+              <point x="18.75" y="-14.5" />
+              <point x="370.2561858076564" y="728.0" />
+              <point x="378.5061858076564" y="728.0" />
+              <point x="27.0" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerDialog" target="se.liu.ida.joshu135.tddd78.models.Server">
+              <point x="38.0" y="-14.5" />
+              <point x="634.5979808590105" y="515.0" />
+              <point x="630.3479808590105" y="515.0" />
+              <point x="630.3479808590105" y="267.0" />
+              <point x="608.1358426704016" y="267.0" />
+              <point x="15.999999999999972" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog" target="se.liu.ida.joshu135.tddd78.models.Channel">
+              <point x="0.0" y="-14.5" />
+              <point x="249.42285247432307" y="267.0" />
+              <point x="257.90189075630263" y="267.0" />
+              <point x="257.90189075630263" y="188.0" />
+              <point x="271.59774743230633" y="188.0" />
+              <point x="-23.0" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.User">
+              <point x="-15.0" y="-14.5" />
+              <point x="577.1358426704016" y="158.0" />
+              <point x="564.6983426704016" y="158.0" />
+              <point x="-8.875" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.AuthorComponent">
+              <point x="-14.399999999999977" y="-14.5" />
+              <point x="337.1061858076564" y="604.0" />
+              <point x="225.30608076563968" y="604.0" />
+              <point x="37.25" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ChatComponent">
+              <point x="-50.39999999999998" y="-14.5" />
+              <point x="301.1061858076564" y="654.0" />
+              <point x="30.649999999999977" y="654.0" />
+              <point x="30.649999999999977" y="396.0" />
+              <point x="17.125" y="396.0" />
+              <point x="-51.375" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.models.Server">
+              <point x="50.400000000000034" y="-14.5" />
+              <point x="401.9061858076564" y="654.0" />
+              <point x="664.0979808590105" y="654.0" />
+              <point x="664.0979808590105" y="257.0" />
+              <point x="624.1358426704016" y="257.0" />
+              <point x="31.99999999999997" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.Channel">
+              <point x="4.321428571428555" y="-14.5" />
+              <point x="317.87774276377223" y="336.0" />
+              <point x="322.92285247432307" y="336.0" />
+              <point x="322.92285247432307" y="188.0" />
+              <point x="302.264414098973" y="188.0" />
+              <point x="7.666666666666686" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+              <point x="15.75" y="14.5" />
+              <point x="265.17285247432307" y="346.0" />
+              <point x="300.592028478058" y="346.0" />
+              <point x="-12.964285714285666" y="-14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+              <point x="-35.99999999999994" y="-14.5" />
+              <point x="315.50618580765644" y="634.0" />
+              <point x="95.85608076563966" y="634.0" />
+              <point x="95.85608076563966" y="465.0" />
+              <point x="258.09798085901036" y="465.0" />
+              <point x="-55.458333333333314" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+              <point x="-38.89285714285711" y="-14.5" />
+              <point x="274.66345704948657" y="376.0" />
+              <point x="175.92285247432307" y="376.0" />
+              <point x="175.92285247432307" y="69.0" />
+              <point x="396.4513188608778" y="69.0" />
+              <point x="-37.25" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChatComponent">
+              <point x="-56.17857142857139" y="-14.5" />
+              <point x="257.3777427637723" y="396.0" />
+              <point x="85.625" y="396.0" />
+              <point x="17.125" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChatViewer">
+              <point x="35.29166666666674" y="14.5" />
+              <point x="348.8479808590104" y="485.0" />
+              <point x="447.05608076563965" y="485.0" />
+              <point x="447.05608076563965" y="604.0" />
+              <point x="365.9061858076564" y="604.0" />
+              <point x="14.400000000000034" y="-14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
+              <point x="30.25" y="-14.5" />
+              <point x="343.8063141923437" y="366.0" />
+              <point x="411.4729808590104" y="366.0" />
+              <point x="-69.58333333333333" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.Channel">
+              <point x="-25.0" y="-14.5" />
+              <point x="567.1358426704016" y="168.0" />
+              <point x="332.9310807656397" y="168.0" />
+              <point x="38.33333333333337" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.Server">
+              <point x="21.60714285714289" y="-14.5" />
+              <point x="335.16345704948657" y="356.0" />
+              <point x="345.13713818860884" y="356.0" />
+              <point x="345.13713818860884" y="257.0" />
+              <point x="560.1358426704016" y="257.0" />
+              <point x="-32.0" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.UserListComponent">
+              <point x="15.125" y="14.5" />
+              <point x="328.6813141923437" y="505.0" />
+              <point x="379.18108076563965" y="505.0" />
+              <point x="19.125" y="-14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.models.Channel" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+              <point x="23.0" y="-14.5" />
+              <point x="317.59774743230633" y="89.0" />
+              <point x="426.2513188608778" y="89.0" />
+              <point x="-7.449999999999989" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog">
+              <point x="-21.607142857142833" y="-14.5" />
+              <point x="291.94917133520084" y="356.0" />
+              <point x="233.67285247432307" y="356.0" />
+              <point x="-15.75" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerDialog" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+              <point x="-38.0" y="-14.5" />
+              <point x="558.5979808590105" y="465.0" />
+              <point x="369.01464752567705" y="465.0" />
+              <point x="55.45833333333337" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.User">
+              <point x="12.964285714285722" y="-14.5" />
+              <point x="326.5205999066294" y="346.0" />
+              <point x="331.56570961718023" y="346.0" />
+              <point x="331.56570961718023" y="188.0" />
+              <point x="546.9483426704016" y="188.0" />
+              <point x="-26.625" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ServerDialog">
+              <point x="43.200000000000045" y="-14.5" />
+              <point x="394.7061858076564" y="644.0" />
+              <point x="596.5979808590105" y="644.0" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+              <point x="14.999999999999972" y="-14.5" />
+              <point x="607.1358426704016" y="168.0" />
+              <point x="619.5733426704016" y="168.0" />
+              <point x="619.5733426704016" y="69.0" />
+              <point x="470.95131886087785" y="69.0" />
+              <point x="37.25000000000006" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.AuthorComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
+              <point x="-37.25" y="-14.5" />
+              <point x="150.80608076563968" y="485.0" />
+              <point x="278.264647525677" y="485.0" />
+              <point x="-35.291666666666686" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.models.Server">
+              <point x="0.0" y="-14.5" />
+              <point x="481.05631419234373" y="267.0" />
+              <point x="576.1358426704016" y="267.0" />
+              <point x="-16.0" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.UserListComponent">
+              <point x="7.2000000000000455" y="-14.5" />
+              <point x="358.7061858076564" y="594.0" />
+              <point x="398.30608076563965" y="594.0" />
+              <point x="38.25" y="14.5" />
+            </edge>
+            <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
+              <point x="36.00000000000006" y="-14.5" />
+              <point x="387.50618580765644" y="634.0" />
+              <point x="507.2316526610646" y="634.0" />
+              <point x="507.2316526610646" y="396.0" />
+              <point x="550.639647525677" y="396.0" />
+              <point x="69.58333333333331" y="14.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="332.5" y="184.5" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>

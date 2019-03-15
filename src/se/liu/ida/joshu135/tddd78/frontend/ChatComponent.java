@@ -56,7 +56,6 @@ public class ChatComponent extends JScrollPane {
 	 * Makes sure that user isn't brought to the bottom when viewing old messages.
 	 * Source: https://stackoverflow.com/a/39410581
 	 */
-	// Naming convention according to https://www.ida.liu.se/~TDDD78/labs/2019/project/grading.shtml
 	private void scrollSetupborrowedcode() {
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 		setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);

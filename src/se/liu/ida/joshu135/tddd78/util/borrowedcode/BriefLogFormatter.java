@@ -21,8 +21,6 @@ public class BriefLogFormatter extends Formatter {
 			loggerName = "root";
 		}
 		String date = FORMAT.format(new Date(record.getMillis()));
-		// return value looks like this
-		// root[INFO|main|10:31:35]: Hello World\n
 		return String.format("%s[%s|%s|%s]: %s%s", loggerName, record.getLevel(), Thread.currentThread().getName(), date,
 							 record.getMessage(), LINE_SEP);
 	}

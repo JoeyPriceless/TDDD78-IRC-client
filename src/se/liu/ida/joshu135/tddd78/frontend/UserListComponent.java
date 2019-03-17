@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Swing component that contains the list of users in either the selected conversation or the entire server. To fill the list,
@@ -48,15 +51,23 @@ public class UserListComponent extends JPanel {
 	}
 
 	public void addUser(String name) {
-		if (!userListModel.contains(name)) {
-			userListModel.addElement(name);
-		}
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override public void run() {
+				if (!userListModel.contains(name)) {
+					userListModel.addElement(name);
+				}
+			}
+		});
 	}
 
 	public void removeUser(String name) {
-		if (userListModel.contains(name)) {
-			userListModel.removeElement(name);
-		}
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override public void run() {
+				if (!userListModel.contains(name)) {
+					userListModel.removeElement(name);
+				}
+			}
+		});
 	}
 
 	public void clear() {

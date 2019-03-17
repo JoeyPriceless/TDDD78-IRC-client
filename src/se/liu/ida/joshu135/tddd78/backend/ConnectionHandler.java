@@ -22,18 +22,16 @@ public class ConnectionHandler {
 	private Socket socket = null;
 	private BufferedWriter writer = null;
 	private BufferedReader reader = null;
-	private MessageComposer composer;
 	private Server server = null;
 	private AppUser user;
 
-	public ConnectionHandler(MessageComposer composer, AppUser user) {
-		this.composer = composer;
+	public ConnectionHandler(AppUser user) {
 		this.user = user;
 	}
 
 	// IOException is needed for socket, etc and contains UnknownHostException. I Don't see why I would add a redundant
 	// UnknownHostException onto a required IOException.
-	public void setServer(Server server, AppUser user) throws IOException {
+	public void setServer(Server server, AppUser user, MessageComposer composer) throws IOException {
 		if (this.server != null && this.server.getName().equals(server.getName()) &&
 			this.server.getPort() != 0 && this.server.getPort() == server.getPort() &&
 			this.user.equals(user)) {

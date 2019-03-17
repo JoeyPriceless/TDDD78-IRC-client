@@ -11,6 +11,7 @@ import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A mediator class that acts as the interface for component-component interaction as well as backend-frontend interaction.
@@ -40,7 +41,7 @@ public class ViewMediator {
 		if (currentServer != null) {
 			serverTreeComponent.removeServerNode(currentServer);
 		}
-		conHandler.setServer(newServer, user);
+		conHandler.setServer(newServer, user, composer);
 		chatComponent.setSource(newServer);
 		serverTreeComponent.addServerNode(newServer);
 		chatViewer.resetAwayStatus();
@@ -96,13 +97,13 @@ public class ViewMediator {
 		}
 	}
 
-	public void appendMessage(String sender, String text) {
-		if (sender == null) {
-			appendToActive(text);
-		} else if (!sender.startsWith("#")) {
+	public void appendPrivMsg(String target, String sender, String text) {
+		if (target.equals(user.getNickname())) {
 			appendToUser(sender, sender, text);
-		} else {
+		} else if (target.startsWith("#")) {
 			appendToChannel(sender, text);
+		} else {
+			appendToActive(text);
 		}
 	}
 
@@ -128,7 +129,7 @@ public class ViewMediator {
 		chatComponent.update();
 	}
 
-	private void appendToUser(String sender, String target, String text) {
+	public void appendToUser(String sender, String target, String text) {
 		Server server = conHandler.getServer();
 		User user = server.getUser(target, false);
 		user.appendText(Message.formatMessage(sender, text));
@@ -141,7 +142,7 @@ public class ViewMediator {
 		userListComponent.addUser(nickname);
 	}
 
-	public void addUsersToList(Iterable<String> nicknames) {
+	public void addUsersToList(ArrayList<String> nicknames) {
 			userListComponent.addUsers(nicknames);
 		}
 
@@ -191,7 +192,6 @@ public class ViewMediator {
 	}
 
 	public void endOfList() {
-		channelDialog.endOfList();
 		userListComponent.forceRefresh();
 	}
 
@@ -200,6 +200,6 @@ public class ViewMediator {
 	}
 
 	public void showServerDialog(boolean inputRequired, String errorMessage) {
-		chatViewer.showServerDialog(inputRequired, errorMessage, user, getServer());
+		ServerDialog.show(chatViewer.getFrame(), this, inputRequired, errorMessage, user, getServer());
 	}
 }

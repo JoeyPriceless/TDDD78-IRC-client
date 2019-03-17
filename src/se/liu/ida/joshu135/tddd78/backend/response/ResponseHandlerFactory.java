@@ -50,14 +50,14 @@ public class ResponseHandlerFactory {
 		addMapList(new String[] {
 				Numeric.ERR_ALREADYREGISTERED.getNumeric(),
 				Numeric.ERR_NOTREGISTERED.getNumeric()
-					}, new ServerDialogHandler(mediator));
+		}, new ServerDialogHandler(mediator));
 
 		// Server user info
 		addMapRange(Numeric.RPL_LUSERCLIENT.getInt(), Numeric.RPL_LUSERME.getInt(), new DisplayHandler(mediator));
 		addMapList(new String[] {
 					Numeric.RPL_LUSERLOCALUSER.getNumeric(),
 					Numeric.RPL_LUSERGLOBALUSER.getNumeric()
-					}, new DisplayHandler(mediator));
+		}, new DisplayHandler(mediator));
 		addMapRange(Numeric.RPL_LUSEROP.getInt(), Numeric.RPL_LUSERCHANNELS.getInt(), new NumParamHandler(mediator));
 		// Message of the Day (MOTD) & topic
 		addMapList(new String[] {
@@ -66,7 +66,7 @@ public class ResponseHandlerFactory {
 					Numeric.RPL_MOTDEND.getNumeric(),
 					Numeric.RPL_TOPIC.getNumeric(),
 					Numeric.RPL_NOTOPIC.getNumeric()
-					}, new DisplayHandler(mediator));
+		}, new DisplayHandler(mediator));
 		map.put(Numeric.RPL_TOPICSETBY.getNumeric(), new DontDisplayHandler());
 		// Lists all users
 		map.put(Numeric.RPL_NAMREPLY.getNumeric(), new NamesHandler(mediator));

@@ -20,7 +20,7 @@ public final class Main {
 		LinkedTransferQueue<Message> messageQueue = new LinkedTransferQueue<>();
 		MessageComposer composer = new MessageComposer(messageQueue);
 		AppUser user = new AppUser();
-		ConnectionHandler conHandler = new ConnectionHandler(composer, user);
+		ConnectionHandler conHandler = new ConnectionHandler(user);
 		ChatViewer chatViewer = new ChatViewer(conHandler, user, composer);
 
 		MessageSender messageSender = new MessageSender(messageQueue, conHandler);

@@ -104,10 +104,6 @@ public class ServerDialog extends JPanel {
 		add(errorComp, "cell 0 8, span");
 	}
 
-	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired)
-	{
-		show(parentComponent, mediator, inputRequired, null, null, null);
-	}
 	public static void show(Component parentComponent, ViewMediator mediator, boolean inputRequired, String errorMessage,
 							AppUser defaultUser, Server defaultServer) {
 		ServerDialog serverDialog = new ServerDialog(defaultUser, defaultServer);

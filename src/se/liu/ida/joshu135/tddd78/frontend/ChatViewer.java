@@ -4,7 +4,6 @@ import net.miginfocom.swing.MigLayout;
 import se.liu.ida.joshu135.tddd78.backend.ConnectionHandler;
 import se.liu.ida.joshu135.tddd78.backend.MessageComposer;
 import se.liu.ida.joshu135.tddd78.models.AppUser;
-import se.liu.ida.joshu135.tddd78.models.Server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,7 +48,7 @@ public class ChatViewer {
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Centralize on screen
 		frame.setVisible(true);
-		ServerDialog.show(frame, mediator, true);
+		mediator.showServerDialog(true, null);
 	}
 
 	/**
@@ -73,6 +72,7 @@ public class ChatViewer {
 			MessageComposer composer = mediator.getComposer();
 			if (awayMenuBarItem.getText().equals(DEFAULT_AWAY_LABEL)) {
 				String input = JOptionPane.showInputDialog(frame, "Away message:");
+				if (input == null) return;
 				// Default message is "Away"
 				String awayMessage = input.isEmpty() ? "Away" : input;
 				awayMenuBarItem.setText("Remove Away status");
@@ -89,9 +89,5 @@ public class ChatViewer {
 
 	public void resetAwayStatus() {
 		awayMenuBarItem.setText(DEFAULT_AWAY_LABEL);
-	}
-
-	public void showServerDialog(boolean inputRequired, String errorMessage, AppUser defaultUser, Server defaultServer) {
-		ServerDialog.show(frame, mediator, inputRequired, errorMessage, defaultUser, defaultServer);
 	}
 }

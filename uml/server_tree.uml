@@ -3,82 +3,68 @@
   <ID>JAVA</ID>
   <OriginalElement>se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</OriginalElement>
   <nodes>
-    <node x="183.43181818181822" y="346.0">se.liu.ida.joshu135.tddd78.frontend.ChatViewer</node>
-    <node x="187.00000000000003" y="267.0">se.liu.ida.joshu135.tddd78.backend.ConnectionHandler</node>
-    <node x="210.57629870129873" y="0.0">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
-    <node x="130.25487012987017" y="89.0">se.liu.ida.joshu135.tddd78.models.User</node>
-    <node x="223.00000000000003" y="188.0">se.liu.ida.joshu135.tddd78.models.Server</node>
-    <node x="0.0" y="267.0">se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</node>
-    <node x="221.25487012987017" y="89.0">se.liu.ida.joshu135.tddd78.models.Channel</node>
+    <node x="199.7958333333333" y="0.0">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
+    <node x="138.99027777777775" y="277.0">se.liu.ida.joshu135.tddd78.backend.ConnectionHandler</node>
+    <node x="90.99999999999997" y="99.0">se.liu.ida.joshu135.tddd78.frontend.ChatComponent</node>
+    <node x="0.0" y="99.0">se.liu.ida.joshu135.tddd78.models.User</node>
+    <node x="252.4055555555555" y="198.0">se.liu.ida.joshu135.tddd78.models.Server</node>
+    <node x="310.99027777777775" y="277.0">se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</node>
+    <node x="247.99999999999997" y="99.0">se.liu.ida.joshu135.tddd78.models.Channel</node>
   </nodes>
   <notes />
   <edges>
     <edge source="se.liu.ida.joshu135.tddd78.models.User" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-      <point x="17.75" y="-14.5" />
-      <point x="183.50487012987017" y="59.0" />
-      <point x="242.50487012987017" y="59.0" />
-      <point x="-42.571428571428555" y="14.5" />
+      <point x="-17.75" y="-14.5" />
+      <point x="17.75" y="49.0" />
+      <point x="208.07361111111106" y="49.0" />
+      <point x="-66.22222222222223" y="14.5" />
     </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler">
-      <point x="13.5" y="-14.5" />
-      <point x="250.93181818181822" y="326.0" />
-      <point x="263.0" y="326.0" />
-      <point x="0.0" y="14.5" />
+    <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatComponent" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
+      <point x="-34.25" y="-14.5" />
+      <point x="125.24999999999997" y="69.0" />
+      <point x="241.1847222222222" y="69.0" />
+      <point x="-33.111111111111114" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.Channel">
-      <point x="5.0" y="-14.5" />
-      <point x="268.0" y="138.0" />
-      <point x="290.25487012987014" y="138.0" />
-      <point x="23.0" y="14.5" />
+      <point x="-5.0" y="-14.5" />
+      <point x="287.4055555555555" y="148.0" />
+      <point x="270.99999999999994" y="148.0" />
+      <point x="-23.0" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.models.Channel" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-      <point x="23.0" y="-14.5" />
-      <point x="290.25487012987014" y="69.0" />
-      <point x="285.0762987012987" y="69.0" />
+      <point x="-23.0" y="-14.5" />
+      <point x="270.99999999999994" y="79.0" />
+      <point x="274.2958333333333" y="79.0" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.User">
       <point x="-35.0" y="-14.5" />
-      <point x="228.00000000000003" y="168.0" />
-      <point x="142.0882034632035" y="168.0" />
-      <point x="-23.666666666666657" y="14.5" />
+      <point x="257.4055555555555" y="178.0" />
+      <point x="11.833333333333314" y="178.0" />
+      <point x="-23.66666666666667" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
       <point x="25.0" y="-14.5" />
-      <point x="288.0" y="158.0" />
-      <point x="333.75487012987014" y="158.0" />
-      <point x="333.75487012987014" y="59.0" />
-      <point x="327.6477272727273" y="59.0" />
-      <point x="42.57142857142861" y="14.5" />
+      <point x="317.4055555555555" y="168.0" />
+      <point x="360.5" y="168.0" />
+      <point x="360.5" y="59.0" />
+      <point x="323.9625" y="59.0" />
+      <point x="49.666666666666686" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.models.Server">
       <point x="0.0" y="-14.5" />
-      <point x="83.5" y="237.0" />
-      <point x="233.00000000000003" y="237.0" />
-      <point x="-30.0" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
-      <point x="-40.5" y="-14.5" />
-      <point x="196.93181818181822" y="326.0" />
-      <point x="41.75" y="326.0" />
-      <point x="-41.75" y="14.5" />
-    </edge>
-    <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.models.Server">
-      <point x="40.5" y="-14.5" />
-      <point x="277.93181818181824" y="326.0" />
-      <point x="349.5" y="326.0" />
-      <point x="349.5" y="237.0" />
-      <point x="293.0" y="237.0" />
-      <point x="30.0" y="14.5" />
+      <point x="394.49027777777775" y="257.0" />
+      <point x="319.0722222222222" y="257.0" />
+      <point x="26.666666666666686" y="14.5" />
     </edge>
     <edge source="se.liu.ida.joshu135.tddd78.backend.ConnectionHandler" target="se.liu.ida.joshu135.tddd78.models.Server">
-      <point x="38.0" y="-14.5" />
-      <point x="301.0" y="247.0" />
-      <point x="273.0" y="247.0" />
-      <point x="10.0" y="14.5" />
+      <point x="-38.0" y="-14.5" />
+      <point x="176.99027777777775" y="247.0" />
+      <point x="265.7388888888889" y="247.0" />
+      <point x="-26.666666666666657" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="110.5" y="182.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="207.0" y="252.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>

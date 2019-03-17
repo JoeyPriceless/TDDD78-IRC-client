@@ -15,7 +15,7 @@ public class NamesHandler extends AbstractViewEditor implements ResponseHandler 
 	}
 
 	@Override public void handle(final Message message) {
-		 Iterable<String> names = new ArrayList<>(Arrays.asList(message.splitTrailing()));
+		 ArrayList<String> names = new ArrayList<>(Arrays.asList(message.splitTrailing()));
 		 mediator.addUsersToList(names);
 	}
 }

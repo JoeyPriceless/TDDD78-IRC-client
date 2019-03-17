@@ -7,7 +7,7 @@ import java.util.List;
  * A server with a hostname, port and JTree node used for displaying it. Also keeps track of all the node's children. These can
  * be either Channels or Users.
  */
-public class Server extends AbstractChildNode{
+public class Server extends AbstractChildNode {
 	private int port;
 	private AbstractChildNode activeNode;
 	private Channel channel = null;

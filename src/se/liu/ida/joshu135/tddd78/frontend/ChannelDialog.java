@@ -11,7 +11,6 @@ import java.awt.*;
  * avoid blocking the receiving thread.
  */
 public class ChannelDialog extends JScrollPane implements Runnable {
-	private static final Channel PLACEHOLDER_CHANNEL = new Channel("Loading... Please wait :)", false);
 	private static final int HEIGHT = 500;
 	private static final int WIDTH = 150;
 	private Channel selectedChannel = null;
@@ -25,9 +24,7 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 		this.mediator = mediator;
 		this.parentComponent = parentComponent;
 		channelListModel = new DefaultListModel<>();
-		DefaultListModel<Channel> placeholderModel = new DefaultListModel<>();
-		placeholderModel.addElement(PLACEHOLDER_CHANNEL);
-		channelList = new JList<>(placeholderModel);
+		channelList = new JList<>(channelListModel);
 		channelList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setViewportView(channelList);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -51,14 +48,10 @@ public class ChannelDialog extends JScrollPane implements Runnable {
 	}
 
 	public void addChannel(Channel channel) {
-		channelListModel.addElement(channel);
-	}
-
-	public void endOfList() {
-		// Remove placeholder element and replace it with the finalized list.
-		if (!channelListModel.isEmpty() && channelListModel.getElementAt(0).equals(PLACEHOLDER_CHANNEL)) {
-			channelListModel.removeElementAt(0);
-		}
-		channelList.setModel(channelListModel);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override public void run() {
+				channelListModel.addElement(channel);
+			}
+		});
 	}
 }

@@ -14,8 +14,9 @@ public class PrivMsgHandler extends AbstractViewEditor implements ResponseHandle
 	@Override public void handle(final Message message)
 	{
 		// All servers will send a private message with "VERSION" upon registration. These are not displayed to the user.
-		if (!message.getTrailing().equals("\u0001VERSION\u0001")) {
-			mediator.appendMessage(message.getNickname(), message.getTrailing());
-		}
+		if (message.getTrailing().equals("\u0001VERSION\u0001")) return;
+
+		// First param is the message's target (either channel or application's user)
+		mediator.appendPrivMsg(message.getParamAt(0), message.getNickname(), message.getTrailing());
 	}
 }

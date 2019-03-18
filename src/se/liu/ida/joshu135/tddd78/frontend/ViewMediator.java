@@ -11,7 +11,6 @@ import se.liu.ida.joshu135.tddd78.models.Server;
 import se.liu.ida.joshu135.tddd78.models.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * A mediator class that acts as the interface for component-component interaction as well as backend-frontend interaction.
@@ -142,7 +141,7 @@ public class ViewMediator {
 		userListComponent.addUser(nickname);
 	}
 
-	public void addUsersToList(ArrayList<String> nicknames) {
+	public void addUsersToList(Iterable<String> nicknames) {
 			userListComponent.addUsers(nicknames);
 		}
 

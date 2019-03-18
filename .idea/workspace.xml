@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ea5da4-b8c5-4748-96cb-103f08006017" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_8_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/miglayout_core_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_miglayout_miglayout_swing_5_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_lang3_3_8_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/frontend.uml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/frontend.uml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/response_factory.uml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/response_factory.uml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IRC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IRC.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,235 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uml/frontend.uml">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>se.liu.ida.joshu135.tddd78.frontend</OriginalElement>
-              <nodes>
-                <node x="315.01081730769226" y="674.0">se.liu.ida.joshu135.tddd78.frontend.ChatViewer</node>
-                <node x="122.56390690220633" y="545.0">se.liu.ida.joshu135.tddd78.frontend.AuthorComponent</node>
-                <node x="215.53966346153842" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ServerDialog</node>
-                <node x="300.8715992098986" y="545.0">se.liu.ida.joshu135.tddd78.frontend.UserListComponent</node>
-                <node x="262.54657871198566" y="0.0">se.liu.ida.joshu135.tddd78.models.AbstractChildNode</node>
-                <node x="525.3581730769231" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ChatComponent</node>
-                <node x="331.51081730769226" y="753.0">se.liu.ida.joshu135.tddd78.frontend.Main</node>
-                <node x="181.85216346153842" y="109.0">se.liu.ida.joshu135.tddd78.models.User</node>
-                <node x="242.03966346153842" y="208.0">se.liu.ida.joshu135.tddd78.models.Server</node>
-                <node x="289.78966346153845" y="426.0">se.liu.ida.joshu135.tddd78.frontend.ViewMediator</node>
-                <node x="364.57091346153845" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ChannelDialog</node>
-                <node x="0.0" y="287.0">se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent</node>
-                <node x="342.1709134615384" y="109.0">se.liu.ida.joshu135.tddd78.models.Channel</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="se.liu.ida.joshu135.tddd78.models.User" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-                  <point x="-17.75" y="-14.5" />
-                  <point x="199.60216346153842" y="59.0" />
-                  <point x="269.99657871198565" y="59.0" />
-                  <point x="-67.05000000000001" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ServerDialog">
-                  <point x="-18.90625" y="-14.5" />
-                  <point x="331.38341346153845" y="356.0" />
-                  <point x="244.03966346153842" y="356.0" />
-                  <point x="-28.5" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
-                  <point x="41.75" y="14.5" />
-                  <point x="125.25" y="386.0" />
-                  <point x="308.69591346153845" y="386.0" />
-                  <point x="-41.59375" y="-14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatComponent" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-                  <point x="-34.25" y="-14.5" />
-                  <point x="559.6081730769231" y="267.0" />
-                  <point x="590.5542915175909" y="267.0" />
-                  <point x="590.5542915175909" y="59.0" />
-                  <point x="389.1965787119857" y="59.0" />
-                  <point x="52.150000000000034" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.Main" target="se.liu.ida.joshu135.tddd78.frontend.ChatViewer">
-                  <point x="-18.75" y="-14.5" />
-                  <point x="350.26081730769226" y="728.0" />
-                  <point x="342.01081730769226" y="728.0" />
-                  <point x="-27.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.UserListComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
-                  <point x="-57.375" y="-14.5" />
-                  <point x="319.9965992098986" y="525.0" />
-                  <point x="339.28966346153845" y="525.0" />
-                  <point x="-11.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerDialog" target="se.liu.ida.joshu135.tddd78.models.Server">
-                  <point x="-28.5" y="-14.5" />
-                  <point x="244.03966346153842" y="267.0" />
-                  <point x="272.03966346153845" y="267.0" />
-                  <point x="-10.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog" target="se.liu.ida.joshu135.tddd78.models.Channel">
-                  <point x="-31.5" y="-14.5" />
-                  <point x="396.07091346153845" y="267.0" />
-                  <point x="435.30429151759085" y="267.0" />
-                  <point x="435.30429151759085" y="188.0" />
-                  <point x="406.5709134615384" y="188.0" />
-                  <point x="18.399999999999977" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.User">
-                  <point x="-15.0" y="-14.5" />
-                  <point x="267.03966346153845" y="168.0" />
-                  <point x="243.97716346153842" y="168.0" />
-                  <point x="26.625" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.AuthorComponent">
-                  <point x="-24.923076923076906" y="-14.5" />
-                  <point x="344.08774038461536" y="624.0" />
-                  <point x="234.31390690220633" y="624.0" />
-                  <point x="37.25" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ChatComponent">
-                  <point x="41.53846153846155" y="-14.5" />
-                  <point x="410.5492788461538" y="644.0" />
-                  <point x="623.9543269230769" y="644.0" />
-                  <point x="623.9543269230769" y="406.0" />
-                  <point x="610.9831730769231" y="406.0" />
-                  <point x="17.125" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.Channel">
-                  <point x="3.78125" y="-14.5" />
-                  <point x="354.07091346153845" y="188.0" />
-                  <point x="388.1709134615384" y="188.0" />
-                  <point x="0.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
-                  <point x="47.25" y="14.5" />
-                  <point x="474.82091346153845" y="376.0" />
-                  <point x="384.32091346153845" y="376.0" />
-                  <point x="34.03125" y="-14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
-                  <point x="33.230769230769226" y="-14.5" />
-                  <point x="402.2415865384615" y="634.0" />
-                  <point x="484.3223203637447" y="634.0" />
-                  <point x="484.3223203637447" y="475.0" />
-                  <point x="405.28966346153845" y="475.0" />
-                  <point x="55.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-                  <point x="41.59375" y="-14.5" />
-                  <point x="391.88341346153845" y="386.0" />
-                  <point x="501.07091346153845" y="386.0" />
-                  <point x="501.07091346153845" y="69.0" />
-                  <point x="374.2965787119857" y="69.0" />
-                  <point x="37.25000000000006" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChatComponent">
-                  <point x="56.71875" y="-14.5" />
-                  <point x="407.00841346153845" y="406.0" />
-                  <point x="576.7331730769231" y="406.0" />
-                  <point x="-17.125" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChatViewer">
-                  <point x="-33.0" y="14.5" />
-                  <point x="317.28966346153845" y="505.0" />
-                  <point x="282.0639069022063" y="505.0" />
-                  <point x="282.0639069022063" y="614.0" />
-                  <point x="352.3954326923077" y="614.0" />
-                  <point x="-16.615384615384585" y="-14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
-                  <point x="-56.71875" y="-14.5" />
-                  <point x="293.57091346153845" y="406.0" />
-                  <point x="69.58333333333331" y="406.0" />
-                  <point x="-13.916666666666671" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.Server">
-                  <point x="-3.78125" y="-14.5" />
-                  <point x="346.50841346153845" y="336.0" />
-                  <point x="340.03966346153845" y="336.0" />
-                  <point x="340.03966346153845" y="267.0" />
-                  <point x="312.03966346153845" y="267.0" />
-                  <point x="30.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.Channel">
-                  <point x="25.0" y="-14.5" />
-                  <point x="307.03966346153845" y="168.0" />
-                  <point x="351.3709134615384" y="168.0" />
-                  <point x="-36.80000000000001" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.UserListComponent">
-                  <point x="11.0" y="14.5" />
-                  <point x="361.28966346153845" y="515.0" />
-                  <point x="396.4965992098986" y="515.0" />
-                  <point x="19.125" y="-14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.models.Channel" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-                  <point x="23.0" y="-14.5" />
-                  <point x="411.1709134615384" y="79.0" />
-                  <point x="359.3965787119857" y="79.0" />
-                  <point x="22.350000000000023" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.frontend.ChannelDialog">
-                  <point x="11.34375" y="-14.5" />
-                  <point x="361.63341346153845" y="346.0" />
-                  <point x="380.32091346153845" y="346.0" />
-                  <point x="-47.25" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerDialog" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
-                  <point x="28.5" y="14.5" />
-                  <point x="301.03966346153845" y="346.0" />
-                  <point x="338.94591346153845" y="346.0" />
-                  <point x="-11.34375" y="-14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ViewMediator" target="se.liu.ida.joshu135.tddd78.models.User">
-                  <point x="-26.46875" y="-14.5" />
-                  <point x="323.82091346153845" y="366.0" />
-                  <point x="190.72716346153842" y="366.0" />
-                  <point x="-26.625" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.models.Server" target="se.liu.ida.joshu135.tddd78.models.AbstractChildNode">
-                  <point x="-5.0" y="-14.5" />
-                  <point x="277.03966346153845" y="79.0" />
-                  <point x="299.79657871198566" y="79.0" />
-                  <point x="-37.25" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.AuthorComponent" target="se.liu.ida.joshu135.tddd78.frontend.ViewMediator">
-                  <point x="-37.25" y="-14.5" />
-                  <point x="159.81390690220633" y="485.0" />
-                  <point x="295.28966346153845" y="485.0" />
-                  <point x="-55.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent" target="se.liu.ida.joshu135.tddd78.models.Server">
-                  <point x="0.0" y="-14.5" />
-                  <point x="83.5" y="257.0" />
-                  <point x="252.03966346153842" y="257.0" />
-                  <point x="-30.0" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.UserListComponent">
-                  <point x="8.30769230769232" y="-14.5" />
-                  <point x="377.3185096153846" y="604.0" />
-                  <point x="415.6215992098986" y="604.0" />
-                  <point x="38.25" y="14.5" />
-                </edge>
-                <edge source="se.liu.ida.joshu135.tddd78.frontend.ChatViewer" target="se.liu.ida.joshu135.tddd78.frontend.ServerTreeComponent">
-                  <point x="-49.84615384615387" y="-14.5" />
-                  <point x="319.1646634615384" y="654.0" />
-                  <point x="23.679487179487182" y="654.0" />
-                  <point x="23.679487179487182" y="406.0" />
-                  <point x="13.916666666666686" y="406.0" />
-                  <point x="-69.58333333333331" y="14.5" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="-127.0" y="207.0" />
-              <SelectedNodes />
-              <Categories />
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageComposer.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -274,25 +48,22 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/borrowedcode/Numeric.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
-              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/AuthorComponent.java">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ViewMediator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1494">
-              <caret line="85" column="85" selection-start-line="85" selection-start-column="85" selection-end-line="85" selection-end-column="85" />
+            <state relative-caret-position="204">
+              <caret line="144" column="33" selection-start-line="144" selection-start-column="33" selection-end-line="144" selection-end-column="33" />
+              <folding>
+                <element signature="e#4858#4859#0" expanded="true" />
+                <element signature="e#4904#4905#0" expanded="true" />
+                <element signature="e#6431#6432#0" expanded="true" />
+                <element signature="e#6470#6471#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -301,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseHandlerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="477">
-              <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+              <caret line="68" column="41" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -315,6 +86,24 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NamesHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/UserListComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/AppUser.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -324,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -437,12 +226,12 @@
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChatViewer.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/PrivMsgHandler.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NamesHandler.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/UserListComponent.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelDialog.java" />
-        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ViewMediator.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/AbstractChildNode.java" />
         <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/AppUser.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ViewMediator.java" />
+        <option value="$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NamesHandler.java" />
       </list>
     </option>
   </component>
@@ -546,7 +335,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/uml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/commons-lang3-3.8.1.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -630,7 +419,7 @@
       <workItem from="1552658211636" duration="780000" />
       <workItem from="1552659767156" duration="2460000" />
       <workItem from="1552826552228" duration="22494000" />
-      <workItem from="1552908283175" duration="6394000" />
+      <workItem from="1552908283175" duration="7116000" />
     </task>
     <servers />
   </component>
@@ -640,7 +429,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37980000" />
+    <option name="totallyTimeSpent" value="38702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2109,39 +1898,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NamesHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/UserListComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
-          <folding>
-            <element signature="e#2583#2584#0" expanded="true" />
-            <element signature="e#2622#2623#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ChannelDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ViewMediator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="170" column="42" lean-forward="true" selection-start-line="170" selection-start-column="42" selection-end-line="170" selection-end-column="42" />
-          <folding>
-            <element signature="e#6431#6432#0" expanded="true" />
-            <element signature="e#6470#6471#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2898,14 +2658,14 @@
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/util/borrowedcode/Numeric.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/ResponseHandlerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
-          <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+          <caret line="68" column="41" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -2926,7 +2686,34 @@
     <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/ViewMediator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="144" column="33" selection-start-line="144" selection-start-column="33" selection-end-line="144" selection-end-column="33" />
+          <folding>
+            <element signature="e#4858#4859#0" expanded="true" />
+            <element signature="e#4904#4905#0" expanded="true" />
+            <element signature="e#6431#6432#0" expanded="true" />
+            <element signature="e#6470#6471#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/frontend/UserListComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/liu/ida/joshu135/tddd78/backend/response/NamesHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
         </state>
       </provider>
     </entry>
